@@ -20,14 +20,14 @@ namespace Coinbase.Tests.EndpointTests
             "BTC-USD", email: "satoshi@bitcoin.com");
 
          var expectedBody =
-@"{
+$@"{{
    ""type"": ""fills"",
-   ""start_date"": ""2018-11-28T00:00:00-08:00"",
-   ""end_date"": ""2018-11-29T00:00:00-08:00"",
+   ""start_date"": ""{date:O}"",
+   ""end_date"": ""{date.AddDays(1):O}"",
    ""format"": ""pdf"",
    ""email"": ""satoshi@bitcoin.com"",
    ""product_id"": ""BTC-USD""
-}";
+}}";
 
          server.ShouldHaveCalledSomePathAndQuery("/reports")
             .WithSomeRequestBody(expectedBody)
