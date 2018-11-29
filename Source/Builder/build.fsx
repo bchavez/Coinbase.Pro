@@ -83,6 +83,7 @@ Target "restore" (fun _ ->
 
      trace ".NET Core Restore"
      Dotnet DotnetCommands.Restore CoinbaseProject.Folder
+     Dotnet DotnetCommands.Restore TestProject.Folder
  )
 
 open Ionic.Zip

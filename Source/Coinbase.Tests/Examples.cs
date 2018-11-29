@@ -5,7 +5,7 @@ namespace Coinbase.Tests
 {
    public class Examples
    {
-      public static string ReadJsonFile(string jsonFile) => File.ReadAllText($@"..\..\..\Json\{jsonFile}");
+      public static string ReadJsonFile(string jsonFile) => File.ReadAllText($@"..\..\Json\{jsonFile}");
 
       public static string ProductsJson => ReadJsonFile("Products.json");
 

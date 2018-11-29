@@ -1,4 +1,5 @@
-﻿using Coinbase.Pro;
+﻿using System.IO;
+using Coinbase.Pro;
 using Flurl.Http.Testing;
 using NUnit.Framework;
 
@@ -12,6 +13,7 @@ namespace Coinbase.Tests.EndpointTests
       public virtual void BeforeEachTest()
       {
          server = new HttpTest();
+         Directory.SetCurrentDirectory(Path.GetDirectoryName(this.GetType().Assembly.Location));
       }
 
       [TearDown]
