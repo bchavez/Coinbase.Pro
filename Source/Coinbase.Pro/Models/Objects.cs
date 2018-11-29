@@ -694,4 +694,76 @@ namespace Coinbase.Pro.Models
       public string To { get; set; }
    }
 
+   public partial class PaymentMethod : Json
+   {
+      [JsonProperty("id")]
+      public Guid Id { get; set; }
+
+      [JsonProperty("type")]
+      public string Type { get; set; }
+
+      [JsonProperty("name")]
+      public string Name { get; set; }
+
+      [JsonProperty("currency")]
+      public string Currency { get; set; }
+
+      [JsonProperty("primary_buy")]
+      public bool PrimaryBuy { get; set; }
+
+      [JsonProperty("primary_sell")]
+      public bool PrimarySell { get; set; }
+
+      [JsonProperty("allow_buy")]
+      public bool AllowBuy { get; set; }
+
+      [JsonProperty("allow_sell")]
+      public bool AllowSell { get; set; }
+
+      [JsonProperty("allow_deposit")]
+      public bool AllowDeposit { get; set; }
+
+      [JsonProperty("allow_withdraw")]
+      public bool AllowWithdraw { get; set; }
+
+      [JsonProperty("limits")]
+      public Limits Limits { get; set; }
+   }
+
+   public partial class Limits : Json
+   {
+      [JsonProperty("buy")]
+      public Limit[] Buy { get; set; }
+
+      [JsonProperty("instant_buy")]
+      public Limit[] InstantBuy { get; set; }
+
+      [JsonProperty("sell")]
+      public Limit[] Sell { get; set; }
+
+      [JsonProperty("deposit")]
+      public Limit[] Deposit { get; set; }
+   }
+
+   public partial class Limit : Json
+   {
+      [JsonProperty("period_in_days")]
+      public long PeriodInDays { get; set; }
+
+      [JsonProperty("total")]
+      public Money Total { get; set; }
+
+      [JsonProperty("remaining")]
+      public Money Remaining { get; set; }
+   }
+
+   public partial class Money : Json
+   {
+      [JsonProperty("amount")]
+      public decimal Amount { get; set; }
+
+      [JsonProperty("currency")]
+      public string Currency { get; set; }
+   }
+
 }

@@ -288,7 +288,7 @@ namespace Coinbase.Tests
 
 
 
-
+      public static string PaymentMethodsJson => ReadJsonFile("PaymentMethods.json");
 
 
 
