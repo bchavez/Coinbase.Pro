@@ -7,7 +7,10 @@ Project Description
 -------------------
 A .NET implementation for the [Coinbase Pro API](https://docs.pro.coinbase.com/).
 
-:loudspeaker: ***HEY!*** If you're looking for the [**Coinbase Commerce** API, check this link!](https://github.com/bchavez/Coinbase.Commerce)
+:loudspeaker: ***HEY!*** Be sure to checkout these other Coinbase API integrations:
+* [**Coinbase**](https://github.com/bchavez/Coinbase) - For Coinbase wallet account integration.
+* [**Coinbase.Commerce**](https://github.com/bchavez/Coinbase.Commerce) - For e-commerce, merchants, and websites selling products or services looking to receive cryptocurrency as payment.
+
 
 #### Supported Platforms
 * **.NET Standard 2.0** or later
@@ -20,21 +23,16 @@ A .NET implementation for the [Coinbase Pro API](https://docs.pro.coinbase.com/)
 
 
 ### Download & Install
-**Nuget Package [Coinbase](https://www.nuget.org/packages/Coinbase/)**
+**Nuget Package [Coinbase.Pro](https://www.nuget.org/packages/Coinbase.Pro/)**
 
 ```powershell
-Install-Package Coinbase
+Install-Package Coinbase.Pro
 ```
 
-Usage
------
-### API Authentication
+Getting Started
+------
 
-
-----
-### Getting Started
-
-For the most part, to get the started, simply new up a new `CoinbaseProClient` object as shown below:
+To get the started, simply new create a new `CoinbaseProClient` object as shown below:
 ```csharp
 
 ```

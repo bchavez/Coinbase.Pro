@@ -23,7 +23,7 @@ namespace Coinbase.Tests.EndpointTests
          o.Type.Should().Be(OrderType.Market);
          o.TimeInForce.Should().Be(TimeInForce.GoodTillCanceled);
          
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/orders?status=all")
+         server.ShouldHaveCalledSomePathAndQuery("/orders?status=all")
             .WithVerb(HttpMethod.Get);
       }
 
@@ -32,7 +32,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          var r = await client.Orders.ListOrdersAsync("open, pending", "ETH-USD", 20, 30, 40);
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/orders?" +
+         server.ShouldHaveCalledSomePathAndQuery("/orders?" +
                                     "status=open&" +
                                     "status=pending&" +
                                     "product_id=ETH-USD&" +
@@ -54,7 +54,7 @@ namespace Coinbase.Tests.EndpointTests
          r.Id.Should().Be("e0c163ab-5823-4972-b9fb-9e788687a53b");
          r.ProductId.Should().Be("ETC-USD");
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/orders/fff")
+         server.ShouldHaveCalledSomePathAndQuery("/orders/fff")
             .WithVerb(HttpMethod.Get);
       }
 
@@ -67,7 +67,7 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Count.Should().BeGreaterThan(1);
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/orders")
+         server.ShouldHaveCalledSomePathAndQuery("/orders")
             .WithVerb(HttpMethod.Delete);
       }
 
@@ -79,7 +79,7 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Count.Should().BeGreaterThan(1);
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/orders?" +
+         server.ShouldHaveCalledSomePathAndQuery("/orders?" +
                                     "product_id=BTC-USD")
             .WithVerb(HttpMethod.Delete);
       }

@@ -35,7 +35,7 @@ namespace Coinbase.Pro
             .GetJsonAsync<Account>();
       }
 
-      Task<PagedResponse<AccountHistory>> IAccountsEndpoint.GetAccountHistory(string accountId, int? limit = null, long? before = null, long? after = null)
+      Task<PagedResponse<AccountHistory>> IAccountsEndpoint.GetAccountHistory(string accountId, int? limit, long? before, long? after)
       {
          return this.AccountsEndpoint
             .WithClient(this)
@@ -44,7 +44,7 @@ namespace Coinbase.Pro
             .GetPagedJsonAsync<AccountHistory>();
       }
 
-      public Task<PagedResponse<AccountHold>> GetAccountHold(string accountId, int? limit = null, long? before = null, long? after = null)
+      Task<PagedResponse<AccountHold>> IAccountsEndpoint.GetAccountHold(string accountId, int? limit, long? before, long? after)
       {
          return this.AccountsEndpoint
             .WithClient(this)

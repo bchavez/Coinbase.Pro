@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Net.Http;
+using Flurl.Http.Testing;
 
 namespace Coinbase.Tests
 {
@@ -221,6 +222,57 @@ namespace Coinbase.Tests
     ""34fecfbf-de33-4273-b2c6-baf8e8948be4""
 ]";
 
+
+      public const string Fills1Json = @"[
+   {
+      ""created_at"": ""2018-11-28T21:55:12.079Z"",
+      ""trade_id"": 59,
+      ""product_id"": ""ETC-USD"",
+      ""order_id"": ""ca1e85cc-6b7b-42c2-905d-328887226197"",
+      ""user_id"": ""fffffffffffffffff"",
+      ""profile_id"": ""AD0E45D7-B0C8-4138-AC5B-81640E3B581B"",
+      ""liquidity"": ""T"",
+      ""price"": ""50.00000000"",
+      ""size"": ""1.99401794"",
+      ""fee"": ""0.2991026910000000"",
+      ""side"": ""buy"",
+      ""settled"": true,
+      ""usd_volume"": ""99.7008970000000000""
+   }
+]";
+
+      public const string DepositPaymentMethodFundsJson = @"{
+    ""id"": ""593533d2-ff31-46e0-b22e-ca754147a96a"",
+    ""amount"": ""10.00"",
+    ""currency"": ""USD"",
+    ""payout_at"": ""2016-08-20T00:31:09Z""
+}";
+
+      public const string DepositCoinbaseFundsJson = @"{
+    ""id"": ""593533d2-ff31-46e0-b22e-ca754147a96a"",
+    ""amount"": ""10.00"",
+    ""currency"": ""BTC"",
+}";
+
+      public const string WithdrawPaymentMethodFundsJson = @"{
+    ""id"": ""593533d2-ff31-46e0-b22e-ca754147a96a"",
+    ""amount"": ""10.00"",
+    ""currency"": ""USD"",
+    ""payout_at"": ""2016-08-20T00:31:09Z""
+}";
+
+      public const string WithdrawCoinbaseFundsJson = @"{
+    ""id"": ""593533d2-ff31-46e0-b22e-ca754147a96a"",
+    ""amount"": ""10.00"",
+    ""currency"": ""BTC"",
+}";
+
+
+      public const string WithdrawCryptoFundsJson = @"{
+    ""id"": ""593533d2-ff31-46e0-b22e-ca754147a96a"",
+    ""amount"": ""10.00"",
+    ""currency"": ""ETH"",
+}";
    }
 
 

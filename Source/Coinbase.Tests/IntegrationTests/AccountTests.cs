@@ -92,5 +92,13 @@ namespace Coinbase.Tests.IntegrationTests
          o.Dump();
       }
 
+      [Test]
+      public async Task list_fills1()
+      {
+         var f = await client.Fills.ListFillsByProductIdAsync("ETC-USD");
+
+         f.Dump();
+      }
+
    }
 }

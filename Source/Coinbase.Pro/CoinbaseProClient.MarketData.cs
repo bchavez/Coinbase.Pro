@@ -17,7 +17,6 @@ namespace Coinbase.Pro
       /// The order price must be a multiple of this increment(i.e. if the increment is 0.01, order prices of 0.001 or 0.021 would be rejected).
       /// Product ID will not change once assigned to a product but the min/max/quote sizes can be updated in the future.
       /// </remarks>
-      //[Get("/products")]
       Task<List<Product>> GetProductsAsync();
 
       /// <summary>
@@ -25,13 +24,11 @@ namespace Coinbase.Pro
       /// </summary>
       /// <param name="productId"></param>
       /// <param name="level">1. Only the best bid and ask. 2. Top 50 bids and asks (aggregated). 3. Full order book (non aggregated)</param>
-      //[Get("/products/{productId}/book")]
       Task<OrderBook> GetOrderBookAsync(string productId, int level = 1);
 
       /// <summary>
       /// Snapshot information about the last trade (tick), best bid/ask and 24h volume.
       /// </summary>
-      //[Get("/products/{productId}/ticker")]
       Task<Ticker> GetTickerAsync(string productId);
 
       /// <summary>
@@ -51,9 +48,7 @@ namespace Coinbase.Pro
       /// Historic rates for a product. Rates are returned in grouped buckets based on requested granularity.
       /// </summary>
       /// <param name="granularity">Desired timeslice in seconds. The granularity field must be one of the following values: {60, 300, 900, 3600, 21600, 86400}. Otherwise, your request will be rejected. These values correspond to timeslices representing one minute, five minutes, fifteen minutes, one hour, six hours, and one day, respectively.</param>
-      //[Get("/products/{productId}/candles")]
       Task<List<Candle>> GetHistoricRatesAsync(string productId, DateTime start, DateTime end, int granularity);
-
       Task<Stats> GetStatsAsync(string productId);
       Task<List<Currency>> GetCurrenciesAsync();
       Task<Time> GetTimeAsync();

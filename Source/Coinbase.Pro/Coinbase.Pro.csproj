@@ -25,6 +25,12 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="CoinbaseProClient.Other.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CoinbaseProClient.Other.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Flurl" Version="2.8.0" />
     <PackageReference Include="Flurl.Http" Version="2.4.0" />
     <!--<PackageReference Include="Refit" Version="4.6.58" />-->

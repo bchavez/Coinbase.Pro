@@ -19,7 +19,7 @@ namespace Coinbase.Tests.EndpointTests
          a.Currency.Should().Be("BTC");
          a.Id.Should().Be("71452118-efc7-4cc4-8780-a5e22d4baa53");
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/accounts");
+         server.ShouldHaveCalledSomePathAndQuery("/accounts");
       }
 
       [Test]
@@ -34,7 +34,7 @@ namespace Coinbase.Tests.EndpointTests
          r.Currency.Should().Be("BTC");
          r.Id.Should().Be("71452118-efc7-4cc4-8780-a5e22d4baa53");
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/accounts/fff");
+         server.ShouldHaveCalledSomePathAndQuery("/accounts/fff");
       }
 
       [Test]
@@ -51,7 +51,7 @@ namespace Coinbase.Tests.EndpointTests
          a.Id.Should().Be("44512583");
          a.Amount.Should().Be(1000.0000000000000000m);
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/accounts/fff/ledger");
+         server.ShouldHaveCalledSomePathAndQuery("/accounts/fff/ledger");
       }
 
       [Test]
@@ -66,7 +66,7 @@ namespace Coinbase.Tests.EndpointTests
          var h = r.Data.First();
          h.AccountId.Should().Be("e0b3f39a-183d-453e-b754-0c13e5bab0b3");
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/accounts/fff/holds");
+         server.ShouldHaveCalledSomePathAndQuery("/accounts/fff/holds");
       }
    }
 }

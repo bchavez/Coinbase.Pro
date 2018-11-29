@@ -36,7 +36,7 @@ namespace Coinbase.Tests.EndpointTests
          var c = r.First();
          c.Id.Should().Be("BTC");
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/currencies")
+         server.ShouldHaveCalledSomePathAndQuery("/currencies")
             .WithVerb(HttpMethod.Get);
       }
 
@@ -51,7 +51,7 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Volume30Day.Should().Be(447043.36757766m);
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/products/BTC-USD/stats")
+         server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/stats")
             .WithVerb(HttpMethod.Get);
       }
 
@@ -75,7 +75,7 @@ namespace Coinbase.Tests.EndpointTests
          candle.Low.Value.Should().Be(3820.0m);
          candle.Volume.Value.Should().Be(2.36m);
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/products/BTC-USD/candles?" +
+         server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/candles?" +
                                     $"start={Url.Encode(start.ToString("o"))}&" +
                                     $"end={Url.Encode(end.ToString("o"))}&" +
                                     $"granularity=60")
@@ -93,7 +93,7 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Dump();
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/products/BTC-USD/trades")
+         server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/trades")
             .WithVerb(HttpMethod.Get);
 
          var t = r.Data.First();
@@ -116,7 +116,7 @@ namespace Coinbase.Tests.EndpointTests
 
          var r = await client.MarketData.GetTradesAsync("BTC-USD", limit: 50, before: 27, after: 28);
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/products/BTC-USD/trades?" +
+         server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/trades?" +
                                     "limit=50&" +
                                     "before=27&" +
                                     "after=28")
@@ -134,7 +134,7 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Dump();
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/products/BTC-USD/ticker")
+         server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/ticker")
             .WithVerb(HttpMethod.Get);
 
          r.Ask.Should().Be(4027.95m);
@@ -157,7 +157,7 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Dump();
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/products/ETC-BTC/book?level=3")
+         server.ShouldHaveCalledSomePathAndQuery("/products/ETC-BTC/book?level=3")
             .WithVerb(HttpMethod.Get);
       }
 
@@ -172,7 +172,7 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Dump();
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/products/BTC-USD/book?level=2")
+         server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/book?level=2")
             .WithVerb(HttpMethod.Get);
       }
 
@@ -187,7 +187,7 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Dump();
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/products/BTC-USD/book?level=1")
+         server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/book?level=1")
             .WithVerb(HttpMethod.Get);
 
          r.Sequence.Should().Be(7416643032);
@@ -212,7 +212,7 @@ namespace Coinbase.Tests.EndpointTests
         
          var r = await client.MarketData.GetProductsAsync();
 
-         server.ShouldHaveExactCall("https://api.pro.coinbase.com/products")
+         server.ShouldHaveCalledSomePathAndQuery("/products")
             .WithVerb(HttpMethod.Get);
 
          r.Count.Should().BeGreaterOrEqualTo(3);
