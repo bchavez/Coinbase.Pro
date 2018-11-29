@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Coinbase.Pro;
 using Coinbase.Pro.Models;
 using NUnit.Framework;
@@ -98,6 +99,22 @@ namespace Coinbase.Tests.IntegrationTests
          var f = await client.Fills.ListFillsByProductIdAsync("ETC-USD");
 
          f.Dump();
+      }
+
+      [Test]
+      public async Task can_create_report()
+      {
+         var date = DateTimeOffset.Parse("1/1/2018");
+         var r = await client.Reports.CreateFillReportAsync(date, date.AddYears(1), "ETC-USD");
+         r.Dump();
+      }
+
+      [Test]
+      public async Task get_report_status()
+      {
+         var r = await client.Reports.GetReportStatusAsync("2afc0924-d5f0-4b9f-b540-caee97e39fd9");
+
+         r.Dump();
       }
 
    }

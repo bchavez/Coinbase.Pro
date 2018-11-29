@@ -893,4 +893,50 @@ namespace Coinbase.Pro.Models
    }
 
 
+
+   public partial class Report : Json
+   {
+      [JsonProperty("id")]
+      public Guid Id { get; set; }
+
+      [JsonProperty("type")]
+      public ReportType Type { get; set; }
+
+      [JsonProperty("status")]
+      public string Status { get; set; }
+
+      [JsonProperty("created_at")]
+      public DateTimeOffset CreatedAt { get; set; }
+
+      [JsonProperty("completed_at")]
+      public DateTimeOffset? CompletedAt { get; set; }
+
+      [JsonProperty("expires_at")]
+      public DateTimeOffset ExpiresAt { get; set; }
+
+      [JsonProperty("file_url")]
+      public string FileUrl { get; set; }
+
+      [JsonProperty("params")]
+      public ReportParams Params { get; set; }
+   }
+
+   public partial class ReportParams : Json
+   {
+      [JsonProperty("start_date")]
+      public DateTimeOffset StartDate { get; set; }
+
+      [JsonProperty("end_date")]
+      public DateTimeOffset EndDate { get; set; }
+   }
+
+
+   [JsonConverter(typeof(StringEnumConverter))]
+   public enum ReportType
+   {
+      [EnumMember(Value = "fills")]
+      Fills,
+      [EnumMember(Value = "account")]
+      Account
+   }
 }

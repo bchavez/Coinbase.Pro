@@ -294,7 +294,46 @@ namespace Coinbase.Tests
 
 
 
+      public const string ReportCompletedJson = @"{
+   ""created_at"": ""2018-11-29T23:22:26.952249Z"",
+   ""completed_at"": ""2018-11-29T23:22:27.759Z"",
+   ""expires_at"": ""2018-12-06T23:22:26.952249Z"",
+   ""id"": ""D94DF955-4A2C-4C08-80EA-CDA8249ED099"",
+   ""type"": ""fills"",
+   ""status"": ""ready"",
+   ""user_id"": ""ffffffffffffffff"",
+   ""file_url"": ""https://gdax-reports-sandbox.s3.amazonaws.com/fffffffffile.pdf"",
+   ""params"": {
+      ""start_date"": ""2018-01-01T00:00:00-08:00"",
+      ""end_date"": ""2019-01-01T00:00:00-08:00"",
+      ""format"": ""pdf"",
+      ""product_id"": ""ETC-USD"",
+      ""user"": {
+         ""created_at"": ""2018-10-25T18:30:26.504993Z"",
+         ""active_at"": ""2018-10-25T18:30:26.531Z"",
+         ""id"": ""ffffffffffffffffff"",
+         ""name"": ""Satoshi Moshi"",
+         ""email"": ""satoshi@bitcoin.com"",
+         ""roles"": null,
+         ""is_banned"": false,
+         ""permissions"": null,
+         ""user_type"": ""business"",
+         ""fulfills_new_requirements"": true,
+         ""flags"": null,
+         ""details"": null,
+         ""oauth_client"": ""pro"",
+         ""preferences"": {},
+         ""has_default"": false
+      },
+      ""new_york_state"": false
+   }
+}";
 
+      public const string ReportUnfinishedJson = @"{
+   ""id"": ""CE5B72BB-673D-4161-8D29-182D715F6556"",
+   ""type"": ""fills"",
+   ""status"": ""pending""
+}";
 
 
 

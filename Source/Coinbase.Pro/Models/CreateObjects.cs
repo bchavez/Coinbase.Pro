@@ -269,4 +269,56 @@ namespace Coinbase.Pro.Models
       public decimal Amount { get; set; }
    }
 
+   public partial class CreateReport
+   {
+      [JsonProperty("type")]
+      public ReportType Type { get; set; }
+      /// <summary>
+      /// Starting date for the report (inclusive)
+      /// </summary>
+      [JsonProperty("start_date")]
+      public DateTimeOffset StartDate { get; set; }
+
+      /// <summary>
+      /// Ending date for the report (inclusive)
+      /// </summary>
+      [JsonProperty("end_date")]
+      public DateTimeOffset EndDate { get; set; }
+
+      /// <summary>
+      /// Report Format
+      /// </summary>
+      [JsonProperty("format")]
+      public ReportFormat Format { get; set; }
+
+      /// <summary>
+      /// Email address to send the report to (optional)
+      /// </summary>
+      [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
+      public string Email { get; set; }
+
+      /// <summary>
+      /// ID of the product to generate a fills report for. E.g. BTC-USD. Required if type is fills
+      /// </summary>
+      [JsonProperty("product_id", NullValueHandling = NullValueHandling.Ignore)]
+      public string ProductId { get; set; }
+
+      /// <summary>
+      /// ID of the account to generate an account report for. Required if type is account
+      /// </summary>
+      [JsonProperty("account_id", NullValueHandling = NullValueHandling.Ignore)]
+      public string AccountId { get; set; }
+   }
+
+
+   [JsonConverter(typeof(StringEnumConverter))]
+   public enum ReportFormat
+   {
+      [EnumMember(Value = "pdf")]
+      Pdf,
+      [EnumMember(Value = "csv")]
+      Csv
+   }
+
+
 }
