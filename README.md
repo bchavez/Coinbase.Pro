@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/t6j3xe6cr0mu8si5?svg=true)](https://ci.appveyor.com/project/bchavez/coinbase) [![Nuget](https://img.shields.io/nuget/v/Coinbase.Pro.svg)](https://www.nuget.org/packages/Coinbase/) [![Users](https://img.shields.io/nuget/dt/Coinbase.Pro.svg)](https://www.nuget.org/packages/Coinbase/) <img src="https://raw.githubusercontent.com/bchavez/Coinbase.Pro/master/Docs/coinbase_pro.png" align='right' />
+[![Build status](https://ci.appveyor.com/api/projects/status/f9wf44xwah32s0le/branch/master?svg=true)](https://ci.appveyor.com/project/bchavez/coinbase-pro) [![Nuget](https://img.shields.io/nuget/v/Coinbase.Pro.svg)](https://www.nuget.org/packages/Coinbase.Pro/) [![Users](https://img.shields.io/nuget/dt/Coinbase.Pro.svg)](https://www.nuget.org/packages/Coinbase.Pro/) <img src="https://raw.githubusercontent.com/bchavez/Coinbase.Pro/master/Docs/coinbase_pro.png" align='right' />
 
 Coinbase.Pro for .NET/C# Library
 ======================
