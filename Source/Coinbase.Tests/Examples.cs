@@ -290,7 +290,7 @@ namespace Coinbase.Tests
 
       public static string PaymentMethodsJson => ReadJsonFile("PaymentMethods.json");
 
-
+      public static string CoinbaseAccountsJson => ReadJsonFile("CoinbaseAccounts.json");
 
 
 

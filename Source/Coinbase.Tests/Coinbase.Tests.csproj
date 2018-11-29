@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EndpointTests\AccountsTest.cs" />
+    <Compile Include="EndpointTests\CoinbaseAccountsTest.cs" />
     <Compile Include="EndpointTests\PaymentMethodsTest.cs" />
     <Compile Include="EndpointTests\ConversionsTest.cs" />
     <Compile Include="EndpointTests\WithdrawlsTest.cs" />
@@ -94,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Json\CoinbaseAccounts.json" />
     <None Include="Json\PaymentMethods.json" />
     <None Include="Json\Currencies.json" />
     <None Include="Json\OrderBookLevel2.json" />

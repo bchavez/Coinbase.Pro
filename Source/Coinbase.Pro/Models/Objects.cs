@@ -766,4 +766,131 @@ namespace Coinbase.Pro.Models
       public string Currency { get; set; }
    }
 
+
+
+
+
+
+   public partial class CoinbaseAccount : Json
+   {
+      [JsonProperty("id")]
+      public Guid Id { get; set; }
+
+      [JsonProperty("name")]
+      public string Name { get; set; }
+
+      [JsonProperty("balance")]
+      public decimal Balance { get; set; }
+
+      [JsonProperty("currency")]
+      public string Currency { get; set; }
+
+      [JsonProperty("type")]
+      public string Type { get; set; }
+
+      [JsonProperty("primary")]
+      public bool Primary { get; set; }
+
+      [JsonProperty("active")]
+      public bool Active { get; set; }
+
+      [JsonProperty("wire_deposit_information", NullValueHandling = NullValueHandling.Ignore)]
+      public WireDepositInformation WireDepositInformation { get; set; }
+
+      [JsonProperty("sepa_deposit_information", NullValueHandling = NullValueHandling.Ignore)]
+      public SepaDepositInformation SepaDepositInformation { get; set; }
+   }
+
+   public static class ExtensionsForCoinbaseAccount
+   {
+      public static bool IsWallet(this CoinbaseAccount ca)
+      {
+         return ca.Type == "wallet";
+      }
+
+      public static bool IsFiat(this CoinbaseAccount ca)
+      {
+         return ca.Type == "fiat";
+      }
+
+      public static bool IsMultisig(this CoinbaseAccount ca)
+      {
+         return ca.Type == "multisig";
+      }
+
+      public static bool IsVault(this CoinbaseAccount ca)
+      {
+         return ca.Type == "vault";
+      }
+
+      public static bool IsMultiSigVault(this CoinbaseAccount ca)
+      {
+         return ca.Type == "multisig_vault";
+      }
+   }
+
+   public partial class WireDepositInformation : Json
+   {
+      [JsonProperty("account_number")]
+      public string AccountNumber { get; set; }
+
+      [JsonProperty("routing_number")]
+      public string RoutingNumber { get; set; }
+
+      [JsonProperty("bank_name")]
+      public string BankName { get; set; }
+
+      [JsonProperty("bank_address")]
+      public string BankAddress { get; set; }
+
+      [JsonProperty("bank_country")]
+      public BankCountry BankCountry { get; set; }
+
+      [JsonProperty("account_name")]
+      public string AccountName { get; set; }
+
+      [JsonProperty("account_address")]
+      public string AccountAddress { get; set; }
+
+      [JsonProperty("reference")]
+      public string Reference { get; set; }
+   }
+
+   public partial class SepaDepositInformation : Json
+   {
+      [JsonProperty("iban")]
+      public string Iban { get; set; }
+
+      [JsonProperty("swift")]
+      public string Swift { get; set; }
+
+      [JsonProperty("bank_name")]
+      public string BankName { get; set; }
+
+      [JsonProperty("bank_address")]
+      public string BankAddress { get; set; }
+
+      [JsonProperty("bank_country_name")]
+      public string BankCountryName { get; set; }
+
+      [JsonProperty("account_name")]
+      public string AccountName { get; set; }
+
+      [JsonProperty("account_address")]
+      public string AccountAddress { get; set; }
+
+      [JsonProperty("reference")]
+      public string Reference { get; set; }
+   }
+
+   public partial class BankCountry : Json
+   {
+      [JsonProperty("code")]
+      public string Code { get; set; }
+
+      [JsonProperty("name")]
+      public string Name { get; set; }
+   }
+
+
 }
