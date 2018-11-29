@@ -939,4 +939,21 @@ namespace Coinbase.Pro.Models
       [EnumMember(Value = "account")]
       Account
    }
+
+   public partial class TrailingVolume
+   {
+      [JsonProperty("product_id")]
+      public string ProductId { get; set; }
+
+      [JsonProperty("exchange_volume")]
+      public decimal ExchangeVolume { get; set; }
+
+      [JsonProperty("volume")]
+      public decimal Volume { get; set; }
+
+      [JsonProperty("recorded_at")]
+      public DateTimeOffset RecordedAt { get; set; }
+   }
+
+
 }
