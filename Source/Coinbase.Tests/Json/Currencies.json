@@ -1,0 +1,96 @@
+[
+  {
+    "details": {},
+    "id": "BTC",
+    "message": null,
+    "min_size": "0.00000001",
+    "name": "Bitcoin",
+    "status": "online"
+  },
+  {
+    "details": {},
+    "id": "EUR",
+    "message": null,
+    "min_size": "0.01000000",
+    "name": "Euro",
+    "status": "online"
+  },
+  {
+    "details": {},
+    "id": "LTC",
+    "message": null,
+    "min_size": "0.00000001",
+    "name": "Litecoin",
+    "status": "online"
+  },
+  {
+    "details": {},
+    "id": "GBP",
+    "message": null,
+    "min_size": "0.01000000",
+    "name": "British Pound",
+    "status": "online"
+  },
+  {
+    "convertible_to": [
+      "USDC"
+    ],
+    "details": {},
+    "id": "USD",
+    "message": null,
+    "min_size": "0.01000000",
+    "name": "United States Dollar",
+    "status": "online"
+  },
+  {
+    "details": {},
+    "id": "ETH",
+    "message": null,
+    "min_size": "0.00000001",
+    "name": "Ether",
+    "status": "online"
+  },
+  {
+    "details": {},
+    "id": "ZRX",
+    "message": null,
+    "min_size": "0.00001000",
+    "name": "0x",
+    "status": "online"
+  },
+  {
+    "details": {},
+    "id": "BCH",
+    "message": null,
+    "min_size": "0.00000001",
+    "name": "Bitcoin Cash",
+    "status": "online"
+  },
+  {
+    "details": {},
+    "id": "ETC",
+    "message": null,
+    "min_size": "0.00000001",
+    "name": "Ether Classic",
+    "status": "online"
+  },
+  {
+    "convertible_to": [
+      "USD"
+    ],
+    "details": {},
+    "id": "USDC",
+    "message": null,
+    "min_size": "0.00000100",
+    "name": "USD Coin",
+    "status": "online"
+  },
+  {
+    "details": {},
+    "id": "BAT",
+    "message": null,
+    "min_size": "1.00000000",
+    "name": "Basic Attention Token",
+    "status": "online"
+  }
+]
