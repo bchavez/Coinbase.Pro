@@ -257,4 +257,16 @@ namespace Coinbase.Pro.Models
    }
 
 
+   public partial class CreateConversion
+   {
+      [JsonProperty("from")]
+      public string From { get; set; }
+
+      [JsonProperty("to")]
+      public string To { get; set; }
+
+      [JsonProperty("amount")]
+      public decimal Amount { get; set; }
+   }
+
 }

@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EndpointTests\AccountsTest.cs" />
+    <Compile Include="EndpointTests\ConversionsTest.cs" />
     <Compile Include="EndpointTests\WithdrawlsTest.cs" />
     <Compile Include="EndpointTests\DepositsTest.cs" />
     <Compile Include="EndpointTests\FillsTest.cs" />

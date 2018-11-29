@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using Flurl.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
@@ -674,5 +672,26 @@ namespace Coinbase.Pro.Models
       public string Currency { get; set; }
    }
 
+
+   public partial class Conversion
+   {
+      [JsonProperty("id")]
+      public Guid Id { get; set; }
+
+      [JsonProperty("amount")]
+      public decimal Amount { get; set; }
+
+      [JsonProperty("from_account_id")]
+      public Guid FromAccountId { get; set; }
+
+      [JsonProperty("to_account_id")]
+      public Guid ToAccountId { get; set; }
+
+      [JsonProperty("from")]
+      public string From { get; set; }
+
+      [JsonProperty("to")]
+      public string To { get; set; }
+   }
 
 }
