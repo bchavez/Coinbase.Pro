@@ -1,3 +1,6 @@
+## v2.0.1
+* Production ready. Models and APIs finalized.
+
 ## v0.3.0
 * All APIs are now implemented.
 * Websocket support implemented.
