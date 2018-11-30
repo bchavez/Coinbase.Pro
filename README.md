@@ -89,6 +89,10 @@ The `order` object returned by the trading engine will have similar values the f
 ##### Market Data Endpoints
 * [`client.MarketData`](https://docs.pro.coinbase.com/?r=1#market-data) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/MarketDataTests.cs)
 
+##### Websocket Feed
+* [`CoinbaseProWebsocket`](https://docs.pro.coinbase.com/?r=1#websocket-feed) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/IntegrationTests/WebsocketTests.cs)
+
+
 ### Pagination
 A quick note about pagination. Consider the following diagram that illustrates the `Current Point In Time` over a paginable set of data with an item size 5 items per page:
 ```
@@ -135,16 +139,72 @@ while( trades.Before.HasValue )
 ```
 More information about pagination can be [found here](https://docs.pro.coinbase.com/?r=1#pagination).
 
-#### Full API Support
-##### Market Data Endpoints
+### Websocket Feed
 
-##### Orders Endpoints
+This library also supports live websocket feeds. There are two types. **Authenticated** and **Unauthenticated**  feeds. 
+#### Unauthenticated Websocket
+To create an unauthenticated feed, simply do the following:
+```csharp
+var socket = new CoinbaseProWebsocket();
+```
 
+#### Authenticated Websocket
+To create an authenticated websocket feed by doing the following:
+```csharp
+//authetnicated feed
+var socket = new CoinbaseProWebsocket(new WebsocketConfig
+   {
+      ApiKey = "my-api-key",
+      Secret = "my-api-secret",
+      Passphrase = "my-api-passphrase",
+   });
+```
+#### Setting A Feed Subscription
+Be sure to [check the documentation here](https://docs.pro.coinbase.com/?r=1#subscribe) to know all the events you can subscribe to. The following example demonstrates how to continue setting  a simple *heartbeat* subscription over a websocket.
+```
+var socket = ...; //using authenticated or unauthenticated instance
 
+//Connect the websocket,
+//when this connect method completes, the socket is ready
+await socket.ConnectAsync();
 
-### Authentication Details
+//add an event handler for the message received event on the raw socket
+socket.RawSocket.MessageReceived += RawSocket_MessageReceived;
 
+//create a subscription of what to listen to
+var sub = new Subscription
+   {
+      ProductIds =
+         {
+            "ETH-USD",
+         },
+      Channels =
+         {
+            "heartbeat",
+         }
+   };
 
+//send the subscription upstream
+await socket.SubscribeAsync(sub);
+
+//now wait for data.
+await Task.Delay(TimeSpan.FromMinutes(1));
+```
+Once your subscription received, you should start receiving events over the websocket. The following example shows how to process those messages you subscribe to as they arrive:
+
+```csharp
+private void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
+{
+   //Try parsing the e.Message JSON.
+   if( WebSocketHelper.TryParse(e.Message, out var msg) )
+   {
+      if( msg is Heartbeat hb )
+      {
+         Console.WriteLine($"Last Trade Id: {hb.LastTradeId}");
+      }
+   }
+}
+```
 
 -------
 
