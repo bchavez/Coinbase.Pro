@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Coinbase.Pro.Websockets.Models;
+using Coinbase.Pro.Models;
 
 namespace Coinbase.Pro.Websockets
 {

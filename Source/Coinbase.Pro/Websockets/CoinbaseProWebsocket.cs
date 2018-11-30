@@ -3,62 +3,13 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
-using Coinbase.Pro.Websockets.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using WebSocket4Net;
 
 
 namespace Coinbase.Pro.Websockets
 {
-   [JsonConverter(typeof(StringEnumConverter))]
-   public enum MessageType
-   {
-      [EnumMember(Value = "subscribe")]
-      Subscribe,
-
-      [EnumMember(Value = "unsubscribe ")]
-      Unsubscribe
-   }
-
-   public partial class Subscription : Json
-   {
-      //[JsonProperty("type")]
-      //public string Type { get; set; }
-
-      public Subscription()
-      {
-         this.ProductIds = new List<string>();
-         this.Channels = new JArray();
-      }
-
-      [JsonProperty("product_ids")]
-      public List<string> ProductIds { get; set; }
-
-      [JsonProperty("channels")]
-      public JArray Channels { get; set; }
-   }
-
-   //public partial class Channel : Json
-   public partial class Channel : Json
-   {
-      public Channel()
-      {
-         this.ProductIds = new List<string>();
-      }
-
-      [JsonProperty("name")]
-      public string Name { get; set; }
-
-      [JsonProperty("product_ids")]
-      public List<string> ProductIds { get; set; }
-   }
-
-   
-
-
-
    public class WebsocketConfig
    {
       public string ApiKey { get; set; }

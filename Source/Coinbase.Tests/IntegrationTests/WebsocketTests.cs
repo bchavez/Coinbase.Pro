@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Coinbase.Pro;
 using Coinbase.Pro.Websockets;
-using Coinbase.Pro.Websockets.Models;
+using Coinbase.Pro.Models;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 

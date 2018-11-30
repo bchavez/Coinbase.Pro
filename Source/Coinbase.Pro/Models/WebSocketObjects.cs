@@ -1,11 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
-using Coinbase.Pro.Models;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
-namespace Coinbase.Pro.Websockets.Models
+namespace Coinbase.Pro.Models
 {
+
+   [JsonConverter(typeof(StringEnumConverter))]
+   public enum MessageType
+   {
+      [EnumMember(Value = "subscribe")]
+      Subscribe,
+
+      [EnumMember(Value = "unsubscribe ")]
+      Unsubscribe
+   }
+
+   public partial class Subscription : Json
+   {
+      //[JsonProperty("type")]
+      //public string Type { get; set; }
+
+      public Subscription()
+      {
+         this.ProductIds = new List<string>();
+         this.Channels = new JArray();
+      }
+
+      [JsonProperty("product_ids")]
+      public List<string> ProductIds { get; set; }
+
+      [JsonProperty("channels")]
+      public JArray Channels { get; set; }
+   }
+
+   //public partial class Channel : Json
+   public partial class Channel : Json
+   {
+      public Channel()
+      {
+         this.ProductIds = new List<string>();
+      }
+
+      [JsonProperty("name")]
+      public string Name { get; set; }
+
+      [JsonProperty("product_ids")]
+      public List<string> ProductIds { get; set; }
+   }
+
+
+
+
+
    public class Event : Json
    {
       [JsonProperty("type")]
