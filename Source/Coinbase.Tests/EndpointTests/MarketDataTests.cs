@@ -121,13 +121,14 @@ namespace Coinbase.Tests.EndpointTests
                                     "before=27&" +
                                     "after=28")
             .WithVerb(HttpMethod.Get);
+
+         r.Before.Should().NotBeNull();
+         r.After.Should().NotBeNull();
       }
 
       [Test]
       public async Task can_get_ticker()
       {
-         //http.ExpectCall(HttpMethod.Get, "/products/BTC-USD/ticker")
-         //   .RespondJson(HttpStatusCode.OK, Examples.TickerJson);
          server.RespondWith(Examples.TickerJson);
 
          var r = await client.MarketData.GetTickerAsync("BTC-USD");
@@ -149,8 +150,6 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task can_get_orderbook_l3()
       {
-         //http.ExpectCall(HttpMethod.Get, "/products/ETC-BTC/book?level=3")
-         //   .Respond(HttpStatusCode.OK, Constants.Json, Examples.OrderBookLevel3Json);
          server.RespondWith(Examples.OrderBookLevel3Json);
 
          var r = await client.MarketData.GetOrderBookAsync("ETC-BTC", 3);
@@ -159,13 +158,16 @@ namespace Coinbase.Tests.EndpointTests
 
          server.ShouldHaveCalledSomePathAndQuery("/products/ETC-BTC/book?level=3")
             .WithVerb(HttpMethod.Get);
+
+         r.Bids[0].Price.Should().Be(0.00117m);
+         r.Bids[0].Size.Should().Be(5.5m);
+         r.Bids[0].OrderId.Should().Be("88588a7f-5d24-4131-b270-394dd05a1353");
+
       }
 
       [Test]
       public async Task can_get_orderbook_l2()
       {
-         //http.ExpectCall(HttpMethod.Get, "/products/BTC-USD/book?level=2")
-         //   .Respond(HttpStatusCode.OK, Constants.Json, Examples.OrderBookLevel2Json);
          server.RespondWith(Examples.OrderBookLevel2Json);
 
          var r = await client.MarketData.GetOrderBookAsync("BTC-USD", 2);
@@ -174,13 +176,15 @@ namespace Coinbase.Tests.EndpointTests
 
          server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/book?level=2")
             .WithVerb(HttpMethod.Get);
+
+         r.Asks[0].Price.Should().Be(3931.11m);
+         r.Asks[0].Size.Should().Be(0.96328664m);
+         r.Asks[0].OrderCount.Should().Be(1);
       }
 
       [Test]
       public async Task can_get_orderbook()
       {
-         //http.ExpectCall(HttpMethod.Get, "/products/BTC-USD/book?level=1")
-         //   .Respond(HttpStatusCode.OK, Constants.Json, Examples.OrderBookLevel1Json);
          server.RespondWith(Examples.OrderBookLevel1Json);
 
          var r = await client.MarketData.GetOrderBookAsync("BTC-USD", 1);
@@ -206,9 +210,6 @@ namespace Coinbase.Tests.EndpointTests
       public async Task can_get_products()
       {
          server.RespondWith(Examples.ProductsJson);
-         //http.Expect(HttpMethod.Get, "https://api.pro.coinbase.com/products")
-         //   .Respond(HttpStatusCode.OK, "application/json", Examples.ProductsJson);
-
         
          var r = await client.MarketData.GetProductsAsync();
 

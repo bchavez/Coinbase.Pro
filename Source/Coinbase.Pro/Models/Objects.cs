@@ -91,13 +91,13 @@ namespace Coinbase.Pro.Models
 
          reader.Read();
 
-         if( reader.Value is string strGuid && Guid.TryParse(strGuid, out var guid) )
-         {
-            obe.OrderId = guid;
-         }
-         else if( reader.Value is long l)
+         if (reader.Value is long l)
          {
             obe.OrderCount = l;
+         }
+         else if ( reader.Value is string strGuid )
+         {
+            obe.OrderId = strGuid;
          }
 
          reader.Read();
@@ -115,7 +115,7 @@ namespace Coinbase.Pro.Models
       [JsonProperty(Order = 3, NullValueHandling = NullValueHandling.Ignore)]
       public long? OrderCount { get; set; }
       [JsonProperty(Order = 3, NullValueHandling = NullValueHandling.Ignore)]
-      public Guid? OrderId { get; set; }
+      public string OrderId { get; set; }
    }
 
 
@@ -301,7 +301,7 @@ namespace Coinbase.Pro.Models
       /// Account Id
       /// </summary>
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       /// <summary>
       /// the currency of the account
@@ -329,7 +329,7 @@ namespace Coinbase.Pro.Models
       public decimal Hold { get; set; }
 
       [JsonProperty("profile_id")]
-      public Guid ProfileId { get; set; }
+      public string ProfileId { get; set; }
    }
 
    public class AccountHistory : Json
@@ -356,13 +356,13 @@ namespace Coinbase.Pro.Models
    public partial class AccountDetails : Json
    {
       [JsonProperty("transfer_id")]
-      public Guid? TransferId { get; set; }
+      public string TransferId { get; set; }
 
       [JsonProperty("transfer_type")]
       public string TransferType { get; set; }
 
       [JsonProperty("order_id")]
-      public Guid? OrderId { get; set; }
+      public string OrderId { get; set; }
 
       [JsonProperty("trade_id")]
       public string TradeId { get; set; }
@@ -373,10 +373,10 @@ namespace Coinbase.Pro.Models
    public partial class AccountHold : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("account_id")]
-      public Guid AccountId { get; set; }
+      public string AccountId { get; set; }
 
       [JsonProperty("created_at")]
       public DateTimeOffset CreatedAt { get; set; }
@@ -391,7 +391,7 @@ namespace Coinbase.Pro.Models
       public string Type { get; set; }
 
       [JsonProperty("ref")]
-      public Guid Ref { get; set; }
+      public string Ref { get; set; }
    }
 
    public partial class OrderRequest : Json
@@ -412,7 +412,7 @@ namespace Coinbase.Pro.Models
    public partial class Order : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("price")]
       public decimal Price { get; set; }
@@ -575,13 +575,13 @@ namespace Coinbase.Pro.Models
       public string ProductId { get; set; }
 
       [JsonProperty("order_id")]
-      public Guid OrderId { get; set; }
+      public string OrderId { get; set; }
 
       [JsonProperty("user_id")]
       public string UserId { get; set; }
 
       [JsonProperty("profile_id")]
-      public Guid ProfileId { get; set; }
+      public string ProfileId { get; set; }
 
       [JsonProperty("liquidity")]
       public FillLiquidity Liquidity { get; set; }
@@ -624,7 +624,7 @@ namespace Coinbase.Pro.Models
    public partial class PaymentMethodDeposit : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("amount")]
       public decimal Amount { get; set; }
@@ -639,7 +639,7 @@ namespace Coinbase.Pro.Models
    public partial class CoinbaseDeposit : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("amount")]
       public decimal Amount { get; set; }
@@ -652,7 +652,7 @@ namespace Coinbase.Pro.Models
    public class PaymentMethodWithdraw : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("amount")]
       public decimal Amount { get; set; }
@@ -667,7 +667,7 @@ namespace Coinbase.Pro.Models
    public class CoinbaseWithdraw : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("amount")]
       public decimal Amount { get; set; }
@@ -679,7 +679,7 @@ namespace Coinbase.Pro.Models
    public class CryptoWithdraw : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("amount")]
       public decimal Amount { get; set; }
@@ -692,16 +692,16 @@ namespace Coinbase.Pro.Models
    public partial class Conversion
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("amount")]
       public decimal Amount { get; set; }
 
       [JsonProperty("from_account_id")]
-      public Guid FromAccountId { get; set; }
+      public string FromAccountId { get; set; }
 
       [JsonProperty("to_account_id")]
-      public Guid ToAccountId { get; set; }
+      public string ToAccountId { get; set; }
 
       [JsonProperty("from")]
       public string From { get; set; }
@@ -713,7 +713,7 @@ namespace Coinbase.Pro.Models
    public partial class PaymentMethod : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("type")]
       public string Type { get; set; }
@@ -790,7 +790,7 @@ namespace Coinbase.Pro.Models
    public partial class CoinbaseAccount : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("name")]
       public string Name { get; set; }
@@ -913,7 +913,7 @@ namespace Coinbase.Pro.Models
    public partial class Report : Json
    {
       [JsonProperty("id")]
-      public Guid Id { get; set; }
+      public string Id { get; set; }
 
       [JsonProperty("type")]
       public ReportType Type { get; set; }
