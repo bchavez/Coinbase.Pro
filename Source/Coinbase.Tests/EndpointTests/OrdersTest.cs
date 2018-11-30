@@ -10,7 +10,7 @@ namespace Coinbase.Tests.EndpointTests
    public class OrdersTest : TestWithAuth
    {
       [Test]
-      public async Task list()
+      public async Task get_all_orders()
       {
          server.RespondWith(Examples.OrdersListJson);
 
@@ -28,7 +28,7 @@ namespace Coinbase.Tests.EndpointTests
       }
 
       [Test]
-      public async Task list_page()
+      public async Task get_paged_order_list()
       {
          var r = await client.Orders.GetAllOrdersAsync("open, pending", "ETH-USD", 20, 30, 40);
 

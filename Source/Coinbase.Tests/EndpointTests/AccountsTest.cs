@@ -8,7 +8,7 @@ namespace Coinbase.Tests.EndpointTests
    public class AccountsTest : TestWithAuth
    {
       [Test]
-      public async Task list()
+      public async Task get_all_accounts()
       {
          server.RespondWith(Examples.AccountListJson);
 

@@ -11,12 +11,12 @@ namespace Coinbase.Pro
       /// <summary>
       /// Get a list of recent fills.
       /// </summary>
-      Task<PagedResponse<Fill>> ListFillsByProductIdAsync(string productId, int? limit = null, long? before = null, long? after = null);
+      Task<PagedResponse<Fill>> GetFillsByProductIdAsync(string productId, int? limit = null, long? before = null, long? after = null);
 
       /// <summary>
       /// Get a list of recent fills.
       /// </summary>
-      Task<PagedResponse<Fill>> ListFillsByOrderIdAsync(string orderId, int? limit = null, long? before = null, long? after = null);
+      Task<PagedResponse<Fill>> GetFillsByOrderIdAsync(string orderId, int? limit = null, long? before = null, long? after = null);
    }
 
    public partial class CoinbaseProClient : IFillsEndpoint
@@ -26,7 +26,7 @@ namespace Coinbase.Pro
       protected internal Url FillsEndpoint => this.Config.ApiUrl.AppendPathSegment("fills");
 
 
-      Task<PagedResponse<Fill>> IFillsEndpoint.ListFillsByProductIdAsync(string productId, int? limit, long? before, long? after)
+      Task<PagedResponse<Fill>> IFillsEndpoint.GetFillsByProductIdAsync(string productId, int? limit, long? before, long? after)
       {
          return this.FillsEndpoint
             .WithClient(this)
@@ -35,7 +35,7 @@ namespace Coinbase.Pro
             .GetPagedJsonAsync<Fill>();
       }
 
-      Task<PagedResponse<Fill>> IFillsEndpoint.ListFillsByOrderIdAsync(string orderId, int? limit, long? before, long? after)
+      Task<PagedResponse<Fill>> IFillsEndpoint.GetFillsByOrderIdAsync(string orderId, int? limit, long? before, long? after)
       {
          return this.FillsEndpoint
             .WithClient(this)

@@ -34,14 +34,106 @@ Getting Started
 
 To get the started, simply new create a new `CoinbaseProClient` object as shown below:
 ```csharp
-
+var client = new CoinbaseProClient(new Config
+            {
+               ApiKey = "my-api-key",
+               Secret = "my-api-secret",
+               Passphrase = "my-api-passphrase",
+            });
 ```
-Once you have a `CoinbaseProClient` object, simply call one of any of the [**Order Endpoints**](https://docs.pro.coinbase.com/?r=1#orders) or [**Market Data Endpoints**](https://docs.pro.coinbase.com/?r=1#market-data). Extensive examples can be [found here]().
+Once you have a `CoinbaseProClient` object, simply call one of any of the [**Order Endpoints**](https://docs.pro.coinbase.com/?r=1#orders) or [**Market Data Endpoints**](https://docs.pro.coinbase.com/?r=1#market-data). Extensive examples can be [found here](https://github.com/bchavez/Coinbase.Pro/tree/master/Source/Coinbase.Tests/EndpointTests).
 
-In one such example, to get the [spot price](https://developers.coinbase.com/api/v2#get-spot-price) of `ETH-USD`, do the following:
+For example, to create [a limit order](https://docs.pro.coinbase.com/?r=1#place-a-new-order) on the **buy** side of the `ETH-USD` order book for `2 ETH` at `100 USD` each, do the following:
 ```csharp
+var order = await client.Orders.PlaceLimitOrderAsync(
+                  OrderSide.Buy, "ETH-USD", size: 2, limitPrice: 100m);
 
+order.Dump();
 ```
+The `order` object returned by the trading engine will have similar values the following JSON: 
+```json
+{
+  "id": "ba3d3318-d1f0-4f9d-ae6f-1bda6ff370fa",
+  "price": 100.00000000,
+  "size": 2.00000000,
+  "product_id": "ETH-USD",
+  "side": "buy",
+  "stp": "dc",
+  "type": "limit",
+  "time_in_force": "GTC",
+  "post_only": true,
+  "created_at": "2018-11-30T05:11:54.000355+00:00",
+  "fill_fees": 0.0000000000000000,
+  "filled_size": 0.00000000,
+  "executed_value": 0.0000000000000000,
+  "status": "pending",
+  "settled": false,
+  "funds": 0.0,
+  "specified_funds": 0.0
+}
+```
+
+#### Full API Support
+##### Private Endpoints
+* [`client.Accounts`](https://docs.pro.coinbase.com/?r=1#accounts) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/AccountsTest.cs)
+* [`client.Orders`](https://docs.pro.coinbase.com/?r=1#orders) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/OrdersTest.cs)
+* [`client.Fills`](https://docs.pro.coinbase.com/?r=1#fills) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/FillsTest.cs)
+* [`client.Deposits`](https://docs.pro.coinbase.com/?r=1#deposits) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/DepositsTest.cs)
+* [`client.Withdrawls`](https://docs.pro.coinbase.com/?r=1#withdrawals) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/WithdrawlsTest.cs)
+* [`client.Conversion`](https://docs.pro.coinbase.com/?r=1#stablecoin-conversions) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/ConversionsTest.cs) - For stablecoin conversions, ie: USD/USDC.
+* [`client.PaymentMethods`](https://docs.pro.coinbase.com/?r=1#payment-methods) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/PaymentMethodsTest.cs)
+* [`client.CoinbaseAccounts`](https://docs.pro.coinbase.com/?r=1#coinbase-accounts) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/CoinbaseAccountsTest.cs)
+* [`client.Reports`](https://docs.pro.coinbase.com/?r=1#reports) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/ReportsTest.cs)
+* [`client.UserAccount`](https://docs.pro.coinbase.com/?r=1#user-account) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/UserAccountTest.cs)
+
+##### Market Data Endpoints
+* [`client.MarketData`](https://docs.pro.coinbase.com/?r=1#market-data) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/MarketDataTests.cs)
+
+### Pagination
+A quick note about pagination. Consider the following diagram that illustrates the `Current Point In Time` over a paginable set of data with an item size 5 items per page:
+```
+    Five Items Per Page (limit=5)
+     
+Past                         Future
+Older                         Newer
+11   15 16   20     21   25 26   30
+[items] [items]     [items] [items]
+              ^
+      After <-|-> Before
+              ^
+              |
+    Current Point In Time
+```
+Suppose you grabbed most recent trades from `var trades = client.MarketData.GetTradesAsync("ETH-USD", limit: 5)`. The data you captured in `trades` is `Current Point In Time` with the most recent trade `20` as shown in the diagram above.
+
+* To enumerate ***older*** trades beyond the initial page:
+```csharp
+//Get the initial page, items 16 through 20
+var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5);
+
+//Get the next batch of older trades after the current page.
+while( trades.After.HasValue )
+{
+   trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, after: trades.After);
+}
+```  
+
+Now suppose time advances, more trades happen in the market. Given the `Current Point In Time` with the initial page of items `16-20`.
+
+* To enumerate ***newer*** trades beyond the the initial page:
+```csharp
+//Get the initial page, items 16 through 20
+var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5);
+
+//Some time advances, trades execute.
+
+//Now, get the next batch of newer trades before the current page.
+while( trades.Before.HasValue )
+{
+   trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, before: trades.Before);
+}
+```
+More information about pagination can be [found here](https://docs.pro.coinbase.com/?r=1#pagination).
 
 #### Full API Support
 ##### Market Data Endpoints

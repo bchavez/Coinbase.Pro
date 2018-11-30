@@ -10,11 +10,11 @@ namespace Coinbase.Tests.EndpointTests
    public class FillsTest : TestWithAuth
    {
       [Test]
-      public async Task list_by_product()
+      public async Task getall_by_product()
       {
          server.RespondWithPagedResult(Examples.Fills1Json, 11, 22);
 
-         var r = await client.Fills.ListFillsByProductIdAsync("ETC-USD");
+         var r = await client.Fills.GetFillsByProductIdAsync("ETC-USD");
 
          server.ShouldHaveCalledSomePathAndQuery("/fills?product_id=ETC-USD")
             .WithVerb(HttpMethod.Get);
@@ -29,11 +29,11 @@ namespace Coinbase.Tests.EndpointTests
       }
 
       [Test]
-      public async Task list_by_order()
+      public async Task getall_by_order()
       {
          server.RespondWithPagedResult(Examples.Fills1Json, 11, 22);
 
-         var r = await client.Fills.ListFillsByOrderIdAsync("333");
+         var r = await client.Fills.GetFillsByOrderIdAsync("333");
 
          server.ShouldHaveCalledSomePathAndQuery("/fills?order_id=333")
             .WithVerb(HttpMethod.Get);

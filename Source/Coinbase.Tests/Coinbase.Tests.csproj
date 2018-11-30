@@ -90,7 +90,7 @@
     <Compile Include="EndpointTests\TestWithAuth.cs" />
     <Compile Include="Examples.cs" />
     <Compile Include="ExtensionsForTesting.cs" />
-    <Compile Include="IntegrationTests\AccountTests.cs" />
+    <Compile Include="IntegrationTests\GeneralTests.cs" />
     <Compile Include="IntegrationTests\IntegrationTest.cs" />
     <Compile Include="IntegrationTests\ProxyFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

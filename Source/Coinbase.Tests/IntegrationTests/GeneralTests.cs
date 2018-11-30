@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Coinbase.Tests.IntegrationTests
 {
    [Explicit]
-   public class AccountTests : IntegrationTests
+   public class GeneralTests : IntegrationTests
    {
       private CoinbaseProClient client;
 
@@ -70,7 +70,7 @@ namespace Coinbase.Tests.IntegrationTests
          var o = await this.client.Orders.PlaceStopOrderAsync(
             OrderSide.Buy,
             "ETC-USD", amount: 100, AmountType.UseFunds, stopPrice: 999m);
-
+         
          o.Dump();
       }
 
@@ -88,15 +88,15 @@ namespace Coinbase.Tests.IntegrationTests
       public async Task create_order4()
       {
          var o = await this.client.Orders.PlaceLimitOrderAsync(
-            OrderSide.Buy, "ETC-USD", size: 100, limitPrice: 0.05m, timeInForce: TimeInForce.GoodTillCanceled);
-
+            OrderSide.Buy, "ETC-USD", size: 100, limitPrice: 10m, timeInForce: TimeInForce.GoodTillCanceled);
+         
          o.Dump();
       }
 
       [Test]
-      public async Task list_fills1()
+      public async Task get_fills1()
       {
-         var f = await client.Fills.ListFillsByProductIdAsync("ETC-USD");
+         var f = await client.Fills.GetFillsByProductIdAsync("ETC-USD");
 
          f.Dump();
       }
@@ -117,5 +117,27 @@ namespace Coinbase.Tests.IntegrationTests
          r.Dump();
       }
 
+      [Test]
+      public async Task can_page_through_some_data()
+      {
+         var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5); ;
+
+         for( int i = 0; i < 3; i++ )
+         {
+            trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, after: trades.After);
+         }
+      }
+
+      [Test]
+      public async Task can_page_through_some_data2()
+      {
+         var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, before: 1);
+
+         //for (int i = 0; i < 3; i++)
+         //{
+         //   var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, before: i + 1 );
+         //   trades.Dump();
+         //}
+      }
    }
 }
