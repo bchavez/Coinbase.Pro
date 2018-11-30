@@ -8,6 +8,10 @@ namespace Coinbase.Pro
 {
    public interface IUserAccountEndpoint
    {
+      /// <summary>
+      /// This request will return your 30-day trailing volume for all products.
+      /// This is a cached value that’s calculated every day at midnight UTC.
+      /// </summary>
       Task<List<TrailingVolume>> GetTrailingVolumeAsync();
    }
 

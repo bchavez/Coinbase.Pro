@@ -8,7 +8,14 @@ namespace Coinbase.Pro
 {
    public interface IFillsEndpoint
    {
+      /// <summary>
+      /// Get a list of recent fills.
+      /// </summary>
       Task<PagedResponse<Fill>> ListFillsByProductIdAsync(string productId, int? limit = null, long? before = null, long? after = null);
+
+      /// <summary>
+      /// Get a list of recent fills.
+      /// </summary>
       Task<PagedResponse<Fill>> ListFillsByOrderIdAsync(string orderId, int? limit = null, long? before = null, long? after = null);
    }
 

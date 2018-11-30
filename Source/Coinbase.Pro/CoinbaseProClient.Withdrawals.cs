@@ -11,11 +11,19 @@ namespace Coinbase.Pro
       /// <summary>
       /// Withdraw funds to a payment method.
       /// </summary>
-      /// <param name="paymentMethodId"></param>
-      /// <param name="amount"></param>
-      /// <param name="currency"></param>
-      Task<PaymentMethodWithdraw> WithdrawFundsToPaymentMethodAsync(string paymentMethodId, decimal amount, string currency);    
+      Task<PaymentMethodWithdraw> WithdrawFundsToPaymentMethodAsync(string paymentMethodId, decimal amount, string currency);
+
+      /// <summary>
+      /// Withdraw funds to a coinbase account. You can move funds between your Coinbase
+      /// accounts and your Coinbase Pro trading accounts within your daily limits.
+      /// Moving funds between Coinbase and Coinbase Pro is instant and free.
+      /// See the Coinbase Accounts section for retrieving your Coinbase accounts
+      /// </summary>
       Task<CoinbaseWithdraw> WithdrawFundsToCoinbaseAsync(string coinbaseAccountId, decimal amount, string currency);
+
+      /// <summary>
+      /// Withdraws funds to a crypto address.
+      /// </summary>
       Task<CryptoWithdraw> WithdrawFundsToCryptoAddressAsync(string cryptoAddress, decimal amount, string currency);
    }
 

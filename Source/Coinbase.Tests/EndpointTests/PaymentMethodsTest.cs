@@ -13,7 +13,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWith(Examples.PaymentMethodsJson);
 
-         var r = await client.PaymentMethods.ListAsync();
+         var r = await client.PaymentMethods.GetAllPaymentMethodsAsync();
 
          server.ShouldHaveCalledSomePathAndQuery("/payment-methods")
             .WithVerb(HttpMethod.Get);

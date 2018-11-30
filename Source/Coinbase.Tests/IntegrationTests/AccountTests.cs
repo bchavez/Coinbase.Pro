@@ -28,21 +28,21 @@ namespace Coinbase.Tests.IntegrationTests
       [Test]
       public async Task can_list_accounts()
       {
-         var list = await this.client.Accounts.List();
+         var list = await this.client.Accounts.GetAllAccountsAsync();
          list.Dump();
       }
 
       [Test]
       public async Task can_get_account()
       {
-         var a = await this.client.Accounts.GetAccount("046b8d74-34fc-419b-a19a-ae5e1c684684");
+         var a = await this.client.Accounts.GetAccountAsync("046b8d74-34fc-419b-a19a-ae5e1c684684");
          a.Dump();
       }
 
       [Test]
       public async Task get_ledger()
       {
-         var a = await this.client.Accounts.GetAccountHistory("9a2c74fd-9493-4660-85a9-a57c7f891990");
+         var a = await this.client.Accounts.GetAccountHistoryAsync("9a2c74fd-9493-4660-85a9-a57c7f891990");
 
          a.Dump();
       }
@@ -50,7 +50,7 @@ namespace Coinbase.Tests.IntegrationTests
       [Test]
       public async Task get_orders()
       {
-         var o = await this.client.Orders.ListOrdersAsync();
+         var o = await this.client.Orders.GetAllOrdersAsync();
          o.Dump();
       }
 

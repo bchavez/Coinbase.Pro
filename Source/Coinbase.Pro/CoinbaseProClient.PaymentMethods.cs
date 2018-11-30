@@ -11,7 +11,7 @@ namespace Coinbase.Pro
       /// <summary>
       /// Get a list of your payment methods.
       /// </summary>
-      Task<List<PaymentMethod>> ListAsync();
+      Task<List<PaymentMethod>> GetAllPaymentMethodsAsync();
    }
 
    public partial class CoinbaseProClient : IPaymentMethodsEndpoint
@@ -20,7 +20,7 @@ namespace Coinbase.Pro
 
       protected internal Url PaymentMethodsEndpoint => this.Config.ApiUrl.AppendPathSegment("payment-methods");
 
-      Task<List<PaymentMethod>> IPaymentMethodsEndpoint.ListAsync()
+      Task<List<PaymentMethod>> IPaymentMethodsEndpoint.GetAllPaymentMethodsAsync()
       {
          return this.PaymentMethodsEndpoint
             .WithClient(this)

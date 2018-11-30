@@ -14,7 +14,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWith(Examples.OrdersListJson);
 
-         var r = await client.Orders.ListOrdersAsync();
+         var r = await client.Orders.GetAllOrdersAsync();
 
          r.Dump();
 
@@ -30,7 +30,7 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task list_page()
       {
-         var r = await client.Orders.ListOrdersAsync("open, pending", "ETH-USD", 20, 30, 40);
+         var r = await client.Orders.GetAllOrdersAsync("open, pending", "ETH-USD", 20, 30, 40);
 
          server.ShouldHaveCalledSomePathAndQuery("/orders?" +
                                     "status=open&" +

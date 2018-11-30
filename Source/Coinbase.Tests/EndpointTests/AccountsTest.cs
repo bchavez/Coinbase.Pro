@@ -12,7 +12,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWith(Examples.AccountListJson);
 
-         var r = await client.Accounts.List();
+         var r = await client.Accounts.GetAllAccountsAsync();
 
          r.Dump();
          var a = r.First();
@@ -27,7 +27,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWith(Examples.Account1Json);
 
-         var r = await client.Accounts.GetAccount("fff");
+         var r = await client.Accounts.GetAccountAsync("fff");
 
          r.Dump();
 
@@ -42,7 +42,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWith(Examples.AccountHistoryJson);
 
-         var r = await client.Accounts.GetAccountHistory("fff");
+         var r = await client.Accounts.GetAccountHistoryAsync("fff");
 
          r.Dump();
 
@@ -59,7 +59,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWith(Examples.AccountHoldJson);
 
-         var r = await client.Accounts.GetAccountHold("fff");
+         var r = await client.Accounts.GetAccountHoldAsync("fff");
 
          r.Dump();
 

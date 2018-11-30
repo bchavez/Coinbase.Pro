@@ -297,18 +297,34 @@ namespace Coinbase.Pro.Models
 
    public partial class Account : Json
    {
+      /// <summary>
+      /// Account Id
+      /// </summary>
       [JsonProperty("id")]
       public Guid Id { get; set; }
 
+      /// <summary>
+      /// the currency of the account
+      /// </summary>
       [JsonProperty("currency")]
       public string Currency { get; set; }
 
+      /// <summary>
+      /// total funds in the account
+      /// </summary>
       [JsonProperty("balance")]
       public decimal Balance { get; set; }
 
+      /// <summary>
+      /// funds available to withdraw or trade
+      /// </summary>
       [JsonProperty("available")]
       public decimal Available { get; set; }
 
+      /// <summary>
+      /// funds on hold (not available for use).
+      /// When you place an order, the funds for the order are placed on hold. They cannot be used for other orders or withdrawn. Funds will remain on hold until the order is filled or canceled
+      /// </summary>
       [JsonProperty("hold")]
       public decimal Hold { get; set; }
 

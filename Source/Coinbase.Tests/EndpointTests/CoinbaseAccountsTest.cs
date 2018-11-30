@@ -14,7 +14,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWith(Examples.CoinbaseAccountsJson);
 
-         var r = await client.CoinbaseAccounts.ListAsync();
+         var r = await client.CoinbaseAccounts.GetAllAccountsAsync();
 
          server.ShouldHaveCalledSomePathAndQuery("/coinbase-accounts")
             .WithVerb(HttpMethod.Get);
