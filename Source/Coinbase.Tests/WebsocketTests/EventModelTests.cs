@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Coinbase.Pro.Models;
-using Coinbase.Pro.Websockets;
+using Coinbase.Pro.WebSockets;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Coinbase.Tests.WebsocketTests
+namespace Coinbase.Tests.WebSocketTests
 {
    public class EventModelTests
    {

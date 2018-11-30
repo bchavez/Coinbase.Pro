@@ -3,11 +3,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Coinbase.Pro.Models;
 
-namespace Coinbase.Pro.Websockets
+namespace Coinbase.Pro.WebSockets
 {
    public static class WebSocketHelper
    {
-      public static async Task<string> MakeAuthenticatedSubscriptionAsync(Subscription subscription, WebsocketConfig config)
+      public static async Task<string> MakeAuthenticatedSubscriptionAsync(Subscription subscription, WebSocketConfig config)
       {
          subscription.ExtraJson.Add("key", config.ApiKey);
          subscription.ExtraJson.Add("passphrase", config.Passphrase);

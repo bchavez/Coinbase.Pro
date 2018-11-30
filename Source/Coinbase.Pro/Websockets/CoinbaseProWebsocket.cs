@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using Newtonsoft.Json;
@@ -8,34 +6,34 @@ using Newtonsoft.Json.Linq;
 using WebSocket4Net;
 
 
-namespace Coinbase.Pro.Websockets
+namespace Coinbase.Pro.WebSockets
 {
-   public class WebsocketConfig
+   public class WebSocketConfig
    {
       public string ApiKey { get; set; }
       public string Secret { get; set; }
       public string Passphrase { get; set; }
 
       public bool UseTimeApi { get; set; } = false;
-      public string SocketUri { get; set; } = CoinbaseProWebsocket.Endpoint;
+      public string SocketUri { get; set; } = CoinbaseProWebSocket.Endpoint;
 
       public void EnsureValid()
       {
       }
    }
 
-   public class CoinbaseProWebsocket : IDisposable
+   public class CoinbaseProWebSocket : IDisposable
    {
       public const string Endpoint = "wss://ws-feed.pro.coinbase.com";
 
-      public WebSocket4Net.WebSocket RawSocket { get; private set; }
+      public WebSocket RawSocket { get; private set; }
 
-      public CoinbaseProWebsocket(WebsocketConfig config = null)
+      public CoinbaseProWebSocket(WebSocketConfig config = null)
       {
-         this.Config = config ?? new WebsocketConfig();
+         this.Config = config ?? new WebSocketConfig();
       }
 
-      public WebsocketConfig Config { get; }
+      public WebSocketConfig Config { get; }
 
       protected TaskCompletionSource<bool> connecting;
 
@@ -43,12 +41,12 @@ namespace Coinbase.Pro.Websockets
       {
          if( this.RawSocket != null ) throw new InvalidOperationException(
             $"The {nameof(RawSocket)} is already created from a previous {nameof(ConnectAsync)} call. " +
-            $"If you get this exception, you'll need to dispose of this {nameof(CoinbaseProWebsocket)} and create a new instance. " +
+            $"If you get this exception, you'll need to dispose of this {nameof(CoinbaseProWebSocket)} and create a new instance. " +
             $"Don't call {nameof(ConnectAsync)} multiple times on the same instance.");
 
          this.connecting = new TaskCompletionSource<bool>();
 
-         this.RawSocket = new WebSocket4Net.WebSocket(this.Config.SocketUri);
+         this.RawSocket = new WebSocket(this.Config.SocketUri);
          this.RawSocket.Opened += RawSocket_Opened;
          this.RawSocket.Open();
 

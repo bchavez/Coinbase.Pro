@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Coinbase.Pro;
-using Coinbase.Pro.Websockets;
+using Coinbase.Pro.WebSockets;
 using Coinbase.Pro.Models;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
@@ -10,14 +9,14 @@ using NUnit.Framework;
 namespace Coinbase.Tests.IntegrationTests
 {
    [Explicit]
-   public class WebsocketTests : IntegrationTests
+   public class WebSocketTests : IntegrationTests
    {
-      private CoinbaseProWebsocket socket;
+      private CoinbaseProWebSocket socket;
 
       [SetUp]
       public void BeforeEachTest()
       {
-         socket = new CoinbaseProWebsocket(new WebsocketConfig
+         socket = new CoinbaseProWebSocket(new WebSocketConfig
             {
                UseTimeApi = true,
                ApiKey = this.secrets.ApiKey,
@@ -32,6 +31,10 @@ namespace Coinbase.Tests.IntegrationTests
       {
          await socket.ConnectAsync();
 
+         //https://docs.pro.coinbase.com/?r=1#protocol-overview
+         // Request
+         // Subscribe to ETH-USD and ETH-EUR with the level2, heartbeat and ticker channels,
+         // plus receive the ticker entries for ETH-BTC and ETH-USD
          var sub = new Subscription
             {
                ProductIds =

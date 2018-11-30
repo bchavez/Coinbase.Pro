@@ -99,9 +99,9 @@
     <Compile Include="IntegrationTests\GeneralTests.cs" />
     <Compile Include="IntegrationTests\IntegrationTest.cs" />
     <Compile Include="IntegrationTests\ProxyFactory.cs" />
-    <Compile Include="IntegrationTests\WebsocketTests.cs" />
+    <Compile Include="IntegrationTests\WebSocketTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebsocketTests\EventModelTests.cs" />
+    <Compile Include="WebSocketTests\EventModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

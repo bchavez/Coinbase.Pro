@@ -89,8 +89,8 @@ The `order` object returned by the trading engine will have similar values the f
 ##### Market Data Endpoints
 * [`client.MarketData`](https://docs.pro.coinbase.com/?r=1#market-data) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/EndpointTests/MarketDataTests.cs)
 
-##### Websocket Feed
-* [`CoinbaseProWebsocket`](https://docs.pro.coinbase.com/?r=1#websocket-feed) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/IntegrationTests/WebsocketTests.cs)
+##### WebSocket Feed
+* [`CoinbaseProWebSocket`](https://docs.pro.coinbase.com/?r=1#websocket-feed) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/IntegrationTests/WebSocketTests.cs)
 
 
 ### Pagination
@@ -139,28 +139,28 @@ while( trades.Before.HasValue )
 ```
 More information about pagination can be [found here](https://docs.pro.coinbase.com/?r=1#pagination).
 
-## Websocket Feeds
+## WebSocket Feeds
 
-This library also supports live websocket feeds. There are two types. **Authenticated** and **Unauthenticated**  feeds. 
+This library also supports live WebSocket feeds. There are two types. **Authenticated** and **Unauthenticated**  feeds. 
 ### Unauthenticated Websocket
 To create an unauthenticated feed, simply do the following:
 ```csharp
 var socket = new CoinbaseProWebsocket();
 ```
 
-### Authenticated Websocket
-To create an authenticated websocket feed doing the following:
+### Authenticated WebSocket
+To create an authenticated WebSocket feed doing the following:
 ```csharp
-//authetnicated feed
-var socket = new CoinbaseProWebsocket(new WebsocketConfig
+//authenticated feed
+var socket = new CoinbaseProWebSocket(new WebSocketConfig
    {
       ApiKey = "my-api-key",
       Secret = "my-api-secret",
       Passphrase = "my-api-passphrase",
    });
 ```
-### Subscribing to Events over Websocket
-Be sure to [check the documentation here](https://docs.pro.coinbase.com/?r=1#subscribe) to know all the events you can subscribe to. The following example demonstrates how to continue setting  up the websocket for simple *heartbeat* events.
+### Subscribing to Events over WebSocket
+Be sure to [check the documentation here](https://docs.pro.coinbase.com/?r=1#subscribe) to know all the events you can subscribe to. The following example demonstrates how to continue setting  up the WebSocket for simple *heartbeat* events.
 ```csharp
 var socket = ...; //using authenticated or unauthenticated instance
 
@@ -190,7 +190,7 @@ await socket.SubscribeAsync(sub);
 //now wait for data.
 await Task.Delay(TimeSpan.FromMinutes(1));
 ```
-Once your subscription is sent upstream, you should start receiving events over the websocket. The following example shows how to process incoming messages as they arrive:
+Once your subscription is sent upstream, you should start receiving events over the WebSocket. The following example shows how to process incoming messages as they arrive:
 
 ```csharp
 private void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
@@ -206,7 +206,9 @@ private void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e
 }
 ```
 
-A complete working example can be [found here](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/IntegrationTests/WebsocketTests.cs).
+A complete working example can be [found here](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/IntegrationTests/WebSocketTests.cs).
+
+If you'd like to use your own WebSocket implementation, the `WebSocketHelper` is a helpful utility class for creating authenticated JSON subscription messages.
 
 -------
 
