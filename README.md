@@ -32,7 +32,7 @@ Install-Package Coinbase.Pro
 Getting Started
 ------
 
-To get the started, simply new create a new `CoinbaseProClient` object as shown below:
+To get started, simply new create a new `CoinbaseProClient` object as shown below:
 ```csharp
 var client = new CoinbaseProClient(new Config
             {
@@ -41,16 +41,16 @@ var client = new CoinbaseProClient(new Config
                Passphrase = "my-api-passphrase",
             });
 ```
-Once you have a `CoinbaseProClient` object, simply call one of any of the [**Order Endpoints**](https://docs.pro.coinbase.com/?r=1#orders) or [**Market Data Endpoints**](https://docs.pro.coinbase.com/?r=1#market-data). Extensive examples can be [found here](https://github.com/bchavez/Coinbase.Pro/tree/master/Source/Coinbase.Tests/EndpointTests).
+Once you have a `CoinbaseProClient` object, simply call one of any of the [API endpoints](https://github.com/bchavez/Coinbase.Pro#full-api-support). Extensive examples can be [found here](https://github.com/bchavez/Coinbase.Pro/tree/master/Source/Coinbase.Tests/EndpointTests). Also, **Coinbase**'s API endpoint reference can be [found here](https://docs.pro.coinbase.com/?r=1).
 
-For example, to create [a limit order](https://docs.pro.coinbase.com/?r=1#place-a-new-order) on the **buy** side of the `ETH-USD` order book for `2 ETH` at `100 USD` each, do the following:
+As an example, to create [a **limit** order](https://docs.pro.coinbase.com/?r=1#place-a-new-order) on the **buy** side of the **`ETH-USD`** order book for **`2 ETH`** at **`100 USD`** each, do the following:
 ```csharp
 var order = await client.Orders.PlaceLimitOrderAsync(
                   OrderSide.Buy, "ETH-USD", size: 2, limitPrice: 100m);
 
 order.Dump();
 ```
-The `order` object returned by the trading engine will have similar values the following JSON: 
+The `order` object returned by the trading engine will have similar values to the following JSON object: 
 ```json
 {
   "id": "ba3d3318-d1f0-4f9d-ae6f-1bda6ff370fa",
@@ -94,7 +94,7 @@ The `order` object returned by the trading engine will have similar values the f
 
 
 ### Pagination
-A quick note about pagination. Consider the following diagram that illustrates the `Current Point In Time` over a paginable set of data with an item size 5 items per page:
+Some **Coinbase Pro** APIs are [paginable](https://docs.pro.coinbase.com/?r=1#pagination). However, **Coinbase Pro**'s paging can be [a little confusing](https://docs.pro.coinbase.com/?r=1#pagination) at first. So, let's review. Consider the following diagram below that illustrates the `Current Point In Time` over a paginable set of data with an item size of 5 items per page:
 ```
     Five Items Per Page (limit=5)
      
@@ -108,7 +108,7 @@ Older                         Newer
               |
     Current Point In Time
 ```
-Suppose you grabbed most recent trades from `var trades = client.MarketData.GetTradesAsync("ETH-USD", limit: 5)`. The data you captured in `trades` is `Current Point In Time` with the most recent trade `20` as shown in the diagram above.
+Suppose you grabbed the most recent trades from `var trades = client.MarketData.GetTradesAsync("ETH-USD", limit: 5)`. The data you captured in `trades` is the `Current Point In Time` with the most recent trade `20` as shown in the diagram above.
 
 * To enumerate ***older*** trades beyond the initial page:
 ```csharp
@@ -124,7 +124,7 @@ while( trades.After.HasValue )
 
 Now suppose time advances, more trades happen in the market. Given the `Current Point In Time` with the initial page of items `16-20`.
 
-* To enumerate ***newer*** trades beyond the the initial page:
+* To enumerate ***newer*** trades beyond the initial page:
 ```csharp
 //Get the initial page, items 16 through 20
 var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5);
@@ -141,7 +141,7 @@ More information about pagination can be [found here](https://docs.pro.coinbase.
 
 ## WebSocket Feeds
 
-This library also supports live WebSocket feeds. There are two types. **Authenticated** and **Unauthenticated**  feeds. 
+This library also supports live WebSocket feeds. There are two types **Authenticated** and **Unauthenticated**  feeds. 
 ### Unauthenticated Websocket
 To create an unauthenticated feed, simply do the following:
 ```csharp
@@ -149,7 +149,7 @@ var socket = new CoinbaseProWebsocket();
 ```
 
 ### Authenticated WebSocket
-To create an authenticated WebSocket feed doing the following:
+To create an authenticated feed, doing the following:
 ```csharp
 //authenticated feed
 var socket = new CoinbaseProWebSocket(new WebSocketConfig
