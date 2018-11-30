@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using Flurl;
@@ -11,7 +12,8 @@ namespace Coinbase.Pro
       /// <summary>
       /// Get a list of your payment methods.
       /// </summary>
-      Task<List<CoinbaseAccount>> GetAllAccountsAsync();
+      /// <param name="cancellationToken"></param>
+      Task<List<CoinbaseAccount>> GetAllAccountsAsync(CancellationToken cancellationToken = default);
    }
 
    public partial class CoinbaseProClient : ICoinbaseAccountsEndpoint
@@ -20,11 +22,11 @@ namespace Coinbase.Pro
 
       protected internal Url CoinbaseAccountsEndpoint => this.Config.ApiUrl.AppendPathSegment("coinbase-accounts");
 
-      Task<List<CoinbaseAccount>> ICoinbaseAccountsEndpoint.GetAllAccountsAsync()
+      Task<List<CoinbaseAccount>> ICoinbaseAccountsEndpoint.GetAllAccountsAsync(CancellationToken cancellationToken)
       {
          return this.CoinbaseAccountsEndpoint
             .WithClient(this)
-            .GetJsonAsync<List<CoinbaseAccount>>();
+            .GetJsonAsync<List<CoinbaseAccount>>(cancellationToken);
       }
    }
 }

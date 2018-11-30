@@ -83,5 +83,17 @@ namespace Coinbase.Tests.EndpointTests
                                     "product_id=BTC-USD")
             .WithVerb(HttpMethod.Delete);
       }
+
+      [Test]
+      public async Task cancel_order_by_id()
+      {
+         server.RespondWith(Examples.CancelOrderByIdJson);
+         var r = await client.Orders.CancelOrderById("ooo");
+
+         r.Count.Should().Be(1);
+
+         server.ShouldHaveCalledSomePathAndQuery("/orders/ooo")
+            .WithVerb(HttpMethod.Delete);
+      }
    }
 }

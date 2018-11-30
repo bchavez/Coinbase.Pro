@@ -59,7 +59,7 @@ namespace Coinbase.Tests.IntegrationTests
       {
          var o = await this.client.Orders.PlaceStopOrderAsync(
             OrderSide.Buy,
-            "ETC-USD", amount:100, AmountType.UseFunds, stopPrice: 999m);
+            "ETC-USD", amount: 100, amountType: AmountType.UseFunds, stopPrice: 999m);
 
          o.Dump();
       }
@@ -69,7 +69,7 @@ namespace Coinbase.Tests.IntegrationTests
       {
          var o = await this.client.Orders.PlaceStopOrderAsync(
             OrderSide.Buy,
-            "ETC-USD", amount: 100, AmountType.UseFunds, stopPrice: 999m);
+            "ETC-USD", amount: 100, amountType: AmountType.UseFunds, stopPrice: 999m);
          
          o.Dump();
       }
@@ -138,6 +138,19 @@ namespace Coinbase.Tests.IntegrationTests
          //   var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, before: i + 1 );
          //   trades.Dump();
          //}
+      }
+
+      [Test]
+      public async Task can_create_and_delete_order()
+      {
+         var o = await this.client.Orders.PlaceLimitOrderAsync(
+            OrderSide.Buy, "ETC-USD", size: 1, limitPrice: 0.05m, timeInForce: TimeInForce.GoodTillCanceled);
+
+         o.Dump();
+
+         var d = await  this.client.Orders.CancelOrderById(o.Id.ToString());
+
+         d.Dump();
       }
    }
 }

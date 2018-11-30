@@ -222,6 +222,7 @@ namespace Coinbase.Tests
     ""34fecfbf-de33-4273-b2c6-baf8e8948be4""
 ]";
 
+      public const string CancelOrderByIdJson = @"[""2eb2992c-d795-442c-847a-88b60ebc64cb""]";
 
       public const string Fills1Json = @"[
    {

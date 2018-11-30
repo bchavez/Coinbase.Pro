@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using Flurl;
@@ -11,7 +12,9 @@ namespace Coinbase.Pro
       /// <summary>
       /// Withdraw funds to a payment method.
       /// </summary>
-      Task<PaymentMethodWithdraw> WithdrawFundsToPaymentMethodAsync(string paymentMethodId, decimal amount, string currency);
+      Task<PaymentMethodWithdraw> WithdrawFundsToPaymentMethodAsync(
+         string paymentMethodId, decimal amount, string currency,
+         CancellationToken cancellationToken = default);
 
       /// <summary>
       /// Withdraw funds to a coinbase account. You can move funds between your Coinbase
@@ -19,12 +22,16 @@ namespace Coinbase.Pro
       /// Moving funds between Coinbase and Coinbase Pro is instant and free.
       /// See the Coinbase Accounts section for retrieving your Coinbase accounts
       /// </summary>
-      Task<CoinbaseWithdraw> WithdrawFundsToCoinbaseAsync(string coinbaseAccountId, decimal amount, string currency);
+      Task<CoinbaseWithdraw> WithdrawFundsToCoinbaseAsync(
+         string coinbaseAccountId, decimal amount, string currency,
+         CancellationToken cancellationToken = default);
 
       /// <summary>
       /// Withdraws funds to a crypto address.
       /// </summary>
-      Task<CryptoWithdraw> WithdrawFundsToCryptoAddressAsync(string cryptoAddress, decimal amount, string currency);
+      Task<CryptoWithdraw> WithdrawFundsToCryptoAddressAsync(
+         string cryptoAddress, decimal amount, string currency,
+         CancellationToken cancellationToken = default);
    }
 
    public partial class CoinbaseProClient : IWithdrawalsEndpoint
@@ -34,7 +41,8 @@ namespace Coinbase.Pro
       protected internal Url WithdrawalsEndpoint => this.Config.ApiUrl.AppendPathSegment("withdrawals");
 
 
-      Task<PaymentMethodWithdraw> IWithdrawalsEndpoint.WithdrawFundsToPaymentMethodAsync(string paymentMethodId, decimal amount, string currency)
+      Task<PaymentMethodWithdraw> IWithdrawalsEndpoint.WithdrawFundsToPaymentMethodAsync(string paymentMethodId, decimal amount, string currency,
+         CancellationToken cancellationToken)
       {
          var d = new CreatePaymentMethodWithdraw
             {
@@ -46,11 +54,12 @@ namespace Coinbase.Pro
          return this.WithdrawalsEndpoint
             .WithClient(this)
             .AppendPathSegment("payment-method")
-            .PostJsonAsync(d)
+            .PostJsonAsync(d, cancellationToken)
             .ReceiveJson<PaymentMethodWithdraw>();
       }
 
-      Task<CoinbaseWithdraw> IWithdrawalsEndpoint.WithdrawFundsToCoinbaseAsync(string coinbaseAccountId, decimal amount, string currency)
+      Task<CoinbaseWithdraw> IWithdrawalsEndpoint.WithdrawFundsToCoinbaseAsync(string coinbaseAccountId, decimal amount, string currency,
+         CancellationToken cancellationToken)
       {
          var d = new CreateCoinbaseWithdraw
             {
@@ -62,11 +71,12 @@ namespace Coinbase.Pro
          return this.WithdrawalsEndpoint
             .WithClient(this)
             .AppendPathSegment("coinbase-account")
-            .PostJsonAsync(d)
+            .PostJsonAsync(d, cancellationToken)
             .ReceiveJson<CoinbaseWithdraw>();
       }
 
-      Task<CryptoWithdraw> IWithdrawalsEndpoint.WithdrawFundsToCryptoAddressAsync(string cryptoAddress, decimal amount, string currency)
+      Task<CryptoWithdraw> IWithdrawalsEndpoint.WithdrawFundsToCryptoAddressAsync(string cryptoAddress, decimal amount, string currency,
+         CancellationToken cancellationToken)
       {
          var d = new CreateCryptAddressWithdrawl
             {
@@ -78,7 +88,7 @@ namespace Coinbase.Pro
          return this.WithdrawalsEndpoint
             .WithClient(this)
             .AppendPathSegment("crypto")
-            .PostJsonAsync(d)
+            .PostJsonAsync(d, cancellationToken)
             .ReceiveJson<CryptoWithdraw>();
       }
    }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using Flurl;
@@ -14,7 +15,8 @@ namespace Coinbase.Pro
       /// <param name="from">Currency Id</param>
       /// <param name="to">Currency id</param>
       /// <param name="amount">Amount of from to convert to to</param>
-      Task<Conversion> ConvertAsync(string from, string to, decimal amount);
+      /// <param name="cancellationToken"></param>
+      Task<Conversion> ConvertAsync(string from, string to, decimal amount, CancellationToken cancellationToken = default);
    }
 
    public partial class CoinbaseProClient : IConversionEndpoint
@@ -26,7 +28,7 @@ namespace Coinbase.Pro
 
       protected internal Url ConversionEndpoint => this.Config.ApiUrl.AppendPathSegment("conversions");
 
-      Task<Conversion> IConversionEndpoint.ConvertAsync(string from, string to, decimal amount)
+      Task<Conversion> IConversionEndpoint.ConvertAsync(string @from, string to, decimal amount, CancellationToken cancellationToken)
       {
          var c = new CreateConversion
             {
@@ -37,7 +39,7 @@ namespace Coinbase.Pro
 
          return this.ConversionEndpoint
             .WithClient(this)
-            .PostJsonAsync(c)
+            .PostJsonAsync(c, cancellationToken)
             .ReceiveJson<Conversion>();
       }
    }

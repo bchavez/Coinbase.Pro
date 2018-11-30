@@ -30,6 +30,14 @@ namespace Coinbase.Pro
       IMarketDataEndpoint MarketData { get; }
       IAccountsEndpoint Accounts { get; }
       IOrdersEndpoint Orders { get; }
+      IConversionEndpoint Conversion { get; }
+      IDepositsEndpoint Deposits { get; }
+      IFillsEndpoint Fills { get; }
+      IPaymentMethodsEndpoint PaymentMethods { get; }
+      IReportsEndpoint Reports { get; }
+      IUserAccountEndpoint UserAccount { get; }
+      IWithdrawalsEndpoint Withdrawals { get; }
+      ICoinbaseAccountsEndpoint CoinbaseAccounts { get; }
    }
 
    public partial class CoinbaseProClient : FlurlClient, ICoinbaseProClient

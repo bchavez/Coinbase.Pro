@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using Flurl;
@@ -14,8 +15,11 @@ namespace Coinbase.Pro
       /// <param name="paymentMethodId">ID of the payment method</param>
       /// <param name="amount">The amount to deposit</param>
       /// <param name="currency">The type of currency</param>
+      /// <param name="cancellationToken"></param>
       /// <returns></returns>
-      Task<PaymentMethodDeposit> DepositFundsFromPaymentMethodAsync(string paymentMethodId, decimal amount, string currency);
+      Task<PaymentMethodDeposit> DepositFundsFromPaymentMethodAsync(
+         string paymentMethodId, decimal amount, string currency,
+         CancellationToken cancellationToken = default);
 
       /// <summary>
       /// Deposit funds from a coinbase account. You can move funds between your Coinbase accounts and your Coinbase Pro trading accounts within your daily limits. Moving funds between Coinbase and Coinbase Pro is instant and free. See the Coinbase Accounts section for retrieving your Coinbase accounts.
@@ -23,8 +27,11 @@ namespace Coinbase.Pro
       /// <param name="coinbaseAccountId">ID of the coinbase account</param>
       /// <param name="amount">The amount to deposit</param>
       /// <param name="currency">The type of currency</param>
+      /// <param name="cancellationToken"></param>
       /// <returns></returns>
-      Task<CoinbaseDeposit> DepositFundsFromCoinbaseAccountAsync(string coinbaseAccountId, decimal amount, string currency);
+      Task<CoinbaseDeposit> DepositFundsFromCoinbaseAccountAsync(
+         string coinbaseAccountId, decimal amount, string currency,
+         CancellationToken cancellationToken = default);
    }
 
    public partial class CoinbaseProClient : IDepositsEndpoint
@@ -34,7 +41,9 @@ namespace Coinbase.Pro
       protected internal Url DepositsEndpoint => this.Config.ApiUrl.AppendPathSegment("deposits");
 
 
-      Task<PaymentMethodDeposit> IDepositsEndpoint.DepositFundsFromPaymentMethodAsync(string paymentMethodId, decimal amount, string currency)
+      Task<PaymentMethodDeposit> IDepositsEndpoint.DepositFundsFromPaymentMethodAsync(
+         string paymentMethodId, decimal amount, string currency,
+         CancellationToken cancellationToken)
       {
          var d = new CreatePaymentMethodDeposit
             {
@@ -46,11 +55,13 @@ namespace Coinbase.Pro
          return this.DepositsEndpoint
             .WithClient(this)
             .AppendPathSegment("payment-method")
-            .PostJsonAsync(d)
+            .PostJsonAsync(d, cancellationToken)
             .ReceiveJson<PaymentMethodDeposit>();
       }
 
-      Task<CoinbaseDeposit> IDepositsEndpoint.DepositFundsFromCoinbaseAccountAsync(string coinbaseAccountId, decimal amount, string currency)
+      Task<CoinbaseDeposit> IDepositsEndpoint.DepositFundsFromCoinbaseAccountAsync(
+         string coinbaseAccountId, decimal amount, string currency,
+         CancellationToken cancellationToken)
       {
          var d = new CreateCoinbaseDeposit
             {
@@ -62,7 +73,7 @@ namespace Coinbase.Pro
          return this.DepositsEndpoint
             .WithClient(this)
             .AppendPathSegment("coinbase-account")
-            .PostJsonAsync(d)
+            .PostJsonAsync(d, cancellationToken)
             .ReceiveJson<CoinbaseDeposit>();
       }
    }
