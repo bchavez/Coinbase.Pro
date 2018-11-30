@@ -66,9 +66,9 @@ namespace Coinbase.Tests.IntegrationTests
 
          if( WebSocketHelper.TryParse(e.Message, out var msg) )
          {
-            if( msg is Heartbeat hb )
+            if( msg is HeartbeatEvent hbe )
             {
-               hb.Dump();
+               hbe.Dump();
             }
          }
 

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Coinbase.Pro.Websockets.Models;
 
 namespace Coinbase.Pro.Websockets
 {
@@ -44,47 +45,47 @@ namespace Coinbase.Pro.Websockets
          switch( type )
          {
             case "heartbeat":
-               parsed = obj.ToObject<Models.Heartbeat>();
+               parsed = obj.ToObject<HeartbeatEvent>();
                break;
 
             case "subscriptions":
-               parsed = obj.ToObject<Models.Subscriptions>();
+               parsed = obj.ToObject<SubscriptionsEvent>();
                break;
 
             case "ticker":
-               parsed = obj.ToObject<Models.Ticker>();
+               parsed = obj.ToObject<TickerEvent>();
                break;
 
             case "snapshot":
-               parsed = obj.ToObject<Models.Snapshot>();
+               parsed = obj.ToObject<SnapshotEvent>();
                break;
 
             case "l2update":
-               parsed = obj.ToObject<Models.L2Update>();
+               parsed = obj.ToObject<L2UpdateEvent>();
                break;
 
             case "received":
-               parsed = obj.ToObject<Models.Received>();
+               parsed = obj.ToObject<ReceivedEvent>();
                break;
 
             case "open":
-               parsed = obj.ToObject<Models.Open>();
+               parsed = obj.ToObject<OpenEvent>();
                break;
 
             case "done":
-               parsed = obj.ToObject<Models.Done>();
+               parsed = obj.ToObject<DoneEvent>();
                break;
 
             case "match":
-               parsed = obj.ToObject<Models.Match>();
+               parsed = obj.ToObject<MatchEvent>();
                break;
 
             case "change":
-               parsed = obj.ToObject<Models.Change>();
+               parsed = obj.ToObject<ChangeEvent>();
                break;
 
             case "activate":
-               parsed = obj.ToObject<Models.Activate>();
+               parsed = obj.ToObject<ActivateEvent>();
                break;
 
             default:

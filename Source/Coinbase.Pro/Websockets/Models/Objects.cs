@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using Coinbase.Pro.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Coinbase.Pro.Websockets.Models
 {
-   public partial class Subscriptions : Json
+   public class Event : Json
    {
       [JsonProperty("type")]
       public string Type { get; set; }
+   }
 
+   public partial class SubscriptionsEvent : Event
+   {
       [JsonProperty("channels")]
       public Channel[] Channels { get; set; }
    }
 
-   public partial class Heartbeat : Json
+   public partial class HeartbeatEvent : Event
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
-
       [JsonProperty("sequence")]
       public long Sequence { get; set; }
 
@@ -32,11 +33,8 @@ namespace Coinbase.Pro.Websockets.Models
       public DateTimeOffset Time { get; set; }
    }
 
-   public partial class Ticker : Json
+   public partial class TickerEvent : Event
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
-
       [JsonProperty("trade_id")]
       public long TradeId { get; set; }
 
@@ -66,40 +64,94 @@ namespace Coinbase.Pro.Websockets.Models
    }
 
 
-   public partial class Snapshot : Json
+   public partial class SnapshotEvent : Event
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
-
       [JsonProperty("product_id")]
       public string ProductId { get; set; }
 
-      [JsonProperty("bids")]
-      public List<decimal[]> Bids { get; set; }
+      [JsonProperty("bids", ItemConverterType = typeof(OrderLiquidityConverter))]
+      public List<OrderLiquidity> Bids { get; set; }
 
-      [JsonProperty("asks")]
-      public List<decimal[]> Asks { get; set; }
+      [JsonProperty("asks", ItemConverterType = typeof(OrderLiquidityConverter))]
+      public List<OrderLiquidity> Asks { get; set; }
    }
 
-   public partial class L2Update : Json
+   public class OrderLiquidity
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
+      public decimal Price { get; set; }
+      public decimal Size { get; set; }
+   }
 
+   public class OrderLiquidityConverter : JsonConverter2<OrderLiquidity>
+   {
+      public override OrderLiquidity ReadJson(JsonReader reader, Type objectType, OrderLiquidity existingValue, bool hasExistingValue, JsonSerializer serializer)
+      {
+         var price = reader.ReadAsDecimal();
+         var size = reader.ReadAsDecimal();
+
+         reader.Read();
+
+         if (price is null) throw new JsonReaderException("Price in L2 update change is unexpectedly null.");
+         if (size is null) throw new JsonReaderException("Size in L2 update change is unexpectedly null.");
+
+         var ol = new OrderLiquidity
+            {
+               Price = price.Value,
+               Size = size.Value
+            };
+
+         return ol;
+      }
+   }
+
+   public partial class L2UpdateEvent : Event
+   {
       [JsonProperty("product_id")]
       public string ProductId { get; set; }
 
-      [JsonProperty("changes")]
-      public List<string[]> Changes { get; set; }
+      [JsonProperty("changes", ItemConverterType = typeof(L2UpdateChangeConverter))]
+      public List<L2UpdateChange> Changes { get; set; }
+   }
+
+   public class L2UpdateChange
+   {
+      public OrderSide Side { get; set; }
+      public decimal Price { get; set; }
+      public decimal Size { get; set; }
+   }
+
+   public class L2UpdateChangeConverter : JsonConverter2<L2UpdateChange>
+   {
+      public override L2UpdateChange ReadJson(JsonReader reader, Type objectType, L2UpdateChange existingValue, bool hasExistingValue, JsonSerializer serializer)
+      {
+         var side = reader.ReadAsString();
+         var price = reader.ReadAsDecimal();
+         var size = reader.ReadAsDecimal();
+
+         reader.Read();
+
+         if( price is null ) throw new JsonReaderException("Price in L2 update change is unexpectedly null.");
+         if( size is null) throw new JsonReaderException("Size in L2 update change is unexpectedly null.");
+
+         var c = new L2UpdateChange
+            {
+               Price = price.Value,
+               Size = size.Value
+            };
+
+         if( Enum.TryParse(side, ignoreCase: true, out OrderSide s) )
+         {
+            c.Side = s;
+         }
+
+         return c;
+      }
    }
 
 
 
-   public partial class Received : Json
+   public partial class ReceivedEvent : Event
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
-
       [JsonProperty("time")]
       public DateTimeOffset Time { get; set; }
 
@@ -110,7 +162,7 @@ namespace Coinbase.Pro.Websockets.Models
       public long Sequence { get; set; }
 
       [JsonProperty("order_id")]
-      public Guid OrderId { get; set; }
+      public string OrderId { get; set; }
 
       [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
       public decimal? Size { get; set; }
@@ -132,12 +184,17 @@ namespace Coinbase.Pro.Websockets.Models
    }
 
 
-
-   public partial class Open : Json
+   public partial class AuthenticatedEvent : Event
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
+      [JsonProperty("user_id", NullValueHandling = NullValueHandling.Ignore)]
+      public string UserId { get; set; }
 
+      [JsonProperty("profile_id", NullValueHandling = NullValueHandling.Ignore)]
+      public string ProfileId { get; set; }
+   }
+
+   public partial class OpenEvent : AuthenticatedEvent
+   {
       [JsonProperty("time")]
       public DateTimeOffset Time { get; set; }
 
@@ -148,7 +205,7 @@ namespace Coinbase.Pro.Websockets.Models
       public long Sequence { get; set; }
 
       [JsonProperty("order_id")]
-      public Guid OrderId { get; set; }
+      public string OrderId { get; set; }
 
       [JsonProperty("price")]
       public decimal Price { get; set; }
@@ -161,11 +218,8 @@ namespace Coinbase.Pro.Websockets.Models
    }
 
 
-   public partial class Done : Json
+   public partial class DoneEvent : AuthenticatedEvent
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
-
       [JsonProperty("time")]
       public DateTimeOffset Time { get; set; }
 
@@ -179,7 +233,7 @@ namespace Coinbase.Pro.Websockets.Models
       public decimal Price { get; set; }
 
       [JsonProperty("order_id")]
-      public Guid OrderId { get; set; }
+      public string OrderId { get; set; }
 
       [JsonProperty("reason")]
       public string Reason { get; set; }
@@ -192,11 +246,8 @@ namespace Coinbase.Pro.Websockets.Models
    }
 
 
-   public partial class Match : Json
+   public partial class MatchEvent : AuthenticatedEvent
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
-
       [JsonProperty("trade_id")]
       public long TradeId { get; set; }
 
@@ -204,10 +255,10 @@ namespace Coinbase.Pro.Websockets.Models
       public long Sequence { get; set; }
 
       [JsonProperty("maker_order_id")]
-      public Guid MakerOrderId { get; set; }
+      public string MakerOrderId { get; set; }
 
       [JsonProperty("taker_order_id")]
-      public Guid TakerOrderId { get; set; }
+      public string TakerOrderId { get; set; }
 
       [JsonProperty("time")]
       public DateTimeOffset Time { get; set; }
@@ -225,11 +276,8 @@ namespace Coinbase.Pro.Websockets.Models
       public OrderSide Side { get; set; }
    }
 
-   public partial class Change : Json
+   public partial class ChangeEvent : AuthenticatedEvent
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
-
       [JsonProperty("time")]
       public DateTimeOffset Time { get; set; }
 
@@ -237,7 +285,7 @@ namespace Coinbase.Pro.Websockets.Models
       public long Sequence { get; set; }
 
       [JsonProperty("order_id")]
-      public Guid OrderId { get; set; }
+      public string OrderId { get; set; }
 
       [JsonProperty("product_id")]
       public string ProductId { get; set; }
@@ -261,25 +309,16 @@ namespace Coinbase.Pro.Websockets.Models
       public decimal? OldFunds { get; set; }
    }
 
-   public partial class Activate : Json
+   public partial class ActivateEvent : AuthenticatedEvent
    {
-      [JsonProperty("type")]
-      public string Type { get; set; }
-
       [JsonProperty("product_id")]
       public string ProductId { get; set; }
 
       [JsonProperty("timestamp")]
       public string Timestamp { get; set; }
 
-      [JsonProperty("user_id")]
-      public string UserId { get; set; }
-
-      [JsonProperty("profile_id")]
-      public Guid ProfileId { get; set; }
-
       [JsonProperty("order_id")]
-      public Guid OrderId { get; set; }
+      public string OrderId { get; set; }
 
       [JsonProperty("stop_type")]
       public StopType StopType { get; set; }

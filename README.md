@@ -198,7 +198,7 @@ private void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e
    //Try parsing the e.Message JSON.
    if( WebSocketHelper.TryParse(e.Message, out var msg) )
    {
-      if( msg is Heartbeat hb )
+      if( msg is HeartbeatEvent hb )
       {
          Console.WriteLine($"Last Trade Id: {hb.LastTradeId}");
       }
