@@ -73,17 +73,8 @@ namespace Coinbase.Pro
             var body = http.RequestBody;
             var method = http.Request.Method.Method.ToUpperInvariant();
             var url = http.Request.RequestUri.PathAndQuery;
-
-            string timestamp;
-            if (this.Config.UseTimeApi)
-            {
-               var timeResult = await this.MarketData.GetTimeAsync().ConfigureAwait(false);
-               timestamp = timeResult.Epoch.ToCoinbaseTime();
-            }
-            else
-            {
-               timestamp = TimeHelper.GetCurrentUnixTimestampSeconds().ToCoinbaseTime();
-            }
+            var timestamp = await TimeHelper.GetCurrentTimestampAsync(this.Config.UseTimeApi)
+               .ConfigureAwait(false);
 
             var signature = ApiKeyAuthenticator.GenerateSignature(
                timestamp,

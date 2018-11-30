@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading.Tasks;
+using Coinbase.Pro.Models;
+using Flurl;
+using Flurl.Http;
 
 namespace Coinbase.Pro
 {
@@ -24,6 +28,25 @@ namespace Coinbase.Pro
          return UnixEpoch.AddSeconds(seconds);
 #endif
       }
+
+      public static async Task<string> GetCurrentTimestampAsync(bool useTimeApi)
+      {
+         if (useTimeApi)
+         {
+            var timeResult =
+               await CoinbaseProClient.Endpoint
+                  .AppendPathSegment("time")
+                  .WithHeader("User-Agent", CoinbaseProClient.UserAgent)
+                  .GetJsonAsync<Time>().ConfigureAwait(false);
+
+            return timeResult.Epoch.ToCoinbaseTime();
+         }
+         else
+         {
+            return GetCurrentUnixTimestampSeconds().ToCoinbaseTime();
+         }
+      }
+
    }
 
    internal static class TimeHelperExtensions

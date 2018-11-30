@@ -55,6 +55,9 @@
       <HintPath>..\packages\NUnit.3.11.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.10.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.10.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -69,6 +72,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebSocket4Net, Version=0.15.2.11, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket4Net.0.15.2\lib\net45\WebSocket4Net.dll</HintPath>
+    </Reference>
     <Reference Include="Z.ExtensionMethods.WithTwoNamespace, Version=2.1.0.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
       <HintPath>..\packages\Z.ExtensionMethods.WithTwoNamespace.2.1.0\lib\net45\Z.ExtensionMethods.WithTwoNamespace.dll</HintPath>
       <Private>True</Private>
@@ -93,6 +99,7 @@
     <Compile Include="IntegrationTests\GeneralTests.cs" />
     <Compile Include="IntegrationTests\IntegrationTest.cs" />
     <Compile Include="IntegrationTests\ProxyFactory.cs" />
+    <Compile Include="IntegrationTests\WebsocketTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

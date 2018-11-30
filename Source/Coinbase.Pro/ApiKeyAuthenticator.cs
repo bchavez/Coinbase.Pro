@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
+using Coinbase.Pro.Models;
+using Flurl;
+using Flurl.Http;
 
 namespace Coinbase.Pro
 {
@@ -22,5 +26,6 @@ namespace Coinbase.Pro
             return Convert.ToBase64String(sig);
          }
       }
+
    }
 }

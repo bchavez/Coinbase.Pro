@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.WebSockets;
 using System.Threading.Tasks;
 using Coinbase.Pro;
 
@@ -20,6 +21,8 @@ namespace Examples
          var data = await client.MarketData.GetStatsAsync("ETH-USD");
 
          Console.WriteLine($"ETH-USD Volume: {data.Volume}");
+
+         
       }
    }
 }
