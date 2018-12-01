@@ -34,27 +34,6 @@ let TestProject = TestProject("Coinbase.Tests", Folders)
 
 
 
-//Target "msb" (fun _ ->
-    
-//    let tag = "msb_build";
-
-//    let buildProps = [ 
-//                        "AssemblyOriginatorKeyFile", Projects.SnkFile
-////                        "SignAssembly", BuildContext.IsTaggedBuild.ToString()
-//                     ]
-
-//    !! CoinbaseProject.ProjectFile
-//    |> MSBuildReleaseExt (CoinbaseProject.OutputDirectory @@ tag) buildProps "Build"
-//    |> Log "AppBuild-Output: "
-
-
-//    !! TestProject.ProjectFile
-//    |> MSBuild "" "Build" (("Configuration", "Debug")::buildProps)
-//    |> Log "AppBuild-Output: "
-//)
-
-
-
 Target "dnx" (fun _ ->
     trace "DNX Build Task"
 
@@ -66,21 +45,6 @@ Target "dnx" (fun _ ->
 )
 
 Target "restore" (fun _ -> 
-     //trace "MS NuGet Project Restore"
-     //let lookIn = Folders.Lib @@ "build"
-     //let toolPath = findToolInSubPath "NuGet.exe" lookIn
-
-     //tracefn "NuGet Tool Path: %s" toolPath
-
-     //Projects.SolutionFile
-     //|> RestoreMSSolutionPackages (fun p ->
-     //       { 
-     //         p with 
-     //           OutputPath = (Folders.Source @@ "packages" )
-     //           ToolPath = toolPath
-     //       }
-     //   )
-
      trace ".NET Core Restore"
      Dotnet DotnetCommands.Restore CoinbaseProject.Folder
      Dotnet DotnetCommands.Restore TestProject.Folder
@@ -155,19 +119,6 @@ Target "Clean" (fun _ ->
 )
 
 open Fake.Testing
-
-//let RunTests() =
-//    CreateDir Folders.Test
-//    let nunit = findToolInSubPath "nunit3-console.exe" Folders.Lib
-
-//    !! TestProject.TestAssembly
-//    |> NUnit3 (fun p -> { p with 
-//                            ProcessModel = NUnit3ProcessModel.SingleProcessModel
-//                            ToolPath = nunit
-//                            ResultSpecs = [Files.TestResultFile]
-//                            ErrorLevel = TestRunnerErrorLevel.Error })
-
-
 open Fake.AppVeyor
 
 Target "ci" (fun _ ->
