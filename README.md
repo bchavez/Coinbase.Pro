@@ -94,7 +94,7 @@ The `order` object returned by the trading engine will have similar values to th
 
 
 ### Error Handling
-When errors occur after calling an API, **Coinbase Pro** delivers error messages in the response body of an failed HTTP call. To get the error message of a failed API call, first wrap your call in a `try/catch` statement and handle the `Exception ex`. The `GetErrorMessageAsync()` extension method will read the response body of the failed HTTP call as shown below:
+When errors occur after calling an API, **Coinbase Pro** delivers error messages in the response body of a failed HTTP call. First wrap your call in a `try/catch` statement and handle the `Exception ex`. Next, get the error message of a failed API call by calling `GetErrorMessageAsync()` extension method on the exception. The `GetErrorMessageAsync()` extension method will read the response body of the failed HTTP call as shown below:
 ```csharp
 try
 {
