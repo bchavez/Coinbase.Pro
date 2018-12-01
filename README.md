@@ -93,6 +93,22 @@ The `order` object returned by the trading engine will have similar values to th
 * [`CoinbaseProWebSocket`](https://docs.pro.coinbase.com/?r=1#websocket-feed) - [Examples](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/IntegrationTests/WebSocketTests.cs)
 
 
+### Error Handling
+When errors occur after calling an API, **Coinbase Pro** delivers error messages in the response body of an failed HTTP call. To get the error message of a failed API call, first wrap your call in a `try/catch` statement and handle the `Exception ex`. The `GetErrorMessageAsync()` extension method will read the response body of the failed HTTP call as shown below:
+```csharp
+try
+{
+   var order = await client.Orders.PlaceLimitOrderAsync(
+      OrderSide.Buy, "BTCX-USDX", size: 1, limitPrice: 5000m);
+}
+catch (Exception ex)
+{
+   var errorMsg = await ex.GetErrorMessageAsync();
+   Console.WriteLine(errorMsg);
+}
+//OUTPUT: "Product not found"
+```
+
 ### Pagination
 Some **Coinbase Pro** APIs are [paginable](https://docs.pro.coinbase.com/?r=1#pagination). However, **Coinbase Pro**'s paging can be [a little confusing](https://docs.pro.coinbase.com/?r=1#pagination) at first. So, let's review. Consider the following diagram below that illustrates the `Current Point In Time` over a paginable set of data with an item size of 5 items per page:
 ```

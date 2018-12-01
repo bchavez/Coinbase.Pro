@@ -94,6 +94,24 @@ namespace Coinbase.Tests.IntegrationTests
       }
 
       [Test]
+      public async Task create_order5_with_error()
+      {
+         try
+         {
+            var o = await this.client.Orders.PlaceLimitOrderAsync(
+               OrderSide.Buy, "BTCX-USD", size: 1, limitPrice: 5000m);
+
+            //o.Dump();
+         }
+         catch (Exception ex)
+         {
+            var errorMsg = await ex.GetErrorMessageAsync();
+            errorMsg.Dump();
+         }
+
+      }
+
+      [Test]
       public async Task get_fills1()
       {
          var f = await client.Fills.GetFillsByProductIdAsync("ETC-USD");

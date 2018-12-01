@@ -1,3 +1,6 @@
+## v2.0.2
+* Added GetErrorMessageAsync() extension method.
+
 ## v2.0.1
 * Production ready. Models and APIs finalized.
 

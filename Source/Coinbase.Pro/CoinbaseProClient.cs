@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading;
 using System.Threading.Tasks;
+using Coinbase.Pro.Models;
 using Flurl.Http;
 using Flurl.Http.Configuration;
 
@@ -91,6 +93,30 @@ namespace Coinbase.Pro
          }
 
          settings.BeforeCallAsync = SetHeaders;
+      }
+   }
+
+   public static class ExtensionsForExceptions
+   {
+      /// <summary>
+      /// Parses the response body of the failed HTTP call return any error status messages.
+      /// </summary>
+      public static async Task<string> GetErrorMessageAsync(this FlurlHttpException ex)
+      {
+         if( ex is null ) return null;
+
+         var error = await ex.GetResponseJsonAsync<JsonResponse>()
+            .ConfigureAwait(false);
+
+         return error?.Message;
+      }
+
+      /// <summary>
+      /// Parses the response body of the failed HTTP call return any error status messages.
+      /// </summary>
+      public static Task<string> GetErrorMessageAsync(this Exception ex)
+      {
+         return GetErrorMessageAsync(ex as FlurlHttpException);
       }
    }
 }
