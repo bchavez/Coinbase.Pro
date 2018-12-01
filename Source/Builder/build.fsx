@@ -212,15 +212,6 @@ Target "setup-snk"(fun _ ->
     ==> "dnx"
     ==> "zip"
 
-"BuildInfo"
-    //=?> ("setup-snk", BuildContext.IsTaggedBuild)
-    //==> "msb"
-    ==> "zip"
-
-"BuildInfo"
-    //=?> ("setup-snk", BuildContext.IsTaggedBuild)
-    ==> "zip"
-
 "dnx"
     ==> "nuget"
 

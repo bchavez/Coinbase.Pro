@@ -1,8 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>A .NET implementation for the Coinbase Pro API for online trading. Supports REST API and Websocket Feed API. All crypto currencies including Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), 0x (ZRX), and many more!</Description>
-    <PackageReleaseNotes>
-    </PackageReleaseNotes>
+    <PackageReleaseNotes>## v2.0.2
+* Added GetErrorMessageAsync() extension method.
+
+## v2.0.1
+* Production ready. Models and APIs finalized.
+
+## v0.3.0
+* All APIs are now implemented.
+* Websocket support implemented.
+
+## v0.2.0
+* Deposits, Withdraws, Fills, Stablecoin Conversions, PaymentMethods, Coinbase Accounts, Report and Trailing Volume endpoints supported.
+
+## v0.1.0
+* Initial implementation for orders and market data.
+Full History Here: https://github.com/bchavez/Coinbase.Pro/blob/master/HISTORY.md</PackageReleaseNotes>
     <Version>0.0.0-localbuild</Version>
     <Authors>Brian Chavez</Authors>
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>

@@ -13,7 +13,7 @@ namespace Coinbase.Tests.EndpointTests
       public override void BeforeEachTest()
       {
          base.BeforeEachTest();
-
+         
          client = new CoinbaseProClient(new Config
             {
                ApiKey = apiKey,
