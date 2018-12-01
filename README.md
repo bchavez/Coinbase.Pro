@@ -41,7 +41,7 @@ var client = new CoinbaseProClient(new Config
                Passphrase = "my-api-passphrase",
             });
 ```
-Once you have a `CoinbaseProClient` object, simply call one of any of the [API endpoints](https://github.com/bchavez/Coinbase.Pro#full-api-support). Extensive examples can be [found here](https://github.com/bchavez/Coinbase.Pro/tree/master/Source/Coinbase.Tests/EndpointTests). Also, **Coinbase**'s API endpoint reference can be [found here](https://docs.pro.coinbase.com/?r=1).
+Once you have a `CoinbaseProClient` object, you can call any one of the many [API endpoints listed here](https://github.com/bchavez/Coinbase.Pro#full-api-support). Extensive examples can be [found here](https://github.com/bchavez/Coinbase.Pro/tree/master/Source/Coinbase.Tests/EndpointTests). For your reference, a link to the **Coinbase Pro** developer documentation can be [found here](https://docs.pro.coinbase.com). 
 
 As an example, to create [a **limit** order](https://docs.pro.coinbase.com/?r=1#place-a-new-order) on the **buy** side of the **`ETH-USD`** order book for **`2 ETH`** at **`100 USD`** each, do the following:
 ```csharp
@@ -158,7 +158,7 @@ More information about pagination can be [found here](https://docs.pro.coinbase.
 ## WebSocket Feeds
 
 This library also supports live WebSocket feeds. There are two types **Authenticated** and **Unauthenticated**  feeds. 
-### Unauthenticated Websocket
+### Unauthenticated WebSocket
 To create an unauthenticated feed, simply do the following:
 ```csharp
 var socket = new CoinbaseProWebsocket();
