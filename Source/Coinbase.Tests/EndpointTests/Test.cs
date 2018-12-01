@@ -13,7 +13,7 @@ namespace Coinbase.Tests.EndpointTests
       public virtual void BeforeEachTest()
       {
          server = new HttpTest();
-         Directory.SetCurrentDirectory(Path.GetDirectoryName(this.GetType().Assembly.Location));
+         //Directory.SetCurrentDirectory(Path.GetDirectoryName(this.GetType().Assembly.Location));
       }
 
       [TearDown]

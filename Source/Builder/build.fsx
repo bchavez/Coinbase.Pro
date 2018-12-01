@@ -34,24 +34,24 @@ let TestProject = TestProject("Coinbase.Tests", Folders)
 
 
 
-Target "msb" (fun _ ->
+//Target "msb" (fun _ ->
     
-    let tag = "msb_build";
+//    let tag = "msb_build";
 
-    let buildProps = [ 
-                        "AssemblyOriginatorKeyFile", Projects.SnkFile
-//                        "SignAssembly", BuildContext.IsTaggedBuild.ToString()
-                     ]
+//    let buildProps = [ 
+//                        "AssemblyOriginatorKeyFile", Projects.SnkFile
+////                        "SignAssembly", BuildContext.IsTaggedBuild.ToString()
+//                     ]
 
-    !! CoinbaseProject.ProjectFile
-    |> MSBuildReleaseExt (CoinbaseProject.OutputDirectory @@ tag) buildProps "Build"
-    |> Log "AppBuild-Output: "
+//    !! CoinbaseProject.ProjectFile
+//    |> MSBuildReleaseExt (CoinbaseProject.OutputDirectory @@ tag) buildProps "Build"
+//    |> Log "AppBuild-Output: "
 
 
-    !! TestProject.ProjectFile
-    |> MSBuild "" "Build" (("Configuration", "Debug")::buildProps)
-    |> Log "AppBuild-Output: "
-)
+//    !! TestProject.ProjectFile
+//    |> MSBuild "" "Build" (("Configuration", "Debug")::buildProps)
+//    |> Log "AppBuild-Output: "
+//)
 
 
 
@@ -66,20 +66,20 @@ Target "dnx" (fun _ ->
 )
 
 Target "restore" (fun _ -> 
-     trace "MS NuGet Project Restore"
-     let lookIn = Folders.Lib @@ "build"
-     let toolPath = findToolInSubPath "NuGet.exe" lookIn
+     //trace "MS NuGet Project Restore"
+     //let lookIn = Folders.Lib @@ "build"
+     //let toolPath = findToolInSubPath "NuGet.exe" lookIn
 
-     tracefn "NuGet Tool Path: %s" toolPath
+     //tracefn "NuGet Tool Path: %s" toolPath
 
-     Projects.SolutionFile
-     |> RestoreMSSolutionPackages (fun p ->
-            { 
-              p with 
-                OutputPath = (Folders.Source @@ "packages" )
-                ToolPath = toolPath
-            }
-        )
+     //Projects.SolutionFile
+     //|> RestoreMSSolutionPackages (fun p ->
+     //       { 
+     //         p with 
+     //           OutputPath = (Folders.Source @@ "packages" )
+     //           ToolPath = toolPath
+     //       }
+     //   )
 
      trace ".NET Core Restore"
      Dotnet DotnetCommands.Restore CoinbaseProject.Folder
@@ -156,16 +156,16 @@ Target "Clean" (fun _ ->
 
 open Fake.Testing
 
-let RunTests() =
-    CreateDir Folders.Test
-    let nunit = findToolInSubPath "nunit3-console.exe" Folders.Lib
+//let RunTests() =
+//    CreateDir Folders.Test
+//    let nunit = findToolInSubPath "nunit3-console.exe" Folders.Lib
 
-    !! TestProject.TestAssembly
-    |> NUnit3 (fun p -> { p with 
-                            ProcessModel = NUnit3ProcessModel.SingleProcessModel
-                            ToolPath = nunit
-                            ResultSpecs = [Files.TestResultFile]
-                            ErrorLevel = TestRunnerErrorLevel.Error })
+//    !! TestProject.TestAssembly
+//    |> NUnit3 (fun p -> { p with 
+//                            ProcessModel = NUnit3ProcessModel.SingleProcessModel
+//                            ToolPath = nunit
+//                            ResultSpecs = [Files.TestResultFile]
+//                            ErrorLevel = TestRunnerErrorLevel.Error })
 
 
 open Fake.AppVeyor
@@ -176,13 +176,19 @@ Target "ci" (fun _ ->
 
 Target "test" (fun _ ->
     trace "TEST"
-    RunTests()
+    //RunTests()
+    CreateDir Folders.Test
+
+    let args = sprintf "test --test-adapter-path:. --logger:\"nunit;LogFilePath=%s\"" Files.TestResultFile
+
+    dotnet args TestProject.Folder
 )
 
 Target "citest" (fun _ ->
     trace "CI TEST"
-    RunTests()
-    UploadTestResultsXml TestResultsType.NUnit3 Folders.Test
+    //RunTests()
+    //UploadTestResultsXml TestResultsType.NUnit3 Folders.Test
+    dotnet "test --test-adapter-path:. --logger:Appveyor" TestProject.Folder
 )
 
 
@@ -208,7 +214,7 @@ Target "setup-snk"(fun _ ->
 
 "BuildInfo"
     //=?> ("setup-snk", BuildContext.IsTaggedBuild)
-    ==> "msb"
+    //==> "msb"
     ==> "zip"
 
 "BuildInfo"
@@ -230,10 +236,10 @@ Target "setup-snk"(fun _ ->
 
 
 //test task depends on msbuild
-"msb"
+"dnx"
     ==> "test"
 
 
 
 // start build
-RunTargetOrDefault "msb"
+RunTargetOrDefault "dnx"
