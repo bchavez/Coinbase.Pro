@@ -39,15 +39,15 @@ Target "dnx" (fun _ ->
 
     let tag = "dnx_build"
     
-    Dotnet DotnetCommands.Restore CoinbaseProject.Folder
+    //Dotnet DotnetCommands.Restore CoinbaseProject.Folder
     //Dotnet DotnetCommands.Restore TestProject.Folder
-    DotnetBuild CoinbaseProject (CoinbaseProject.OutputDirectory @@ tag)
+    DotnetBuild CoinbaseProject tag
 )
 
 Target "restore" (fun _ -> 
      trace ".NET Core Restore"
-     Dotnet DotnetCommands.Restore CoinbaseProject.Folder
-     Dotnet DotnetCommands.Restore TestProject.Folder
+     DotnetRestore CoinbaseProject
+     DotnetRestore TestProject
  )
 
 open Ionic.Zip
@@ -127,19 +127,30 @@ Target "ci" (fun _ ->
 
 Target "test" (fun _ ->
     trace "TEST"
-    //RunTests()
+
     CreateDir Folders.Test
 
-    let args = sprintf "test --test-adapter-path:. --logger:\"nunit;LogFilePath=%s\"" Files.TestResultFile
-
-    dotnet args TestProject.Folder
+    DotNetCli.Test( fun p ->
+    { p with
+       WorkingDir = TestProject.Folder
+       AdditionalArgs = [
+                          "--test-adapter-path:."
+                          sprintf "--logger:\"nunit;LogFilePath=%s\"" Files.TestResultFile
+                        ]
+    })
 )
 
 Target "citest" (fun _ ->
     trace "CI TEST"
-    //RunTests()
-    //UploadTestResultsXml TestResultsType.NUnit3 Folders.Test
-    dotnet "test --test-adapter-path:. --logger:Appveyor" TestProject.Folder
+
+    DotNetCli.Test( fun p ->
+    { p with
+       WorkingDir = TestProject.Folder
+       AdditionalArgs = [
+                          "--test-adapter-path:."
+                          "--logger:Appveyor"
+                        ]
+    })
 )
 
 
