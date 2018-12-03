@@ -32,7 +32,7 @@ Install-Package Coinbase.Pro
 Getting Started
 ------
 
-To get started, simply new create a new `CoinbaseProClient` object as shown below:
+To get started, simply create a new `CoinbaseProClient` object as shown below:
 ```csharp
 var client = new CoinbaseProClient(new Config
             {
