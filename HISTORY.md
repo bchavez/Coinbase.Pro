@@ -1,5 +1,5 @@
 ## v2.0.3
-* Issue #4: Updates Newtonsoft.Json to 12.0.1 that contains fix for parsing decimals exponential notation.
+* Issue #4: Updates Newtonsoft.Json to 12.0.1 that contains fix for parsing decimals with exponential notation.
 
 ## v2.0.2
 * Added GetErrorMessageAsync() extension method.
