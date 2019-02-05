@@ -1,3 +1,6 @@
+## v2.0.4
+* Issue #6: Fixed issue parsing null for best bid/ask in markets without volume and empty order book for `TickerEvent` webhook.
+
 ## v2.0.3
 * Issue #4: Updates Newtonsoft.Json to 12.0.1 that contains fix for parsing decimals with exponential notation.
 
