@@ -135,18 +135,18 @@ namespace Coinbase.Pro.Models
    {
       public override OrderLiquidity ReadJson(JsonReader reader, Type objectType, OrderLiquidity existingValue, bool hasExistingValue, JsonSerializer serializer)
       {
-         var price = reader.ReadAsDecimal();
-         var size = reader.ReadAsDecimal();
+         var priceRaw = reader.ReadAsString();
+         if( string.IsNullOrEmpty(priceRaw) || !decimal.TryParse(priceRaw, out var price)) throw new JsonReaderException($"Price in L2 update change is unexpectedly null or an invalid decimal. ({priceRaw})");
 
+         var sizeRaw = reader.ReadAsString();
+         if( string.IsNullOrEmpty(priceRaw) || !decimal.TryParse(priceRaw, out var size)) throw new JsonReaderException($"Size in L2 update change is unexpectedly null or an invalid decimal. ({sizeRaw})");
+         
          reader.Read();
-
-         if (price is null) throw new JsonReaderException("Price in L2 update change is unexpectedly null.");
-         if (size is null) throw new JsonReaderException("Size in L2 update change is unexpectedly null.");
 
          var ol = new OrderLiquidity
             {
-               Price = price.Value,
-               Size = size.Value
+               Price = price,
+               Size = size
             };
 
          return ol;
@@ -174,18 +174,20 @@ namespace Coinbase.Pro.Models
       public override L2UpdateChange ReadJson(JsonReader reader, Type objectType, L2UpdateChange existingValue, bool hasExistingValue, JsonSerializer serializer)
       {
          var side = reader.ReadAsString();
-         var price = reader.ReadAsDecimal();
-         var size = reader.ReadAsDecimal();
+
+
+         var priceRaw = reader.ReadAsString();
+         if( string.IsNullOrEmpty(priceRaw) || !decimal.TryParse(priceRaw, out var price)) throw new JsonReaderException($"Price in L2 update change is unexpectedly null or an invalid decimal. ({priceRaw})");
+
+         var sizeRaw = reader.ReadAsString();
+         if( string.IsNullOrEmpty(priceRaw) || !decimal.TryParse(priceRaw, out var size)) throw new JsonReaderException($"Size in L2 update change is unexpectedly null or an invalid decimal. ({sizeRaw})");
 
          reader.Read();
 
-         if( price is null ) throw new JsonReaderException("Price in L2 update change is unexpectedly null.");
-         if( size is null) throw new JsonReaderException("Size in L2 update change is unexpectedly null.");
-
          var c = new L2UpdateChange
             {
-               Price = price.Value,
-               Size = size.Value
+               Price = price,
+               Size = size
             };
 
          if( Enum.TryParse(side, ignoreCase: true, out OrderSide s) )
