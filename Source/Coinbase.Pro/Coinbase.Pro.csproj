@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>A .NET implementation for the Coinbase Pro API for online trading. Supports REST API and Websocket Feed API. All crypto currencies including Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), 0x (ZRX), and many more!</Description>
     <PackageReleaseNotes>
@@ -27,6 +27,7 @@
   <ItemGroup>
     <PackageReference Include="Flurl" Version="2.8.0" />
     <PackageReference Include="Flurl.Http" Version="2.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Roslynator.Analyzers" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
