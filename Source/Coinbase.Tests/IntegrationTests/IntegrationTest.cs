@@ -35,7 +35,7 @@ namespace Coinbase.Tests.IntegrationTests
 
       protected void ReadSecrets()
       {
-         var json = File.ReadAllText("../../.secrets.txt");
+         var json = File.ReadAllText("../../../.secrets.txt");
          this.secrets = JsonConvert.DeserializeObject<Secrets>(json);
       }
    }

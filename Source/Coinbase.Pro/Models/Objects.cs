@@ -34,10 +34,10 @@ namespace Coinbase.Pro.Models
       public bool MarginEnabled { get; set; }
 
       [JsonProperty("max_market_funds")]
-      public decimal MaxMarketFunds { get; set; }
+      public decimal? MaxMarketFunds { get; set; }
 
       [JsonProperty("min_market_funds")]
-      public decimal MinMarketFunds { get; set; }
+      public decimal? MinMarketFunds { get; set; }
 
       [JsonProperty("post_only")]
       public bool PostOnly { get; set; }

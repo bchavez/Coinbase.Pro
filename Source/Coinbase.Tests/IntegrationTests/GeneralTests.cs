@@ -170,5 +170,13 @@ namespace Coinbase.Tests.IntegrationTests
 
          d.Dump();
       }
+
+      [Test]
+      public async Task can_get_sandbox_products()
+      {
+         var p = await this.client.MarketData.GetProductsAsync();
+
+         p.Dump();
+      }
    }
 }

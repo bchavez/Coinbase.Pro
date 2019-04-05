@@ -10,6 +10,8 @@ namespace Coinbase.Tests
 
       public static string ProductsJson => ReadJsonFile("Products.json");
 
+      public static string ProductsJson2 => ReadJsonFile("Products2.json");
+
       public const string OrderBookLevel1Json = @"{
     ""asks"": [
         [
@@ -351,9 +353,6 @@ namespace Coinbase.Tests
         ""recorded_at"": ""1973-11-29T00:05:02.123456Z""
     }
 ]";
-
-
-
    }
 
    
