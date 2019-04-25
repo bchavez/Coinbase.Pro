@@ -1,5 +1,6 @@
 ## v2.0.6
 * Issue 8: Fixed JSON deseralization error with `client.Fills.GetFillsByProductIdAsync` where `usd_volume` could be null.
+* Added `client.EnableFiddlerDebugProxy` helper method for debugging client requests.
 
 ## v2.0.5
 * Issue 7: Fixed JSON deserialization error with `client.MarketData.GetProductsAsync` when using sandbox.

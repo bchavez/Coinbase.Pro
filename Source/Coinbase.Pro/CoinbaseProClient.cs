@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
@@ -93,6 +95,43 @@ namespace Coinbase.Pro
          }
 
          settings.BeforeCallAsync = SetHeaders;
+      }
+
+      /// <summary>
+      /// Enable HTTP debugging via Fiddler. Ensure Tools > Fiddler Options... > Connections is enabled and has a port configured.
+      /// Then, call this method with the following URL format: http://localhost.:PORT where PORT is the port number Fiddler proxy
+      /// is listening on. (Be sure to include the period after the localhost).
+      /// </summary>
+      /// <param name="proxyUrl">The full proxy URL Fiddler proxy is listening on. IE: http://localhost.:8888 - The period after localhost is important to include.</param>
+      public CoinbaseProClient EnableFiddlerDebugProxy(string proxyUrl)
+      {
+         var webProxy = new WebProxy(proxyUrl, BypassOnLocal: false);
+
+         this.Configure(cf =>
+            {
+               cf.HttpClientFactory = new DebugProxyFactory(webProxy);
+            });
+
+         return this;
+      }
+
+      private class DebugProxyFactory : DefaultHttpClientFactory
+      {
+         private readonly WebProxy proxy;
+
+         public DebugProxyFactory(WebProxy proxy)
+         {
+            this.proxy = proxy;
+         }
+
+         public override HttpMessageHandler CreateMessageHandler()
+         {
+            return new HttpClientHandler
+               {
+                  Proxy = this.proxy,
+                  UseProxy = true
+               };
+         }
       }
    }
 
