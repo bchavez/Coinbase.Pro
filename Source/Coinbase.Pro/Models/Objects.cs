@@ -602,7 +602,7 @@ namespace Coinbase.Pro.Models
       public bool Settled { get; set; }
 
       [JsonProperty("usd_volume")]
-      public decimal UsdVolume { get; set; }
+      public decimal? UsdVolume { get; set; }
    }
 
    /// <summary>
