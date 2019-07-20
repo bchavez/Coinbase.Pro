@@ -39,8 +39,13 @@ var client = new CoinbaseProClient(new Config
                ApiKey = "my-api-key",
                Secret = "my-api-secret",
                Passphrase = "my-api-passphrase",
+               //Override the ApiUrl property to use Sandbox.
+               //ApiUrl = "https://api-public.sandbox.pro.coinbase.com"
             });
 ```
+
+By default, the `ApiUrl` property is set to use **production**. If you want to use the **sandbox**, set the `ApiUrl` property to `https://api-public.sandbox.pro.coinbase.com` as described in the [documentation here](https://docs.pro.coinbase.com/#sandbox). Setting the `ApiUrl` property will override the **production** REST API URL that is set by default.
+
 Once you have a `CoinbaseProClient` object, you can call any one of the many [API endpoints listed here](https://github.com/bchavez/Coinbase.Pro#full-api-support). Extensive examples can be [found here](https://github.com/bchavez/Coinbase.Pro/tree/master/Source/Coinbase.Tests/EndpointTests). For your reference, a link to the **Coinbase Pro** developer documentation can be [found here](https://docs.pro.coinbase.com). 
 
 As an example, to create [a **limit** order](https://docs.pro.coinbase.com/?r=1#place-a-new-order) on the **buy** side of the **`ETH-USD`** order book for **`2 ETH`** at **`100 USD`** each, do the following:
@@ -173,8 +178,12 @@ var socket = new CoinbaseProWebSocket(new WebSocketConfig
       ApiKey = "my-api-key",
       Secret = "my-api-secret",
       Passphrase = "my-api-passphrase",
+      //Override the SocketUri property to use Sandbox.
+      //SocketUri = "wss://ws-feed-public.sandbox.pro.coinbase.com"
    });
 ```
+By default, the `SocketUri` property is set to use **production**. If you want to use the **sandbox**, set the `SocketUri` property to `wss://ws-feed-public.sandbox.pro.coinbase.com` as described in the [documentation here](https://docs.pro.coinbase.com/#sandbox). Setting the `SocketUri` property will override the **production** Websocket feed URL that is set by default.
+
 ### Subscribing to Events over WebSocket
 Be sure to [check the documentation here](https://docs.pro.coinbase.com/?r=1#subscribe) to know all the events you can subscribe to. The following example demonstrates how to continue setting  up the WebSocket for simple *heartbeat* events.
 ```csharp
