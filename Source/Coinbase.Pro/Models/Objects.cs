@@ -1157,5 +1157,16 @@ namespace Coinbase.Pro.Models
       public DateTimeOffset RecordedAt { get; set; }
    }
 
+   public partial class Fee
+   {
+      [JsonProperty("maker_fee_rate")]
+      public decimal MakerFee { get; set; }
 
+      [JsonProperty("taker_fee_rate")]
+      public decimal TakerFee { get; set; }
+
+      [JsonProperty("usd_volume")]
+      public decimal USDVolume { get; set; }
+
+   }
 }

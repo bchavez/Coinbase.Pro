@@ -31,4 +31,31 @@ namespace Coinbase.Pro
             .GetJsonAsync<List<TrailingVolume>>(cancellationToken);
       }
    }
+
+   public interface IFeesEndpoint
+   {
+      /// <summary>
+      /// This request will return your 30-day trailing volume for all products.
+      /// This is a cached value that’s calculated every day at midnight UTC.
+      /// </summary>
+      /// <param name="cancellationToken"></param>
+      Task<Fee> GetFeesAsync(CancellationToken cancellationToken = default);
+   }
+
+   public partial class CoinbaseProClient : IFeesEndpoint
+   {
+      public IFeesEndpoint Fees => this;
+
+      protected internal Url FeesEndpoint => this.Config.ApiUrl.AppendPathSegments("fees");
+
+      Task<Fee> IFeesEndpoint.GetFeesAsync(CancellationToken cancellationToken)
+      {
+         return this.FeesEndpoint
+            .WithClient(this)            
+            .GetJsonAsync<Fee>(cancellationToken);
+      }
+   }
+
+
+
 }
