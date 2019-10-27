@@ -43,7 +43,6 @@ namespace Coinbase.Pro
       IWithdrawalsEndpoint Withdrawals { get; }
       ICoinbaseAccountsEndpoint CoinbaseAccounts { get; }
       IFeesEndpoint Fees { get; }
-      
    }
 
    public partial class CoinbaseProClient : FlurlClient, ICoinbaseProClient
@@ -58,8 +57,6 @@ namespace Coinbase.Pro
       }
 
       public Config Config { get; }
-
-    
 
       internal static readonly string UserAgent =
          $"{AssemblyVersionInformation.AssemblyProduct}/{AssemblyVersionInformation.AssemblyVersion} ({AssemblyVersionInformation.AssemblyTitle}; {AssemblyVersionInformation.AssemblyDescription})";
