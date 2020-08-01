@@ -200,10 +200,11 @@ Target.create "Clean" (fun _ ->
 
 open Fake.DotNet.Testing
 
-let RunTests() =
+let RunTests(logger: string option) =
    let config (opts: DotNet.TestOptions) =
       {opts with  
-            NoBuild = true }
+            NoBuild = true
+            Logger = logger}
    DotNet.test config TestProject.Folder
 
 open Fake.BuildServer
@@ -215,13 +216,13 @@ Target.create "ci" (fun _ ->
 Target.description "PROJECT TEST TASK"
 Target.create "test" (fun _ ->
     Trace.trace "TEST"
-    RunTests()
+    RunTests(None)
 )
 
 Target.description "CI TEST TASK"
 Target.create "citest" (fun _ ->
     Trace.trace "CI TEST"
-    RunTests()
+    RunTests(Some "Appveyor")
     
     //Files.TestResultFile
     //|> Trace.publish( ImportData.Xunit )
