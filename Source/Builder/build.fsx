@@ -74,6 +74,7 @@ let Files = Setup.Files(ProjectName, Folders)
 let CoinbaseProject = NugetProject("Coinbase.Pro", "Coinbase Pro API for .NET", Folders)
 let TestProject = TestProject("Coinbase.Tests", Folders)
 
+let EnableSigning = false
 
 
 Target.description "MAIN BUILD TASK"
@@ -158,10 +159,12 @@ Target.description "PROJECT BUILDINFO TASK"
 Target.create "BuildInfo" (fun _ ->
     
     Trace.trace "Writing Assembly Build Info"
+    
+    let includeSnk = EnableSigning && BuildContext.IsTaggedBuild
 
-    MakeBuildInfo CoinbaseProject Folders (fun bip -> 
-        { bip with
-            ExtraAttrs = MakeAttributes(BuildContext.IsTaggedBuild) } )
+    let customAttributes = MakeAttributes(includeSnk)
+
+    MakeBuildInfo CoinbaseProject Folders (fun bip -> { bip with ExtraAttrs = customAttributes } )
 
     Xml.pokeInnerText CoinbaseProject.ProjectFile "/Project/PropertyGroup/Version" BuildContext.FullVersion
 
@@ -254,8 +257,7 @@ open Fake.Core.TargetOperators
 
 "Clean"  ==> "restore"  ==> "BuildInfo"
 
-"BuildInfo" //=?> ("setup-snk", BuildContext.IsTaggedBuild)
-            ==> "dnx" ==> "zip"
+"BuildInfo" =?> ("setup-snk", EnableSigning && BuildContext.IsTaggedBuild) ==> "dnx" ==> "zip"
 
 "dnx" ==> "nuget"
 
