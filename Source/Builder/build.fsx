@@ -129,7 +129,6 @@ Target.create "nuget" (fun _ ->
                Configuration = DotNet.BuildConfiguration.Release
                OutputPath = Some(Folders.Package) }
     
-    //DotnetPack BogusProject Folders.Package
     DotNet.pack config CoinbaseProject.Folder
 )
 
@@ -223,10 +222,6 @@ Target.description "CI TEST TASK"
 Target.create "citest" (fun _ ->
     Trace.trace "CI TEST"
     RunTests(Some "Appveyor")
-    
-    //Files.TestResultFile
-    //|> Trace.publish( ImportData.Xunit )
-    
 )
 
 

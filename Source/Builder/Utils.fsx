@@ -129,14 +129,12 @@ type TestProject(name : string, folders : Folders) =
 type NugetProject(name : string, assemblyTitle : string, folders : Folders) =
     inherit Project(name, folders)
     
-    //let projectJson = base.Folder @@ "project.json"
     let outputDirectory = folders.CompileOutput @@ name
     let outputDll = outputDirectory @@ sprintf "%s.dll" name
     
     let nugetSpecFileName = sprintf "%s.nuspec" name
     let nugetPkg = folders.Package @@ sprintf "%s.%s.nupkg" name BuildContext.FullVersion
 
-    //member this.ProjectJson = projectJson
     member this.OutputDirectory = outputDirectory
     member this.OutputDll = outputDll
     
@@ -231,7 +229,6 @@ module History =
 
     let NugetText historyFile githubUrl =
         let allText = All historyFile
-        //allText.Split("##").Where( fun s -> s.IsNullOrWhiteSpace() ).Take(5)
         let q = query{
                 for str in allText.Split("##") do
                 where(str.IsNotNullOrWhiteSpace())
