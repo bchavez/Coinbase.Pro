@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Security.Authentication;
+using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SuperSocket.ClientEngine;
 using WebSocket4Net;
 
 
@@ -26,7 +29,7 @@ namespace Coinbase.Pro.WebSockets
    {
       public const string Endpoint = "wss://ws-feed.pro.coinbase.com";
 
-      public WebSocket RawSocket { get; private set; }
+      public WebSocket RawSocket { get; set; }
 
       public CoinbaseProWebSocket(WebSocketConfig config = null)
       {
@@ -35,8 +38,14 @@ namespace Coinbase.Pro.WebSockets
 
       public WebSocketConfig Config { get; }
 
-      protected TaskCompletionSource<bool> connecting;
+      protected TaskCompletionSource<bool> connectingTcs;
 
+      protected IProxyConnector Proxy { get; set; }
+
+      /// <summary>
+      /// Connect the websocket to Coinbase Pro.
+      /// </summary>
+      /// <returns></returns>
       public Task ConnectAsync()
       {
          if( this.RawSocket != null ) throw new InvalidOperationException(
@@ -44,18 +53,34 @@ namespace Coinbase.Pro.WebSockets
             $"If you get this exception, you'll need to dispose of this {nameof(CoinbaseProWebSocket)} and create a new instance. " +
             $"Don't call {nameof(ConnectAsync)} multiple times on the same instance.");
 
-         this.connecting = new TaskCompletionSource<bool>();
+         this.connectingTcs = new TaskCompletionSource<bool>();
 
-         this.RawSocket = new WebSocket(this.Config.SocketUri);
+         if( this.RawSocket is null )
+         {
+            this.RawSocket ??= new WebSocket(this.Config.SocketUri);
+            this.RawSocket.Proxy = this.Proxy;
+            this.RawSocket.Security.EnabledSslProtocols = SslProtocols.Tls12;
+         }
+
          this.RawSocket.Opened += RawSocket_Opened;
          this.RawSocket.Open();
 
-         return this.connecting.Task;
+         return this.connectingTcs.Task;
       }
 
       private void RawSocket_Opened(object sender, EventArgs e)
       {
-         this.connecting.SetResult(true);
+         if( sender is WebSocket socket )
+         {
+            socket.Opened -= RawSocket_Opened;
+         }
+         
+         Task.Run(() => this.connectingTcs.SetResult(true));
+      }
+
+      public void EnableFiddlerDebugProxy(IProxyConnector proxy)
+      {
+         this.Proxy = proxy;
       }
 
       public async Task SubscribeAsync(Subscription subscription)
@@ -90,8 +115,8 @@ namespace Coinbase.Pro.WebSockets
 
       public void Dispose()
       {
-         this.RawSocket.Opened -= RawSocket_Opened;
          this.RawSocket?.Dispose();
+         this.RawSocket = null;
       }
    }
 }

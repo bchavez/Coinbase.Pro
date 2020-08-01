@@ -1,3 +1,9 @@
+## v3.0.1
+* External references updated.
+* Added `CoinbaseProWebSocket.EnableFiddlerDebugProxy` method for debugging.
+* Issue 15: `CoinbaseProWebSocket` using TLS 1.2 by default to prevent connection hanging.
+* Issue 15: Fixed threading issue in `CoinbaseProWebSocket` that may have prevented websocket from working.
+
 ## v2.0.6
 * Issue 8: Fixed JSON deseralization error with `client.Fills.GetFillsByProductIdAsync` where `usd_volume` could be null.
 * Added `client.EnableFiddlerDebugProxy` helper method for debugging client requests.

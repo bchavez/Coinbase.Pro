@@ -201,7 +201,7 @@ var sub = new Subscription
    {
       ProductIds =
          {
-            "ETH-USD",
+            "BTC-USD",
          },
       Channels =
          {
@@ -225,13 +225,13 @@ private void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e
    {
       if( msg is HeartbeatEvent hb )
       {
-         Console.WriteLine($"Last Trade Id: {hb.LastTradeId}");
+         Console.WriteLine($"Sequence: {hb.Sequence}, Last Trade Id: {hb.LastTradeId}");
       }
    }
 }
 ```
 
-A complete working example can be [found here](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/IntegrationTests/WebSocketTests.cs).
+A complete working example can be [found here](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Examples/Program.cs) and [here](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/IntegrationTests/WebSocketTests.cs).
 
 If you'd like to use your own WebSocket implementation, the `WebSocketHelper` is a helpful utility class for creating authenticated JSON subscription messages.
 
