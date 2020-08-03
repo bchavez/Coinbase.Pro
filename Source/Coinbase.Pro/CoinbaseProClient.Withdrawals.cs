@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
@@ -32,6 +33,13 @@ namespace Coinbase.Pro
       Task<CryptoWithdraw> WithdrawFundsToCryptoAddressAsync(
          string cryptoAddress, decimal amount, string currency,
          CancellationToken cancellationToken = default);
+
+      /// <summary>
+      /// Lists withdrawals history.
+      /// </summary>
+      Task<List<Withdrawal>> ListWithdrawals(
+         string type, DateTime? before, DateTime? after,
+         CancellationToken cancellationToken = default);
    }
 
    public partial class CoinbaseProClient : IWithdrawalsEndpoint
@@ -39,17 +47,18 @@ namespace Coinbase.Pro
       public IWithdrawalsEndpoint Withdrawals => this;
 
       protected internal Url WithdrawalsEndpoint => this.Config.ApiUrl.AppendPathSegment("withdrawals");
+      protected internal Url TransfersEndpoint => this.Config.ApiUrl.AppendPathSegment("transfers");
 
 
       Task<PaymentMethodWithdraw> IWithdrawalsEndpoint.WithdrawFundsToPaymentMethodAsync(string paymentMethodId, decimal amount, string currency,
          CancellationToken cancellationToken)
       {
          var d = new CreatePaymentMethodWithdraw
-            {
-               Amount = amount,
-               Currency = currency,
-               PaymentMethodId = paymentMethodId
-            };
+         {
+            Amount = amount,
+            Currency = currency,
+            PaymentMethodId = paymentMethodId
+         };
 
          return this.WithdrawalsEndpoint
             .WithClient(this)
@@ -62,11 +71,11 @@ namespace Coinbase.Pro
          CancellationToken cancellationToken)
       {
          var d = new CreateCoinbaseWithdraw
-            {
-               Amount = amount,
-               Currency = currency,
-               CoinbaseAccountId = coinbaseAccountId
-            };
+         {
+            Amount = amount,
+            Currency = currency,
+            CoinbaseAccountId = coinbaseAccountId
+         };
 
          return this.WithdrawalsEndpoint
             .WithClient(this)
@@ -79,17 +88,27 @@ namespace Coinbase.Pro
          CancellationToken cancellationToken)
       {
          var d = new CreateCryptAddressWithdrawl
-            {
-               Amount = amount,
-               Currency = currency,
-               CryptoAddress = cryptoAddress
-            };
+         {
+            Amount = amount,
+            Currency = currency,
+            CryptoAddress = cryptoAddress
+         };
 
          return this.WithdrawalsEndpoint
             .WithClient(this)
             .AppendPathSegment("crypto")
             .PostJsonAsync(d, cancellationToken)
             .ReceiveJson<CryptoWithdraw>();
+      }
+
+      public Task<List<Withdrawal>> ListWithdrawals(string type, DateTime? before, DateTime? after, CancellationToken cancellationToken = default)
+      {
+         return this.TransfersEndpoint
+            .WithClient(this)
+            .SetQueryParam("type", type)
+            .SetQueryParam("before", before)
+            .SetQueryParam("after", after)
+            .GetJsonAsync<List<Withdrawal>>(cancellationToken);
       }
    }
 }

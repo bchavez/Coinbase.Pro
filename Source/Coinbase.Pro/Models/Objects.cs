@@ -689,6 +689,69 @@ namespace Coinbase.Pro.Models
    }
 
 
+   public class Withdrawal : Json
+   {
+      [JsonProperty("id")]
+      public string Id { get; set; }
+
+      [JsonProperty("type")]
+      public string Type { get; set; }
+
+      [JsonProperty("created_at")]
+      public DateTime? CreatedAt { get; set; }
+
+      [JsonProperty("completed_at")]
+      public DateTime? CompletedAt { get; set; }
+
+      [JsonProperty("canceled_at")]
+      public DateTime? CancelledAt { get; set; }
+
+      [JsonProperty("processed_at")]
+      public DateTime? ProcessedAt { get; set; }
+
+      [JsonProperty("account_id")]
+      public string AccountId { get; set; }
+
+      [JsonProperty("user_id")]
+      public string UserId { get; set; }
+
+      [JsonProperty("user_nonce")]
+      public string UserNonce { get; set; }
+
+      [JsonProperty("amount")]
+      public decimal Amount { get; set; }
+
+      [JsonProperty("details")]
+      public Details Details { get; set; }
+   }
+
+   public class Details : Json
+   {
+      [JsonProperty("destination_tag")]
+      public string DestinationTag { get; set; }
+
+      [JsonProperty("sent_to_address")]
+      public string SentToAddress { get; set; }
+
+      [JsonProperty("coinbase_account_id")]
+      public string CoinbaseAccountId { get; set; }
+
+      [JsonProperty("destination_tag_name")]
+      public string DestinationTagName { get; set; }
+
+      [JsonProperty("coinbase_withdrawal_id")]
+      public string CoinbaseWithdrawalId { get; set; }
+
+      [JsonProperty("coinbase_transaction_id")]
+      public string CoinbaseTransactionId { get; set; }
+
+      [JsonProperty("crypto_transaction_hash")]
+      public string CryptoTransactionHash { get; set; }
+
+      [JsonProperty("coinbase_payment_method_id")]
+      public string CoinbasePaymentMethodId { get; set; }
+   }
+
    public partial class Conversion
    {
       [JsonProperty("id")]
