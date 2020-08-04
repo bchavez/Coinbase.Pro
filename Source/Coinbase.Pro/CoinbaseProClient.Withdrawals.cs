@@ -38,7 +38,7 @@ namespace Coinbase.Pro
       /// Get a list of withdrawals from the profile of the API key, in descending order by created time.
       /// </summary>
       Task<List<Withdrawal>> ListWithdrawals(string type = "withdraw", string profileId = null,
-         int? limit = null, long? before = null, long? after = null,
+         int? limit = null, DateTime? before = null, DateTime? after = null,
          CancellationToken cancellationToken = default);
    }
 
@@ -103,14 +103,16 @@ namespace Coinbase.Pro
 
       Task<List<Withdrawal>> IWithdrawalsEndpoint.ListWithdrawals(
          string type, string profileId,
-         int? limit, long? before, long? after,
+         int? limit, DateTime? before, DateTime? after,
          CancellationToken cancellationToken)
       {
          return this.TransfersEndpoint
             .WithClient(this)
             .SetQueryParam("type", type)
             .SetQueryParam("profile_id", profileId)
-            .AsPagedRequest(limit, before, after)
+            .SetQueryParam("limit", limit)
+            .SetQueryParam("before", before)
+            .SetQueryParam("after", after)
             .GetJsonAsync<List<Withdrawal>>(cancellationToken);
 
       }
