@@ -698,16 +698,16 @@ namespace Coinbase.Pro.Models
       public string Type { get; set; }
 
       [JsonProperty("created_at")]
-      public DateTime? CreatedAt { get; set; }
+      public DateTimeOffset? CreatedAt { get; set; }
 
       [JsonProperty("completed_at")]
-      public DateTime? CompletedAt { get; set; }
+      public DateTimeOffset? CompletedAt { get; set; }
 
       [JsonProperty("canceled_at")]
-      public DateTime? CancelledAt { get; set; }
+      public DateTimeOffset? CancelledAt { get; set; }
 
       [JsonProperty("processed_at")]
-      public DateTime? ProcessedAt { get; set; }
+      public DateTimeOffset? ProcessedAt { get; set; }
 
       [JsonProperty("account_id")]
       public string AccountId { get; set; }
