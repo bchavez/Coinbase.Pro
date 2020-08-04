@@ -73,7 +73,7 @@ namespace Coinbase.Tests.EndpointTests
       }
 
       [Test]
-      public async Task list_withrdawls()
+      public async Task list_withdrawals()
       {
          server.RespondWith(Examples.WithdrawlsListJson);
          var r = await client.Withdrawals.ListWithdrawals();
