@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
@@ -32,6 +33,13 @@ namespace Coinbase.Pro
       Task<CryptoWithdraw> WithdrawFundsToCryptoAddressAsync(
          string cryptoAddress, decimal amount, string currency,
          CancellationToken cancellationToken = default);
+
+      /// <summary>
+      /// Get a list of withdrawals from the profile of the API key, in descending order by created time.
+      /// </summary>
+      Task<List<Withdrawal>> ListWithdrawals(string type = "withdraw", string profileId = null,
+         int? limit = null, long? before = null, long? after = null,
+         CancellationToken cancellationToken = default);
    }
 
    public partial class CoinbaseProClient : IWithdrawalsEndpoint
@@ -39,6 +47,7 @@ namespace Coinbase.Pro
       public IWithdrawalsEndpoint Withdrawals => this;
 
       protected internal Url WithdrawalsEndpoint => this.Config.ApiUrl.AppendPathSegment("withdrawals");
+      protected internal Url TransfersEndpoint => this.Config.ApiUrl.AppendPathSegment("transfers");
 
 
       Task<PaymentMethodWithdraw> IWithdrawalsEndpoint.WithdrawFundsToPaymentMethodAsync(string paymentMethodId, decimal amount, string currency,
@@ -90,6 +99,20 @@ namespace Coinbase.Pro
             .AppendPathSegment("crypto")
             .PostJsonAsync(d, cancellationToken)
             .ReceiveJson<CryptoWithdraw>();
+      }
+
+      Task<List<Withdrawal>> IWithdrawalsEndpoint.ListWithdrawals(
+         string type, string profileId,
+         int? limit, long? before, long? after,
+         CancellationToken cancellationToken)
+      {
+         return this.TransfersEndpoint
+            .WithClient(this)
+            .SetQueryParam("type", type)
+            .SetQueryParam("profile_id", profileId)
+            .AsPagedRequest(limit, before, after)
+            .GetJsonAsync<List<Withdrawal>>(cancellationToken);
+
       }
    }
 }

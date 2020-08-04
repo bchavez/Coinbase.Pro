@@ -70,7 +70,19 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Amount.Should().Be(10.00m);
          r.Currency.Should().Be("ETH");
+      }
 
+      [Test]
+      public async Task list_withrdawls()
+      {
+         server.RespondWith(Examples.WithdrawlsListJson);
+         var r = await client.Withdrawals.ListWithdrawals();
+
+         server.ShouldHaveCalled("/transfers")
+            .WithQueryParamValue("type", "withdraw")
+            .WithVerb(HttpMethod.Get);
+
+         r.Should().HaveCount(2);
       }
 
    }
