@@ -287,7 +287,52 @@ namespace Coinbase.Tests
 }";
 
 
-
+      public const string WithdrawlsListJson = @"[
+  {
+    ""id"": ""6b09bf5e-c94c-405b-b7dc-ad2b27749ce5"",
+    ""type"": ""withdraw"",
+    ""created_at"": ""2019-06-18 02:11:25.610908+00"",
+    ""completed_at"": ""2019-06-18 02:11:26.416758+00"",
+    ""canceled_at"": null,
+    ""processed_at"": ""2019-06-18 02:11:37.996052+00"",
+    ""account_id"": ""bcf1fc34-3180-4acf-97be-c1c20a719e34"",
+    ""user_id"": ""5eeace07a181d1e866db83e5"",
+    ""user_nonce"": ""1592624441614"",
+    ""amount"": ""22.00000000"",
+    ""details"": {
+      ""destination_tag"": ""567148403"",
+      ""sent_to_address"": ""rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg"",
+      ""coinbase_account_id"": ""26dbbe94-7321-4ca4-8744-622f5a98a45a"",
+      ""destination_tag_name"": ""XRP Tag"",
+      ""coinbase_withdrawal_id"": ""935107c5-b443-4cf4-b9ef-e49f856c4de8"",
+      ""coinbase_transaction_id"": ""5eeace0cfe2410af68891bcb"",
+      ""crypto_transaction_hash"": ""217AF4782DFB632121F1EAEF33DBAEC0539A77E5CBFCBA4AA71925ADB2B15D13"",
+      ""coinbase_payment_method_id"": """"
+    }
+  },
+  {
+    ""id"": ""E02DF417-12E3-429C-9EDA-759DE52BD187"",
+    ""type"": ""withdraw"",
+    ""created_at"": ""2019-06-18 02:11:25.610908+00"",
+    ""completed_at"": ""2019-06-18 02:11:26.416758+00"",
+    ""canceled_at"": null,
+    ""processed_at"": ""2019-06-18 02:11:37.996052+00"",
+    ""account_id"": ""8ED7D693-2A7D-4CB6-B328-59F430CA6003"",
+    ""user_id"": ""5eeace07a181d17866db83e5"",
+    ""user_nonce"": ""1592624441714"",
+    ""amount"": ""23.00000000"",
+    ""details"": {
+      ""destination_tag"": ""567148403"",
+      ""sent_to_address"": ""rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg"",
+      ""coinbase_account_id"": ""26dbbe94-7321-4ca4-8744-622f5a98a45a"",
+      ""destination_tag_name"": ""GRP Tag"",
+      ""coinbase_withdrawal_id"": ""A69AB5FF-07C9-4742-8EEA-05BEF942351E"",
+      ""coinbase_transaction_id"": ""5eeace0cfe2410af68891bcb"",
+      ""crypto_transaction_hash"": ""217AF4782DFB632121F1EAEF33DBAEC0539A77E5CBFCBA4AA71925ADB2B15D13"",
+      ""coinbase_payment_method_id"": """"
+    }
+  }]
+";
 
 
 
