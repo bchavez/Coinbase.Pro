@@ -54,11 +54,11 @@ namespace Coinbase.Pro
          CancellationToken cancellationToken)
       {
          var d = new CreatePaymentMethodWithdraw
-         {
-            Amount = amount,
-            Currency = currency,
-            PaymentMethodId = paymentMethodId
-         };
+            {
+               Amount = amount,
+               Currency = currency,
+               PaymentMethodId = paymentMethodId
+            };
 
          return this.WithdrawalsEndpoint
             .WithClient(this)
@@ -71,11 +71,11 @@ namespace Coinbase.Pro
          CancellationToken cancellationToken)
       {
          var d = new CreateCoinbaseWithdraw
-         {
-            Amount = amount,
-            Currency = currency,
-            CoinbaseAccountId = coinbaseAccountId
-         };
+            {
+               Amount = amount,
+               Currency = currency,
+               CoinbaseAccountId = coinbaseAccountId
+            };
 
          return this.WithdrawalsEndpoint
             .WithClient(this)
@@ -88,11 +88,11 @@ namespace Coinbase.Pro
          CancellationToken cancellationToken)
       {
          var d = new CreateCryptAddressWithdrawl
-         {
-            Amount = amount,
-            Currency = currency,
-            CryptoAddress = cryptoAddress
-         };
+            {
+               Amount = amount,
+               Currency = currency,
+               CryptoAddress = cryptoAddress
+            };
 
          return this.WithdrawalsEndpoint
             .WithClient(this)
