@@ -178,5 +178,13 @@ namespace Coinbase.Tests.IntegrationTests
 
          p.Dump();
       }
+
+      [Test]
+      public async Task can_get_withdrawls()
+      {
+         var w = await this.client.Withdrawals.ListWithdrawals();
+
+         w.Dump();
+      }
    }
 }

@@ -24,6 +24,10 @@ namespace Coinbase.Tests.IntegrationTests
 
          ReadSecrets();
 
+#if NETFRAMEWORK
+         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+#endif
+
          var webProxy = new WebProxy("http://localhost.:8888", BypassOnLocal: false);
 
          FlurlHttp.Configure(settings =>

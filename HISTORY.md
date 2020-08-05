@@ -1,3 +1,6 @@
+## v3.0.3
+* Ensure `Withdrawals.ListWithdrawals()` returns `PagedResponse`.
+
 ## v3.0.2
 * PR 16: Add `Withdrawals.ListWithdrawals()` history support.
 
