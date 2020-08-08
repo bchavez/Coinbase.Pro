@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Coinbase.Pro;
 using Coinbase.Pro.Models;
@@ -138,22 +139,22 @@ namespace Coinbase.Tests.IntegrationTests
       [Test]
       public async Task can_page_through_some_data()
       {
-         var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5); ;
+         var trades = await client.MarketData.GetTradesAsync("BTC-USD", limit: 5); ;
 
          for( int i = 0; i < 3; i++ )
          {
-            trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, after: trades.After);
+            trades = await client.MarketData.GetTradesAsync("BTC-USD", limit: 5, after: trades.After);
          }
       }
 
       [Test]
       public async Task can_page_through_some_data2()
       {
-         var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, before: 1);
+         var trades = await client.MarketData.GetTradesAsync("BTC-USD", limit: 5, before: 1);
 
          //for (int i = 0; i < 3; i++)
          //{
-         //   var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, before: i + 1 );
+         //   var trades = await client.MarketData.GetTradesAsync("BTC-USD", limit: 5, before: i + 1);
          //   trades.Dump();
          //}
       }
@@ -180,11 +181,19 @@ namespace Coinbase.Tests.IntegrationTests
       }
 
       [Test]
-      public async Task can_get_withdrawls()
+      public async Task can_get_withdrawals()
       {
-         var w = await this.client.Withdrawals.ListWithdrawals();
+         var w = await this.client.Withdrawals.ListWithdrawals(after: DateTimeOffset.Parse("2020-08-08T18:58:26.124045+00:00"));
 
          w.Dump();
+      }
+
+      [Test]
+      public async Task can_get_deposits()
+      {
+         var d = await this.client.Deposits.ListDeposits(after: DateTime.Parse("8/8/2020"));
+
+         d.Dump();
       }
    }
 }

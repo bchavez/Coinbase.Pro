@@ -35,16 +35,20 @@ namespace Coinbase.Pro
          CancellationToken cancellationToken = default);
 
       /// <summary>
-      /// Get a list of withdrawals from the profile of the API key, in descending order by created time.
-      /// </summary>
-      Task<PagedResponse<Withdrawal>> ListWithdrawals(string profileId = null,
-         int? limit = null, long? before = null, long? after = null,
-         CancellationToken cancellationToken = default);
-
-      /// <summary>
       /// Get information on a single withdrawal.
       /// </summary>
       Task<Withdrawal> GetWithdrawal(string transferId = null,
+         CancellationToken cancellationToken = default);
+
+      /// <summary>
+      /// Get a list of deposits from the profile of the API key, in descending order by created time.
+      /// </summary>
+      /// <param name="profileId">Limit list of deposits to this profile_id. By default, it retrieves deposits across all of the user's profiles</param>
+      /// <param name="limit">Truncate list to this many deposits, capped at 100. Default is 100.</param>
+      /// <param name="before">If before is set, then it returns deposits created after the before timestamp, sorted by oldest creation date</param>
+      /// <param name="after">If after is set, then it returns deposits created before the after timestamp, sorted by newest</param>
+      Task<List<Withdrawal>> ListWithdrawals(string profileId = null,
+         int? limit = null, DateTimeOffset? before = null, DateTimeOffset? after = null,
          CancellationToken cancellationToken = default);
    }
 
@@ -107,18 +111,6 @@ namespace Coinbase.Pro
             .ReceiveJson<CryptoWithdraw>();
       }
 
-      Task<PagedResponse<Withdrawal>> IWithdrawalsEndpoint.ListWithdrawals(string profileId,
-         int? limit, long? before, long? after,
-         CancellationToken cancellationToken)
-      {
-         return this.TransfersEndpoint
-            .WithClient(this)
-            .SetQueryParam("type", "withdraw")
-            .SetQueryParam("profile_id", profileId)
-            .AsPagedRequest(limit, before, after)
-            .GetPagedJsonAsync<Withdrawal>(cancellationToken);
-      }
-
       Task<Withdrawal> IWithdrawalsEndpoint.GetWithdrawal(string transferId,
          CancellationToken cancellationToken)
       {
@@ -126,6 +118,20 @@ namespace Coinbase.Pro
             .WithClient(this)
             .SetQueryParam("transfer_id", transferId)
             .GetJsonAsync<Withdrawal>(cancellationToken);
+      }
+
+      Task<List<Withdrawal>> IWithdrawalsEndpoint.ListWithdrawals(string profileId,
+         int? limit, DateTimeOffset? before, DateTimeOffset? after,
+         CancellationToken cancellationToken)
+      {
+         return this.TransfersEndpoint
+            .WithClient(this)
+            .SetQueryParam("type", "withdraw")
+            .SetQueryParam("profile_id", profileId)
+            .SetQueryParam("before", before)
+            .SetQueryParam("after", after)
+            .SetQueryParam("limit", limit)
+            .GetJsonAsync<List<Withdrawal>>(cancellationToken);
       }
    }
 }

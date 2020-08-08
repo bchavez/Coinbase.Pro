@@ -82,7 +82,7 @@ namespace Coinbase.Tests.EndpointTests
             .WithQueryParamValue("type", "withdraw")
             .WithVerb(HttpMethod.Get);
 
-         r.Data.Should().HaveCount(2);
+         r.Should().HaveCount(2);
       }
 
    }

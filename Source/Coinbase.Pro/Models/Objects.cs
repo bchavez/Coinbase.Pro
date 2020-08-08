@@ -689,7 +689,7 @@ namespace Coinbase.Pro.Models
    }
 
 
-   public class Withdrawal : Json
+   public partial class Withdrawal : Json
    {
       [JsonProperty("id")]
       public string Id { get; set; }
@@ -704,7 +704,7 @@ namespace Coinbase.Pro.Models
       public DateTimeOffset? CompletedAt { get; set; }
 
       [JsonProperty("canceled_at")]
-      public DateTimeOffset? CancelledAt { get; set; }
+      public DateTimeOffset? CanceledAt { get; set; }
 
       [JsonProperty("processed_at")]
       public DateTimeOffset? ProcessedAt { get; set; }
@@ -722,10 +722,10 @@ namespace Coinbase.Pro.Models
       public decimal Amount { get; set; }
 
       [JsonProperty("details")]
-      public Details Details { get; set; }
+      public WithdrawalDetails Details { get; set; }
    }
 
-   public class Details : Json
+   public partial class WithdrawalDetails : Json
    {
       [JsonProperty("destination_tag")]
       public string DestinationTag { get; set; }
@@ -750,6 +750,66 @@ namespace Coinbase.Pro.Models
 
       [JsonProperty("coinbase_payment_method_id")]
       public string CoinbasePaymentMethodId { get; set; }
+   }
+
+   public partial class Deposit
+   {
+      [JsonProperty("id")]
+      public string Id { get; set; }
+
+      [JsonProperty("type")]
+      public string Type { get; set; }
+
+      [JsonProperty("created_at")]
+      public DateTimeOffset? CreatedAt { get; set; }
+
+      [JsonProperty("completed_at")]
+      public DateTimeOffset? CompletedAt { get; set; }
+
+      [JsonProperty("canceled_at")]
+      public DateTimeOffset? CanceledAt { get; set; }
+
+      [JsonProperty("processed_at")]
+      public DateTimeOffset? ProcessedAt { get; set; }
+
+      [JsonProperty("account_id")]
+      public string AccountId { get; set; }
+
+      [JsonProperty("user_id")]
+      public string UserId { get; set; }
+
+      [JsonProperty("user_nonce")]
+      public string UserNonce { get; set; }
+
+      [JsonProperty("amount")]
+      public decimal Amount { get; set; }
+
+      [JsonProperty("details")]
+      public DepositDetails Details { get; set; }
+   }
+
+   public partial class DepositDetails
+   {
+      [JsonProperty("crypto_address")]
+      public string CryptoAddress { get; set; }
+
+      [JsonProperty("destination_tag")]
+      public string DestinationTag { get; set; }
+
+      [JsonProperty("coinbase_account_id")]
+      public string CoinbaseAccountId { get; set; }
+
+      [JsonProperty("destination_tag_name")]
+      public string DestinationTagName { get; set; }
+
+      [JsonProperty("crypto_transaction_id")]
+      public string CryptoTransactionId { get; set; }
+
+      [JsonProperty("coinbase_transaction_id")]
+      public string CoinbaseTransactionId { get; set; }
+
+      [JsonProperty("crypto_transaction_hash")]
+      public string CryptoTransactionHash { get; set; }
    }
 
    public partial class Conversion
