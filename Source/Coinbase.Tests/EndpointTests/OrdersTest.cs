@@ -12,11 +12,9 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task get_all_orders()
       {
-         server.RespondWith(Examples.OrdersListJson);
+         server.RespondWithJsonTestFile();
 
          var r = await client.Orders.GetAllOrdersAsync();
-
-         r.Dump();
 
          var o = r.Data.Last();
          o.Side.Should().Be(OrderSide.Buy);
@@ -25,6 +23,8 @@ namespace Coinbase.Tests.EndpointTests
          
          server.ShouldHaveCalledSomePathAndQuery("/orders?status=all")
             .WithVerb(HttpMethod.Get);
+
+         await Verify(r);
       }
 
       [Test]
@@ -45,23 +45,23 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task can_get_order()
       {
-         server.RespondWith(Examples.Order1Json);
+         server.RespondWithJsonTestFile();
 
          var r = await client.Orders.GetOrderAsync("fff");
-
-         r.Dump();
 
          r.Id.Should().Be("e0c163ab-5823-4972-b9fb-9e788687a53b");
          r.ProductId.Should().Be("ETC-USD");
 
          server.ShouldHaveCalledSomePathAndQuery("/orders/fff")
             .WithVerb(HttpMethod.Get);
+
+         await Verify(r);
       }
 
       [Test]
       public async Task cancel_all_orders()
       {
-         server.RespondWith(Examples.CancellAllOrdersJson);
+         server.RespondWithJsonTestFile();
 
          var r = await client.Orders.CancelAllOrdersAsync();
 
@@ -69,12 +69,14 @@ namespace Coinbase.Tests.EndpointTests
 
          server.ShouldHaveCalledSomePathAndQuery("/orders")
             .WithVerb(HttpMethod.Delete);
+
+         await Verify(r);
       }
 
       [Test]
       public async Task cancel_all_orders_product()
       {
-         server.RespondWith(Examples.CancellAllOrdersJson);
+         server.RespondWithJsonTestFile();
          var r = await client.Orders.CancelAllOrdersAsync("BTC-USD");
 
          r.Count.Should().BeGreaterThan(1);
@@ -82,18 +84,23 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/orders?" +
                                     "product_id=BTC-USD")
             .WithVerb(HttpMethod.Delete);
+
+         await Verify(r);
       }
 
       [Test]
       public async Task cancel_order_by_id()
       {
-         server.RespondWith(Examples.CancelOrderByIdJson);
+         server.RespondWithJsonTestFile();
+
          var r = await client.Orders.CancelOrderById("ooo");
 
          r.Count.Should().Be(1);
 
          server.ShouldHaveCalledSomePathAndQuery("/orders/ooo")
             .WithVerb(HttpMethod.Delete);
+
+         await Verify(r);
       }
    }
 }

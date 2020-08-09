@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net472;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
     <OutputType>Library</OutputType>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
@@ -25,10 +25,18 @@
     </PackageReference>
     <PackageReference Include="NunitXml.TestLogger" Version="2.1.62" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <PackageReference Include="Verify.NUnit" Version="6.7.0" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
     <PackageReference Include="Z.ExtensionMethods.WithTwoNamespace" Version="2.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Coinbase.Pro\Coinbase.Pro.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="**\*.server.*">
+      <ParentExtension>$(ProjectExt.Replace('proj', ''))</ParentExtension>
+      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
+      <DependentUpon>%(ParentFile)%(ParentExtension)</DependentUpon>
+    </None>
   </ItemGroup>
 </Project>

@@ -752,7 +752,7 @@ namespace Coinbase.Pro.Models
       public string CoinbasePaymentMethodId { get; set; }
    }
 
-   public partial class Deposit
+   public partial class Deposit : Json
    {
       [JsonProperty("id")]
       public string Id { get; set; }
@@ -788,7 +788,7 @@ namespace Coinbase.Pro.Models
       public DepositDetails Details { get; set; }
    }
 
-   public partial class DepositDetails
+   public partial class DepositDetails : Json
    {
       [JsonProperty("crypto_address")]
       public string CryptoAddress { get; set; }
@@ -812,7 +812,53 @@ namespace Coinbase.Pro.Models
       public string CryptoTransactionHash { get; set; }
    }
 
-   public partial class Conversion
+
+
+
+   public partial class GeneratedDepositCryptoAddress : Json
+   {
+      [JsonProperty("id")]
+      public string Id { get; set; }
+
+      [JsonProperty("address")]
+      public string Address { get; set; }
+
+      [JsonProperty("destination_tag")]
+      public string DestinationTag { get; set; }
+
+      [JsonProperty("address_info")]
+      public GeneratedDepositCryptoAddressAddressInfo AddressInfo { get; set; }
+
+      [JsonProperty("created_at")]
+      public DateTimeOffset? CreatedAt { get; set; }
+
+      [JsonProperty("updated_at")]
+      public DateTimeOffset? UpdatedAt { get; set; }
+
+      [JsonProperty("network")]
+      public string Network { get; set; }
+
+      [JsonProperty("resource")]
+      public string Resource { get; set; }
+
+      [JsonProperty("deposit_uri")]
+      public string DepositUri { get; set; }
+
+      [JsonProperty("exchange_deposit_address")]
+      public bool ExchangeDepositAddress { get; set; }
+   }
+
+   public partial class GeneratedDepositCryptoAddressAddressInfo : Json
+   {
+      [JsonProperty("address")]
+      public string Address { get; set; }
+
+      [JsonProperty("destination_tag")]
+      public string DestinationTag { get; set; }
+   }
+
+
+   public partial class Conversion : Json
    {
       [JsonProperty("id")]
       public string Id { get; set; }

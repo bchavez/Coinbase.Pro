@@ -12,12 +12,13 @@ namespace Coinbase.Tests.GitHubIssues
       public async Task can_get_products2()
       {
          var client = new CoinbaseProClient();
-
-         server.RespondWith(Examples.ProductsJson2);
+         server.RespondWithJsonTestFile();
 
          var p = await client.MarketData.GetProductsAsync();
 
          p.Count.Should().NotBe(0);
+
+         await Verify(p);
       }
    }
 }

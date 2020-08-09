@@ -1,0 +1,8 @@
+{
+  id: Guid_1,
+  amount: 10000.00,
+  from_account_id: Guid_2,
+  to_account_id: Guid_3,
+  from: 'USD',
+  to: 'USDC'
+}

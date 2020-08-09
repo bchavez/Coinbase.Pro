@@ -1,0 +1,19 @@
+{
+  id: Guid_1,
+  type: 'deposit',
+  created_at: DateTimeOffset_1,
+  completed_at: DateTimeOffset_2,
+  processed_at: DateTimeOffset_2,
+  account_id: Guid_2,
+  user_id: '5eeac63c90b913bf3cf7c92e',
+  amount: 40.00000000,
+  details: {
+    crypto_address: 'rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg',
+    destination_tag: '379156162',
+    coinbase_account_id: Guid_3,
+    destination_tag_name: 'XRP Tag',
+    crypto_transaction_id: '5eeac64cc46b34f5332e5326',
+    coinbase_transaction_id: '5eeac652be6cf8b17f7625bd',
+    crypto_transaction_hash: 'B918BF044B6ADA318B36F4F23E7EB141C15BF2B6CFB96FDFC674E907FE235FB1'
+  }
+}

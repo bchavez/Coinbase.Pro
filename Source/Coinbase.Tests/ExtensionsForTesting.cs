@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using FluentAssertions;
 using Flurl.Http;
 using Flurl.Http.Testing;
@@ -54,6 +56,38 @@ namespace Coinbase.Tests
          bodies.Should().Contain(expectedJson);
 
          return test;
+      }
+
+      public static HttpTest RespondWithJsonTestFile(this HttpTest server,
+         object headers = null,
+         [CallerMemberName] string methodName = "",
+         [CallerFilePath] string filePath = "")
+      {
+         var verifiedFile = Path.ChangeExtension(filePath, $"{methodName}.server.json");
+         if( !File.Exists(verifiedFile) )
+         {
+            throw new FileNotFoundException($"*.server.json test file not found '{verifiedFile}'", verifiedFile);
+         }
+
+         var json = File.ReadAllText(verifiedFile);
+         server.RespondWith(json, headers: headers);
+         return server;
+      }
+
+      public static HttpTest RespondWithJsonTestFilePagedResult(this HttpTest server,
+         int cbBefore = 54870014, int cbAfter = 54870113,
+         [CallerMemberName] string methodName = "",
+         [CallerFilePath] string filePath = "")
+      {
+         var verifiedFile = Path.ChangeExtension(filePath, $"{methodName}.server.json");
+         if (!File.Exists(verifiedFile))
+         {
+            throw new FileNotFoundException("*.server.json file not found", verifiedFile);
+         }
+
+         var json = File.ReadAllText(verifiedFile);
+         server.RespondWith(json, headers: new { cb_before = cbBefore, cb_after = cbAfter });
+         return server;
       }
 
       public static HttpTest RespondWithPagedResult(this HttpTest test, string json, int before, int after)

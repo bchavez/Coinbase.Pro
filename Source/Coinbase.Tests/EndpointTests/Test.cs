@@ -1,18 +1,28 @@
 ﻿using System.IO;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Coinbase.Pro;
 using Flurl.Http.Testing;
+using Newtonsoft.Json;
 using NUnit.Framework;
+using VerifyNUnit;
+using VerifyTests;
 
 namespace Coinbase.Tests.EndpointTests
 {
    public class Test
    {
       protected HttpTest server;
+      protected VerifySettings settings;
 
       [SetUp]
       public virtual void BeforeEachTest()
       {
-         server = new HttpTest();
+         this.server = new HttpTest();
+         this.settings = new VerifySettings();
+         this.settings.UseExtension("json");
+
+
 #if NET45
          Directory.SetCurrentDirectory(Path.GetDirectoryName(this.GetType().Assembly.Location));
 #endif
@@ -26,10 +36,9 @@ namespace Coinbase.Tests.EndpointTests
          this.server.Dispose();
       }
 
-      protected void SetupServerPagedResponse(string pageJson, int cbBefore = 54870014, int cbAfter = 54870113)
+      protected Task Verify<T>(T t, [CallerFilePath] string sourceFile = "")
       {
-         server.RespondWith(pageJson,
-            headers: new {cb_before = cbBefore, cb_after = cbAfter});
+         return Verifier.Verify(t, this.settings, sourceFile);
       }
 
       protected virtual void EnsureEveryRequestHasCorrectHeaders()

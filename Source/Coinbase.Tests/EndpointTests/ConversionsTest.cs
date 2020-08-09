@@ -10,7 +10,7 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task convert_usd_usdc()
       {
-         server.RespondWith(Examples.ConversionJson);
+         server.RespondWithJsonTestFile();
 
          var r = await client.Conversion.ConvertAsync("USD", "USDC", 99);
          var expectedBody =
@@ -27,6 +27,8 @@ namespace Coinbase.Tests.EndpointTests
          r.Amount.Should().Be(10000.00m);
          r.From.Should().Be("USD");
          r.To.Should().Be("USDC");
+
+         await Verify(r);
       }
    }
 }

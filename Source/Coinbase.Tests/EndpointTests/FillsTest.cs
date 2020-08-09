@@ -12,7 +12,7 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task getall_by_product()
       {
-         server.RespondWithPagedResult(Examples.Fills1Json, 11, 22);
+         server.RespondWithJsonTestFilePagedResult(11, 22);
 
          var r = await client.Fills.GetFillsByProductIdAsync("ETC-USD");
 
@@ -26,12 +26,14 @@ namespace Coinbase.Tests.EndpointTests
          f.UserId.Should().StartWith("fff");
          f.TradeId.Should().Be(59);
          f.Price.Should().Be(50m);
+
+         await Verify(r);
       }
 
       [Test]
       public async Task getall_by_order()
       {
-         server.RespondWithPagedResult(Examples.Fills1Json, 11, 22);
+         server.RespondWithJsonTestFilePagedResult(11, 22);
 
          var r = await client.Fills.GetFillsByOrderIdAsync("333");
 
@@ -45,6 +47,8 @@ namespace Coinbase.Tests.EndpointTests
          f.UserId.Should().StartWith("fff");
          f.TradeId.Should().Be(59);
          f.Price.Should().Be(50m);
+
+         await Verify(r);
       }
    }
 }

@@ -1,0 +1,33 @@
+{
+  id: Guid_1,
+  status: 'ready',
+  created_at: DateTimeOffset_1,
+  completed_at: DateTimeOffset_2,
+  expires_at: DateTimeOffset_3,
+  file_url: 'https://gdax-reports-sandbox.s3.amazonaws.com/fffffffffile.pdf',
+  params: {
+    start_date: DateTimeOffset_4,
+    end_date: DateTimeOffset_5,
+    format: 'pdf',
+    product_id: 'ETC-USD',
+    user: {
+      created_at: DateTime_1,
+      active_at: DateTime_2,
+      id: 'ffffffffffffffffff',
+      name: 'Satoshi Moshi',
+      email: 'satoshi@bitcoin.com',
+      roles: null,
+      is_banned: false,
+      permissions: null,
+      user_type: 'business',
+      fulfills_new_requirements: true,
+      flags: null,
+      details: null,
+      oauth_client: 'pro',
+      preferences: {},
+      has_default: false
+    },
+    new_york_state: false
+  },
+  user_id: 'ffffffffffffffff'
+}

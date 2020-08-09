@@ -1,0 +1,35 @@
+[
+  {
+    "id": "dba30426-4ffd-4068-945c-21e1b9731a5b",
+    "price": "1.10000000",
+    "size": "100.00000000",
+    "product_id": "ETC-USD",
+    "side": "buy",
+    "type": "limit",
+    "time_in_force": "GTC",
+    "post_only": true,
+    "created_at": "2018-11-28T21:55:49.598587Z",
+    "fill_fees": "0.0000000000000000",
+    "filled_size": "0.00000000",
+    "executed_value": "0.0000000000000000",
+    "status": "open",
+    "settled": false
+  },
+  {
+    "id": "e0c163ab-5823-4972-b9fb-9e788687a53b",
+    "product_id": "ETC-USD",
+    "side": "buy",
+    "funds": "99.7008973000000000",
+    "specified_funds": "100.0000000000000000",
+    "type": "market",
+    "post_only": false,
+    "created_at": "2018-11-28T21:55:12.049031Z",
+    "done_at": "2018-11-28T21:55:12.079Z",
+    "done_reason": "filled",
+    "fill_fees": "0.2991026910000000",
+    "filled_size": "1.99401794",
+    "executed_value": "99.7008970000000000",
+    "status": "done",
+    "settled": true
+  }
+]

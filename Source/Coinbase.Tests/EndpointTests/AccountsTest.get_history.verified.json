@@ -1,0 +1,15 @@
+{
+  Data: [
+    {
+      id: '44512583',
+      created_at: DateTimeOffset_1,
+      amount: 1000.0000000000000000,
+      balance: 1000.0000000000000000,
+      type: 'transfer',
+      details: {
+        transfer_id: Guid_1,
+        transfer_type: 'deposit'
+      }
+    }
+  ]
+}

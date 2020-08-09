@@ -12,7 +12,7 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task trailing_volume()
       {
-         server.RespondWith(Examples.TrailingVolumeJson);
+         server.RespondWithJsonTestFile();
 
          var r = await client.UserAccount.GetTrailingVolumeAsync();
 
@@ -24,6 +24,8 @@ namespace Coinbase.Tests.EndpointTests
          
          server.ShouldHaveCalledSomePathAndQuery("/users/self/trailing-volume")
             .WithVerb(HttpMethod.Get);
+
+         await Verify(r);
       }
    }
 }

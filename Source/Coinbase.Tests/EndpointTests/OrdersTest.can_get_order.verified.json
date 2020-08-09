@@ -1,0 +1,15 @@
+{
+  id: Guid_1,
+  product_id: 'ETC-USD',
+  type: 'market',
+  created_at: DateTimeOffset_1,
+  fill_fees: 0.2991026910000000,
+  filled_size: 1.99401794,
+  executed_value: 99.7008970000000000,
+  status: 'done',
+  settled: true,
+  funds: 99.7008973000000000,
+  specified_funds: 100.0000000000000000,
+  done_at: DateTimeOffset_2,
+  done_reason: 'filled'
+}

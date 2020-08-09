@@ -51,6 +51,15 @@ namespace Coinbase.Pro
          int? limit = null, DateTimeOffset? before = null, DateTimeOffset? after = null,
          CancellationToken cancellationToken = default);
 
+
+      /// <summary>
+      /// You can generate an address for crypto deposits. See the Coinbase Accounts section for information on how to retrieve your coinbase account ID.
+      /// </summary>
+      /// <returns></returns>
+      Task<GeneratedDepositCryptoAddress> GenerateCryptoDepositAddress(
+         string coinbaseAccountId,
+         CancellationToken cancellationToken = default);
+
    }
 
    public partial class CoinbaseProClient : IDepositsEndpoint
@@ -101,7 +110,7 @@ namespace Coinbase.Pro
       {
          return this.TransfersEndpoint
             .WithClient(this)
-            .SetQueryParam("transfer_id", transferId)
+            .AppendPathSegment(transferId)
             .GetJsonAsync<Deposit>(cancellationToken);
       }
 
@@ -117,6 +126,17 @@ namespace Coinbase.Pro
             .SetQueryParam("after", after)
             .SetQueryParam("limit", limit)
             .GetJsonAsync<List<Deposit>>(cancellationToken);
+      }
+
+      Task<GeneratedDepositCryptoAddress> IDepositsEndpoint.GenerateCryptoDepositAddress(
+         string coinbaseAccountId,
+         CancellationToken cancellationToken)
+      {
+         return this.CoinbaseAccountsEndpoint
+            .WithClient(this)
+            .AppendPathSegments(coinbaseAccountId, "addresses")
+            .PostJsonAsync(null, cancellationToken)
+            .ReceiveJson<GeneratedDepositCryptoAddress>();
       }
    }
 }

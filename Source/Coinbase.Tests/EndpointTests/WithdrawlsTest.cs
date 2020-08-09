@@ -10,7 +10,7 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task withdraw_via_paymethod()
       {
-         server.RespondWith(Examples.WithdrawPaymentMethodFundsJson);
+         server.RespondWithJsonTestFile();
 
          var r = await client.Withdrawals.WithdrawFundsToPaymentMethodAsync("fff", 33, "USD");
          var expectedBody =
@@ -24,14 +24,13 @@ namespace Coinbase.Tests.EndpointTests
             .WithSomeRequestBody(expectedBody)
             .WithVerb(HttpMethod.Post);
 
-         r.Amount.Should().Be(10.00m);
-         r.Currency.Should().Be("USD");
+         await Verify(r);
       }
 
       [Test]
       public async Task withdraw_via_coinbase()
       {
-         server.RespondWith(Examples.WithdrawCoinbaseFundsJson);
+         server.RespondWithJsonTestFile();
 
          var r = await client.Withdrawals.WithdrawFundsToCoinbaseAsync("fff", 33, "BTC");
 
@@ -46,14 +45,13 @@ namespace Coinbase.Tests.EndpointTests
             .WithSomeRequestBody(expectedBody)
             .WithVerb(HttpMethod.Post);
 
-         r.Amount.Should().Be(10.00m);
-         r.Currency.Should().Be("BTC");
+         await Verify(r);
       }
 
       [Test]
       public async Task withdraw_via_crypto()
       {
-         server.RespondWith(Examples.WithdrawCryptoFundsJson);
+         server.RespondWithJsonTestFile();
 
          var r = await client.Withdrawals.WithdrawFundsToCryptoAddressAsync("fff", 33, "ETH");
 
@@ -68,14 +66,13 @@ namespace Coinbase.Tests.EndpointTests
             .WithSomeRequestBody(expectedBody)
             .WithVerb(HttpMethod.Post);
 
-         r.Amount.Should().Be(10.00m);
-         r.Currency.Should().Be("ETH");
+         await Verify(r);
       }
 
       [Test]
       public async Task list_withdrawals()
       {
-         server.RespondWith(Examples.WithdrawlsListJson);
+         server.RespondWithJsonTestFile();
          var r = await client.Withdrawals.ListWithdrawals();
 
          server.ShouldHaveCalled("/transfers")
@@ -83,6 +80,8 @@ namespace Coinbase.Tests.EndpointTests
             .WithVerb(HttpMethod.Get);
 
          r.Should().HaveCount(2);
+
+         await Verify(r);
       }
 
    }

@@ -1,0 +1,15 @@
+[
+  {
+    id: Guid_1,
+    currency: 'BTC',
+    profile_id: Guid_2
+  },
+  {
+    id: Guid_3,
+    currency: 'USD',
+    balance: 80.2301373066930000,
+    available: 79.2266348066930000,
+    hold: 1.0035025000000000,
+    profile_id: Guid_2
+  }
+]

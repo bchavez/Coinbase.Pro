@@ -1,0 +1,6 @@
+{
+  id: Guid_1,
+  amount: 10.00,
+  currency: 'USD',
+  payout_at: DateTimeOffset_1
+}

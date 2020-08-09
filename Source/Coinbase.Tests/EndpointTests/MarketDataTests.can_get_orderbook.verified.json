@@ -1,0 +1,17 @@
+{
+  asks: [
+    {
+      Price: 3967.56,
+      Size: 0.001,
+      OrderCount: 1
+    }
+  ],
+  bids: [
+    {
+      Price: 3967.55,
+      Size: 57.6603824,
+      OrderCount: 12
+    }
+  ],
+  sequence: 7416643032
+}

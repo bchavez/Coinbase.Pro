@@ -1,0 +1,27 @@
+{
+  Data: [
+    {
+      price: 4013.64000000,
+      side: 'sell',
+      size: 0.00842855,
+      time: DateTimeOffset_1,
+      trade_id: 54706228
+    },
+    {
+      price: 4013.65000000,
+      side: 'sell',
+      size: 0.00458841,
+      time: DateTimeOffset_2,
+      trade_id: 54706227
+    },
+    {
+      price: 4013.89000000,
+      side: 'sell',
+      size: 0.10817589,
+      time: DateTimeOffset_3,
+      trade_id: 54706226
+    }
+  ],
+  Before: 54870014,
+  After: 54870113
+}

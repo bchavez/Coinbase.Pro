@@ -12,7 +12,7 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task create_report()
       {
-         server.RespondWith(Examples.ReportUnfinishedJson);
+         server.RespondWithJsonTestFile();
 
          var date = DateTimeOffset.Parse("11/28/2018");
 
@@ -32,12 +32,14 @@ $@"{{
          server.ShouldHaveCalledSomePathAndQuery("/reports")
             .WithSomeRequestBody(expectedBody)
             .WithVerb(HttpMethod.Post);
+
+         await Verify(r);
       }
 
       [Test]
       public async Task get_report_status()
       {
-         server.RespondWith(Examples.ReportCompletedJson);
+         server.RespondWithJsonTestFile();
 
          var r = await client.Reports.GetReportStatusAsync("fff");
 
@@ -46,6 +48,8 @@ $@"{{
 
          server.ShouldHaveCalledSomePathAndQuery("/reports/fff")
             .WithVerb(HttpMethod.Get);
+
+         await Verify(r);
       }
    }
 }

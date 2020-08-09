@@ -12,7 +12,7 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task coinbase_accounts()
       {
-         server.RespondWith(Examples.CoinbaseAccountsJson);
+         server.RespondWithJsonTestFile();
 
          var r = await client.CoinbaseAccounts.GetAllAccountsAsync();
 
@@ -38,6 +38,8 @@ namespace Coinbase.Tests.EndpointTests
          //p.Name.Should().Be("Bank of America - eBan... ********7134");
 
          //p.Limits.InstantBuy[0].PeriodInDays.Should().Be(7);
+
+         await Verify(r);
       }
    }
 }
