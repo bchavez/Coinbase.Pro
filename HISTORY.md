@@ -1,5 +1,5 @@
 ## v3.0.4
-* Added `Deposits.GetDeposit`
+* Added `Deposits.GetDeposit()`
 * Added `DateTimeOffset` parameters to `Withdrawals.ListWithdrawals()` and `Deposits.ListDeposits()`.
 
 ## v3.0.3
