@@ -189,9 +189,25 @@ namespace Coinbase.Tests.IntegrationTests
       }
 
       [Test]
+      public async Task can_get_single_withdrawl()
+      {
+         var w = await this.client.Withdrawals.GetWithdrawal("b6c836aa-bfba-460f-959d-fe0b2bcebd91");
+
+         w.Dump();
+      }
+
+      [Test]
       public async Task can_get_deposits()
       {
-         var d = await this.client.Deposits.ListDeposits(after: DateTime.Parse("8/8/2020"));
+         var d = await this.client.Deposits.ListDeposits(limit: 3);
+
+         d.Dump();
+      }
+
+      [Test]
+      public async Task can_get_single_deposit()
+      {
+         var d = await this.client.Deposits.GetDeposit("35810c2b-44c5-499c-81ff-8d056bc85d26");
 
          d.Dump();
       }

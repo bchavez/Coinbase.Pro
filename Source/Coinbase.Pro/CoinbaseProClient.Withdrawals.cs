@@ -116,7 +116,7 @@ namespace Coinbase.Pro
       {
          return this.TransfersEndpoint
             .WithClient(this)
-            .SetQueryParam("transfer_id", transferId)
+            .AppendPathSegment(transferId)
             .GetJsonAsync<Withdrawal>(cancellationToken);
       }
 

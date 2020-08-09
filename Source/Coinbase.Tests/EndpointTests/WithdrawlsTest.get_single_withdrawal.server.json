@@ -1,0 +1,20 @@
+{
+   "id": "DF7E6C3D-00E5-4BE2-A400-0FB8E5E7DBFB",
+   "type": "withdraw",
+   "created_at": "2020-08-08 19:38:15.245108+00",
+   "completed_at": null,
+   "canceled_at": null,
+   "processed_at": null,
+   "account_id": "C59D3DE6-8C16-4A23-9D18-26105770BC31",
+   "user_id": "888bbb888bbb88888sss88fff",
+   "user_nonce": "777777777772",
+   "amount": "1.00000000",
+   "details": {
+      "coinbase_payout_at": "2015-02-18T16:54:00-08:00",
+      "coinbase_account_id": "36028CFD-B782-419D-B0F0-7A59576277CB",
+      "coinbase_withdrawal_id": "D85FFEAF-5B95-4221-AEBE-3478EDB54C13",
+      "coinbase_transaction_id": "",
+      "coinbase_payment_method_id": "B3F6ED5F-E168-4C0B-B608-132C4037D6C6",
+      "coinbase_payment_method_type": "ach_bank_account"
+   }
+}

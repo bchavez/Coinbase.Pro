@@ -84,5 +84,17 @@ namespace Coinbase.Tests.EndpointTests
          await Verify(r);
       }
 
+      [Test]
+      public async Task get_single_withdrawal()
+      {
+         server.RespondWithJsonTestFile();
+         var r = await client.Withdrawals.GetWithdrawal("fff");
+
+         server.ShouldHaveCalled("/transfers/fff")
+            .WithVerb(HttpMethod.Get);
+
+         await Verify(r);
+      }
+
    }
 }

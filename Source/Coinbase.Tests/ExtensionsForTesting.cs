@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using DiffEngine;
 using FluentAssertions;
 using Flurl.Http;
 using Flurl.Http.Testing;
@@ -63,13 +65,20 @@ namespace Coinbase.Tests
          [CallerMemberName] string methodName = "",
          [CallerFilePath] string filePath = "")
       {
-         var verifiedFile = Path.ChangeExtension(filePath, $"{methodName}.server.json");
-         if( !File.Exists(verifiedFile) )
+         var responseFile = Path.ChangeExtension(filePath, $"{methodName}.server.json");
+         
+         if( !File.Exists(responseFile) )
          {
-            throw new FileNotFoundException($"*.server.json test file not found '{verifiedFile}'", verifiedFile);
+            var p = Process.Start("notepad.exe", responseFile);
+            p.WaitForExit();
+
+            if( !File.Exists(responseFile) )
+            {
+               throw new FileNotFoundException($"*.server.json test file not found '{responseFile}'", responseFile);
+            }
          }
 
-         var json = File.ReadAllText(verifiedFile);
+         var json = File.ReadAllText(responseFile);
          server.RespondWith(json, headers: headers);
          return server;
       }
@@ -79,15 +88,7 @@ namespace Coinbase.Tests
          [CallerMemberName] string methodName = "",
          [CallerFilePath] string filePath = "")
       {
-         var verifiedFile = Path.ChangeExtension(filePath, $"{methodName}.server.json");
-         if (!File.Exists(verifiedFile))
-         {
-            throw new FileNotFoundException("*.server.json file not found", verifiedFile);
-         }
-
-         var json = File.ReadAllText(verifiedFile);
-         server.RespondWith(json, headers: new { cb_before = cbBefore, cb_after = cbAfter });
-         return server;
+         return server.RespondWithJsonTestFile(headers: new {cb_before = cbBefore, cb_after = cbAfter}, methodName, filePath);
       }
 
       public static HttpTest RespondWithPagedResult(this HttpTest test, string json, int before, int after)

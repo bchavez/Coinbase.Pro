@@ -1,3 +1,6 @@
+## v3.0.5
+* Fixed `Withdrawals.GetWithdrawal()`. Previously used wrong URL path.
+
 ## v3.0.4
 * Added `Deposits.GetDeposit()`
 * Added `DateTimeOffset` parameters to `Withdrawals.ListWithdrawals()` and `Deposits.ListDeposits()`.
