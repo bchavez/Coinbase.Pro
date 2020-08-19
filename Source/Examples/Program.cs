@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.WebSockets;
 using System.Threading;
@@ -86,6 +87,8 @@ namespace Examples
 
          WriteLine(">> Connected.");
 
+         socket.RawSocket.Closed += Websocket_Closed;
+         socket.RawSocket.Error += Websocket_Error;
          socket.RawSocket.MessageReceived += Websocket_MessageReceived;
 
          var sub = new Subscription
@@ -98,6 +101,17 @@ namespace Examples
          await socket.SubscribeAsync(sub);
 
          WriteLine(">> Subscribed.");
+      }
+
+      private static void Websocket_Closed(object sender, EventArgs e)
+      {
+         WriteLine("!! The websocket closed!");
+      }
+
+      private static void Websocket_Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
+      {
+         WriteLine("!! Websocket Error! ");
+         WriteLine(e);
       }
 
       private static void Websocket_MessageReceived(object sender, WebSocket4Net.MessageReceivedEventArgs e)
