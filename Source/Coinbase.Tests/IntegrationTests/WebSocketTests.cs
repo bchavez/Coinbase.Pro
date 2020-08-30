@@ -29,7 +29,11 @@ namespace Coinbase.Tests.IntegrationTests
       [Test]
       public async Task connect()
       {
-         await socket.ConnectAsync();
+         var result = await socket.ConnectAsync();
+         if( !result.Success )
+         {
+            throw new Exception("Connection error.");
+         }
 
          //https://docs.pro.coinbase.com/?r=1#protocol-overview
          // Request
@@ -80,7 +84,11 @@ namespace Coinbase.Tests.IntegrationTests
       [Test]
       public async Task connect_simple()
       {
-         await socket.ConnectAsync();
+         var result = await socket.ConnectAsync();
+         if( !result.Success )
+         {
+            throw new Exception("Connect error.");
+         }
 
          var sub = new Subscription
             {

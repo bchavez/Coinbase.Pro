@@ -197,8 +197,9 @@ Be sure to [check the documentation here](https://docs.pro.coinbase.com/?r=1#sub
 var socket = ...; //using authenticated or unauthenticated instance
 
 //Connect the websocket,
-//when this connect method completes, the socket is ready
-await socket.ConnectAsync();
+//when this connect method completes, the socket is ready or failure occured.
+var result = await socket.ConnectAsync();
+if( !result.Success ) throw new Exception("Failed to connect.");
 
 //add an event handler for the message received event on the raw socket
 socket.RawSocket.MessageReceived += RawSocket_MessageReceived;

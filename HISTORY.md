@@ -1,3 +1,6 @@
+## v3.2.0
+* Added `ConnectResult` return type from `CoinbaseProWebSocket.ConnectAsync()` for better semantic connection handling.
+
 ## v3.0.5
 * Fixed `Withdrawals.GetWithdrawal()`. Previously used wrong URL path.
 

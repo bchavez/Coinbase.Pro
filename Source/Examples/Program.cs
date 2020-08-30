@@ -83,7 +83,9 @@ namespace Examples
          //socket.EnableFiddlerDebugProxy(new HttpConnectProxy(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8888)));
 #endif
 
-         await socket.ConnectAsync();
+         var result = await socket.ConnectAsync();
+         if( !result.Success )
+            throw new Exception("Connect error.");
 
          WriteLine(">> Connected.");
 
