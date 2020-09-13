@@ -21,7 +21,7 @@ namespace Coinbase.Tests.EndpointTests
          var o = r.First();
          o.ProductId.Should().Be("BTC-USD");
          o.Volume.Should().Be(100.00000000m);
-         
+
          server.ShouldHaveCalledSomePathAndQuery("/users/self/trailing-volume")
             .WithVerb(HttpMethod.Get);
 
