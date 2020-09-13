@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
-using Z.ExtensionMethods;
 
 namespace Coinbase.Tests.EndpointTests
 {
