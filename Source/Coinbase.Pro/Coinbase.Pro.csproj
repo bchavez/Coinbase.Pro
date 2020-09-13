@@ -1,17 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>A .NET implementation for the Coinbase Pro API for online trading. Supports REST API and Websocket Feed API. All crypto currencies including Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), 0x (ZRX), and many more!</Description>
-    <PackageReleaseNotes>
-    </PackageReleaseNotes>
     <Version>0.0.0-localbuild</Version>
     <Authors>Brian Chavez</Authors>
+    <PackageReleaseNotes />
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <SignAssembly>false</SignAssembly>
-    <AssemblyName>Coinbase.Pro</AssemblyName>
-    <PackageId>Coinbase.Pro</PackageId>
     <PackageTags>gdax;bitcoin;ethereum;litecoin;coinbase;api;cryptocurrency;payment;money;trade;bank</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/bchavez/Coinbase.Pro/master/Docs/coinbase_pro.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/bchavez/Coinbase.Pro</PackageProjectUrl>
