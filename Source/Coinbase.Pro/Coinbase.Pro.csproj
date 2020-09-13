@@ -6,6 +6,9 @@
     <PackageReleaseNotes />
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <SignAssembly>false</SignAssembly>
     <PackageTags>gdax;bitcoin;ethereum;litecoin;coinbase;api;cryptocurrency;payment;money;trade;bank</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/bchavez/Coinbase.Pro/master/Docs/coinbase_pro.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/bchavez/Coinbase.Pro</PackageProjectUrl>
