@@ -3,7 +3,7 @@
     <Description>A .NET implementation for the Coinbase Pro API for online trading. Supports REST API and Websocket Feed API. All crypto currencies including Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), 0x (ZRX), and many more!</Description>
     <Version>0.0.0-localbuild</Version>
     <Authors>Brian Chavez</Authors>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyOriginatorKeyFile>
