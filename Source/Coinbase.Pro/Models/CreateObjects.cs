@@ -254,8 +254,16 @@ namespace Coinbase.Pro.Models
 
       [JsonProperty("crypto_address")]
       public string CryptoAddress { get; set; }
-   }
 
+      [JsonProperty("destination_tag", NullValueHandling = NullValueHandling.Ignore)]
+      public string DestinationTag { get; set; }
+
+      [JsonProperty("no_destination_tag", NullValueHandling = NullValueHandling.Ignore)]
+      public bool? NoDestinationTag { get; set; }
+
+      [JsonProperty("add_network_fee_to_total", NullValueHandling = NullValueHandling.Ignore)]
+      public bool? AddNetworkFeeToTotal { get; set; }
+   }
 
    public partial class CreateConversion
    {
