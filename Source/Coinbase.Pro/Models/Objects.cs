@@ -761,6 +761,12 @@ namespace Coinbase.Pro.Models
 
       [JsonProperty("coinbase_payment_method_id")]
       public string CoinbasePaymentMethodId { get; set; }
+
+      [JsonProperty("fee")]
+      public decimal Fee { get; set; }
+
+      [JsonProperty("subtotal")]
+      public decimal Subtotal { get; set; }
    }
 
    public partial class Deposit : Json
