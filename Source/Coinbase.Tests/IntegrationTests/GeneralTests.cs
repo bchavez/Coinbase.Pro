@@ -211,5 +211,13 @@ namespace Coinbase.Tests.IntegrationTests
 
          d.Dump();
       }
+
+      [Test]
+      public async Task can_get_withdraw_fee_estimate()
+      {
+         var d = await this.client.Withdrawals.GetFeeEstimate("BTC", "3Dv39ocUvPZZw1NZ5v3yXx7rAzPqqBeYn4");
+
+         d.Dump();
+      }
    }
 }

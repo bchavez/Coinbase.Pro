@@ -244,7 +244,7 @@ namespace Coinbase.Pro.Models
       public string CoinbaseAccountId { get; set; }
    }
 
-   public class CreateCryptAddressWithdrawl
+   public class CreateCryptoAddressWithdrawl
    {
       [JsonProperty("amount")]
       public decimal Amount { get; set; }

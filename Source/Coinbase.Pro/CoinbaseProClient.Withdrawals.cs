@@ -105,7 +105,7 @@ namespace Coinbase.Pro
       Task<CryptoWithdraw> IWithdrawalsEndpoint.WithdrawFundsToCryptoAddressAsync(string cryptoAddress, decimal amount, string currency, string destinationTag, bool? noDestinationTag, bool? addNetworkFeeToTotal,
          CancellationToken cancellationToken)
       {
-         var d = new CreateCryptAddressWithdrawl
+         var d = new CreateCryptoAddressWithdrawl
             {
                Amount = amount,
                Currency = currency,
