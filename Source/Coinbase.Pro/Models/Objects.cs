@@ -686,8 +686,19 @@ namespace Coinbase.Pro.Models
 
       [JsonProperty("currency")]
       public string Currency { get; set; }
+
+      [JsonProperty("fee")]
+      public decimal Fee { get; set; }
+
+      [JsonProperty("subtotal")]
+      public decimal Subtotal { get; set; }
    }
 
+   public class FeeEstimate : Json
+   {
+      [JsonProperty("fee")]
+      public decimal Fee { get; set; }
+   }
 
    public partial class Withdrawal : Json
    {
@@ -750,6 +761,12 @@ namespace Coinbase.Pro.Models
 
       [JsonProperty("coinbase_payment_method_id")]
       public string CoinbasePaymentMethodId { get; set; }
+
+      [JsonProperty("fee")]
+      public decimal Fee { get; set; }
+
+      [JsonProperty("subtotal")]
+      public decimal Subtotal { get; set; }
    }
 
    public partial class Deposit : Json

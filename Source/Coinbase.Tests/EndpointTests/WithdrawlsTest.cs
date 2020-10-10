@@ -70,6 +70,21 @@ namespace Coinbase.Tests.EndpointTests
       }
 
       [Test]
+      public async Task get_fees_estimate()
+      {
+         server.RespondWithJsonTestFile();
+
+         var r = await client.Withdrawals.GetFeeEstimate("BTC", "fff");
+
+         server.ShouldHaveCalled("/withdrawals/fee-estimate")
+            .WithQueryParamValue("currency", "BTC")
+            .WithQueryParamValue("crypto_address", "fff")
+            .WithVerb(HttpMethod.Get);
+
+         await Verify(r);
+      }
+
+      [Test]
       public async Task list_withdrawals()
       {
          server.RespondWithJsonTestFile();

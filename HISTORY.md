@@ -1,3 +1,6 @@
+## v3.2.1
+* PR 23: Added `Withdrawals.GetFeeEstimate`. Thanks la4atld!
+
 ## v3.2.0
 * Added `ConnectResult` return type from `CoinbaseProWebSocket.ConnectAsync()` for better semantic connection handling.
 

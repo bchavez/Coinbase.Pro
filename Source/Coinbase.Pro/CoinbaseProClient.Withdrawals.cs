@@ -31,7 +31,15 @@ namespace Coinbase.Pro
       /// Withdraws funds to a crypto address.
       /// </summary>
       Task<CryptoWithdraw> WithdrawFundsToCryptoAddressAsync(
-         string cryptoAddress, decimal amount, string currency,
+         string cryptoAddress, decimal amount, string currency, string destinationTag = null, bool? noDestinationTag = null, bool? addNetworkFeeToTotal = null,
+         CancellationToken cancellationToken = default);
+
+      /// <summary>
+      /// Gets the network fee estimate when sending to the given address.
+      /// </summary>
+      /// <param name="currency">The type of currency</param>
+      /// <param name="cryptoAddress">A crypto address of the recipient</param>
+      Task<FeeEstimate> GetFeeEstimate(string currency, string cryptoAddress,
          CancellationToken cancellationToken = default);
 
       /// <summary>
@@ -94,14 +102,17 @@ namespace Coinbase.Pro
             .ReceiveJson<CoinbaseWithdraw>();
       }
 
-      Task<CryptoWithdraw> IWithdrawalsEndpoint.WithdrawFundsToCryptoAddressAsync(string cryptoAddress, decimal amount, string currency,
+      Task<CryptoWithdraw> IWithdrawalsEndpoint.WithdrawFundsToCryptoAddressAsync(string cryptoAddress, decimal amount, string currency, string destinationTag, bool? noDestinationTag, bool? addNetworkFeeToTotal,
          CancellationToken cancellationToken)
       {
-         var d = new CreateCryptAddressWithdrawl
+         var d = new CreateCryptoAddressWithdrawl
             {
                Amount = amount,
                Currency = currency,
-               CryptoAddress = cryptoAddress
+               CryptoAddress = cryptoAddress,
+               DestinationTag = destinationTag,
+               NoDestinationTag = noDestinationTag,
+               AddNetworkFeeToTotal = addNetworkFeeToTotal
             };
 
          return this.WithdrawalsEndpoint
@@ -109,6 +120,17 @@ namespace Coinbase.Pro
             .AppendPathSegment("crypto")
             .PostJsonAsync(d, cancellationToken)
             .ReceiveJson<CryptoWithdraw>();
+      }
+
+      Task<FeeEstimate> IWithdrawalsEndpoint.GetFeeEstimate(string currency, string cryptoAddress,
+         CancellationToken cancellationToken)
+      {
+         return this.WithdrawalsEndpoint
+            .WithClient(this)
+            .AppendPathSegment("fee-estimate")
+            .SetQueryParam("currency", currency)
+            .SetQueryParam("crypto_address", cryptoAddress)
+            .GetJsonAsync<FeeEstimate>(cancellationToken);
       }
 
       Task<Withdrawal> IWithdrawalsEndpoint.GetWithdrawal(string transferId,
