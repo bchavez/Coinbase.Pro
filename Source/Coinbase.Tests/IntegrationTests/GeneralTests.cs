@@ -223,7 +223,7 @@ namespace Coinbase.Tests.IntegrationTests
       [Test]
       public async Task can_get_fees()
       {
-         var f = await this.client.Fees.GetFeesAsync();
+         var f = await this.client.Fees.GetCurrentFeesAsync();
 
          f.Dump();
       }

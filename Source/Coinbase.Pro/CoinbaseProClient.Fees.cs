@@ -14,19 +14,19 @@ namespace Coinbase.Pro
       /// to change.
       /// </summary>
       /// <param name="cancellationToken"></param>
-      Task<MakerTakerFee> GetCurrentFeesAsync(CancellationToken cancellationToken = default);
+      Task<MakerTakerFees> GetCurrentFeesAsync(CancellationToken cancellationToken = default);
    }
 
    public partial class CoinbaseProClient : IFeesEndpoint
    {
       public IFeesEndpoint Fees => this;
 
-      Task<MakerTakerFee> IFeesEndpoint.GetCurrentFeesAsync(CancellationToken cancellationToken)
+      Task<MakerTakerFees> IFeesEndpoint.GetCurrentFeesAsync(CancellationToken cancellationToken)
       {
          return this.Config.ApiUrl
             .WithClient(this)
             .AppendPathSegment("fees")
-            .GetJsonAsync<MakerTakerFee>(cancellationToken);
+            .GetJsonAsync<MakerTakerFees>(cancellationToken);
       }
    }
 }
