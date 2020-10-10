@@ -1,4 +1,4 @@
-## v3.2.1
+## v3.3.0
 * PR 23: Added `Withdrawals.GetFeeEstimate`. Thanks la4atld!
 * PR 12: Added `Fees.GetCurrentFeesAsync` for maker and taker fees. Thanks vflame!
 * Issue 24: Added `L2UpdateEvent.Time` property to C# model for websocket events.
