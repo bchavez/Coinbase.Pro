@@ -42,6 +42,7 @@ namespace Coinbase.Pro
       IUserAccountEndpoint UserAccount { get; }
       IWithdrawalsEndpoint Withdrawals { get; }
       ICoinbaseAccountsEndpoint CoinbaseAccounts { get; }
+      IFeesEndpoint Fees { get; }
    }
 
    public partial class CoinbaseProClient : FlurlClient, ICoinbaseProClient

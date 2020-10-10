@@ -219,5 +219,13 @@ namespace Coinbase.Tests.IntegrationTests
 
          d.Dump();
       }
+
+      [Test]
+      public async Task can_get_fees()
+      {
+         var f = await this.client.Fees.GetCurrentFeesAsync();
+
+         f.Dump();
+      }
    }
 }

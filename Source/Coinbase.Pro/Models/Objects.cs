@@ -1142,7 +1142,7 @@ namespace Coinbase.Pro.Models
       Account
    }
 
-   public partial class TrailingVolume
+   public partial class TrailingVolume : Json
    {
       [JsonProperty("product_id")]
       public string ProductId { get; set; }
@@ -1157,5 +1157,16 @@ namespace Coinbase.Pro.Models
       public DateTimeOffset RecordedAt { get; set; }
    }
 
+   public partial class MakerTakerFees : Json
+   {
+      [JsonProperty("maker_fee_rate")]
+      public decimal MakerFeeRate { get; set; }
 
+      [JsonProperty("taker_fee_rate")]
+      public decimal TakerFeeRate { get; set; }
+
+      [JsonProperty("usd_volume")]
+      public decimal? UsdVolume { get; set; }
+
+   }
 }
