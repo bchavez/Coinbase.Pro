@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using Coinbase.Pro.WebSockets;
 using FluentAssertions;
@@ -106,6 +107,7 @@ namespace Coinbase.Tests.WebSocketTests
          var json = @"{
     ""type"": ""l2update"",
     ""product_id"": ""BTC-EUR"",
+    ""time"": ""2019-08-14T20:42:27.265Z"",
     ""changes"": [
         [""buy"", ""6500.09"", ""0.84702376""],
         [""sell"", ""6507.00"", ""1.88933140""],
@@ -123,6 +125,8 @@ namespace Coinbase.Tests.WebSocketTests
          c.Side.Should().Be(OrderSide.Buy);
          c.Price.Should().Be(6500.09m);
          c.Size.Should().Be(0.84702376m);
+         u.ProductId.Should().Be("BTC-EUR");
+         u.Time.Should().Be(DateTimeOffset.Parse("2019-08-14T20:42:27.265Z"));
       }
 
       [Test]

@@ -160,6 +160,9 @@ namespace Coinbase.Pro.Models
 
       [JsonProperty("changes", ItemConverterType = typeof(L2UpdateChangeConverter))]
       public List<L2UpdateChange> Changes { get; set; }
+
+      [JsonProperty("time")]
+      public DateTimeOffset? Time { get; set; }
    }
 
    public class L2UpdateChange
