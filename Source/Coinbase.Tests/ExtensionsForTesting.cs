@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using DiffEngine;
 using FluentAssertions;
 using Flurl.Http;
 using Flurl.Http.Testing;

@@ -78,7 +78,7 @@ namespace Coinbase.Tests.WebSocketTests
 
          o.Should().BeOfType<TickerEvent>();
          var t = o as TickerEvent;
-         t.Side.Should().Be(Pro.Models.OrderSide.Buy);
+         t.Side.Should().Be(OrderSide.Buy);
       }
 
       [Test]

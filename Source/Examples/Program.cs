@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
-using System.Net.WebSockets;
-using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro;
 using Coinbase.Pro.Models;
 using Coinbase.Pro.WebSockets;
-using SuperSocket.ClientEngine.Proxy;
 using static System.Console;
 
 namespace Examples
 {
    class Program
    {
-      static async Task Main(string[] args)
+      static async Task Main()
       {
          WriteLine("Coinbase Example");
 

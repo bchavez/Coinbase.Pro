@@ -261,7 +261,7 @@ namespace Coinbase.Pro
          Guid? clientOid,
          CancellationToken cancellationToken)
       {
-         var mo = new CreateMarketOrder()
+         var mo = new CreateMarketOrder
             {
                Side = side,
                ProductId = productId,

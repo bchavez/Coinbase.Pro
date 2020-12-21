@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Security.Authentication;
-using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using Newtonsoft.Json;

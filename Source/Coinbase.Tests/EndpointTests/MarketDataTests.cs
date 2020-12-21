@@ -66,7 +66,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/candles?" +
                                                  $"start={Url.Encode(start.ToString("o"))}&" +
                                                  $"end={Url.Encode(end.ToString("o"))}&" +
-                                                 $"granularity=60")
+                                                 "granularity=60")
             .WithVerb(HttpMethod.Get);
 
          await Verify(r);
