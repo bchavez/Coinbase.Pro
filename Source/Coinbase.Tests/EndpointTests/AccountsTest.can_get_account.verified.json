@@ -1,5 +1,5 @@
 {
   id: Guid_1,
-  currency: 'BTC',
+  currency: BTC,
   profile_id: Guid_2
 }

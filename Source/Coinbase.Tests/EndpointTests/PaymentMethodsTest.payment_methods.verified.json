@@ -1,9 +1,9 @@
 [
   {
     id: Guid_1,
-    type: 'ach_bank_account',
-    name: 'Bank of America - eBan... ********7134',
-    currency: 'USD',
+    type: ach_bank_account,
+    name: Bank of America - eBan... ********7134,
+    currency: USD,
     primary_buy: true,
     primary_sell: true,
     allow_buy: true,
@@ -16,11 +16,11 @@
           period_in_days: 1,
           total: {
             amount: 10000.00,
-            currency: 'USD'
+            currency: USD
           },
           remaining: {
             amount: 10000.00,
-            currency: 'USD'
+            currency: USD
           }
         }
       ],
@@ -28,10 +28,10 @@
         {
           period_in_days: 7,
           total: {
-            currency: 'USD'
+            currency: USD
           },
           remaining: {
-            currency: 'USD'
+            currency: USD
           }
         }
       ],
@@ -40,11 +40,11 @@
           period_in_days: 1,
           total: {
             amount: 10000.00,
-            currency: 'USD'
+            currency: USD
           },
           remaining: {
             amount: 10000.00,
-            currency: 'USD'
+            currency: USD
           }
         }
       ],
@@ -53,11 +53,11 @@
           period_in_days: 1,
           total: {
             amount: 10000.00,
-            currency: 'USD'
+            currency: USD
           },
           remaining: {
             amount: 10000.00,
-            currency: 'USD'
+            currency: USD
           }
         }
       ]

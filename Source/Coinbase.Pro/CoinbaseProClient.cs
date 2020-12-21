@@ -73,11 +73,11 @@ namespace Coinbase.Pro
 
       private void ApiKeyAuth(ClientFlurlHttpSettings settings)
       {
-         async Task SetHeaders(HttpCall http)
+         async Task SetHeaders(FlurlCall http)
          {
             var body = http.RequestBody;
-            var method = http.Request.Method.Method.ToUpperInvariant();
-            var url = http.Request.RequestUri.PathAndQuery;
+            var method = http.Request.Verb.Method.ToUpperInvariant();
+            var url = http.Request.Url.ToUri().PathAndQuery;
             var timestamp = await TimeHelper.GetCurrentTimestampAsync(this.Config.UseTimeApi)
                .ConfigureAwait(false);
 
@@ -88,7 +88,7 @@ namespace Coinbase.Pro
                body,
                this.Config.Secret);
 
-            http.FlurlRequest
+            http.Request
                .WithHeader(HeaderNames.AccessKey, this.Config.ApiKey)
                .WithHeader(HeaderNames.AccessSign, signature)
                .WithHeader(HeaderNames.AccessTimestamp, timestamp)

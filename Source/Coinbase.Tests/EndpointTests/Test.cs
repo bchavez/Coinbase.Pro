@@ -21,6 +21,7 @@ namespace Coinbase.Tests.EndpointTests
          this.server = new HttpTest();
          this.settings = new VerifySettings();
          this.settings.UseExtension("json");
+         //this.settings.AutoVerify();
 
 
 #if NET45

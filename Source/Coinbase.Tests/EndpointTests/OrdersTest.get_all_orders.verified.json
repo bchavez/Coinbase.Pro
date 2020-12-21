@@ -4,25 +4,25 @@
       id: Guid_1,
       price: 1.10000000,
       size: 100.00000000,
-      product_id: 'ETC-USD',
+      product_id: ETC-USD,
       post_only: true,
       created_at: DateTimeOffset_1,
-      status: 'open'
+      status: open
     },
     {
       id: Guid_2,
-      product_id: 'ETC-USD',
-      type: 'market',
+      product_id: ETC-USD,
+      type: market,
       created_at: DateTimeOffset_2,
       fill_fees: 0.2991026910000000,
       filled_size: 1.99401794,
       executed_value: 99.7008970000000000,
-      status: 'done',
+      status: done,
       settled: true,
       funds: 99.7008973000000000,
       specified_funds: 100.0000000000000000,
       done_at: DateTimeOffset_3,
-      done_reason: 'filled'
+      done_reason: filled
     }
   ]
 }

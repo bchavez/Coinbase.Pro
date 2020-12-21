@@ -27,12 +27,14 @@ namespace Coinbase.Pro
                Data = data
             };
 
-         if( long.TryParse(r.GetHeaderValue(HeaderNames.Before), out var before) )
+         if( r.Headers.TryGetFirst(HeaderNames.Before, out var beforeString) &&
+             long.TryParse(beforeString, out var before) )
          {
             p.Before = before;
          }
 
-         if( long.TryParse(r.GetHeaderValue(HeaderNames.After), out var after) )
+         if(r.Headers.TryGetFirst(HeaderNames.After, out var afterString) &&
+            long.TryParse(afterString, out var after) )
          {
             p.After = after;
          }

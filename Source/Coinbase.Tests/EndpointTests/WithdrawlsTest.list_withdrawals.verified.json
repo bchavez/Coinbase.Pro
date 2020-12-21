@@ -1,44 +1,44 @@
 [
   {
     id: Guid_1,
-    type: 'withdraw',
+    type: withdraw,
     created_at: DateTimeOffset_1,
     completed_at: DateTimeOffset_2,
     processed_at: DateTimeOffset_3,
     account_id: Guid_2,
-    user_id: '5eeace07a181d1e866db83e5',
-    user_nonce: '1592624441614',
+    user_id: 5eeace07a181d1e866db83e5,
+    user_nonce: 1592624441614,
     amount: 22.00000000,
     details: {
-      destination_tag: '567148403',
-      sent_to_address: 'rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg',
+      destination_tag: 567148403,
+      sent_to_address: rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg,
       coinbase_account_id: Guid_3,
-      destination_tag_name: 'XRP Tag',
+      destination_tag_name: XRP Tag,
       coinbase_withdrawal_id: Guid_4,
-      coinbase_transaction_id: '5eeace0cfe2410af68891bcb',
-      crypto_transaction_hash: '217AF4782DFB632121F1EAEF33DBAEC0539A77E5CBFCBA4AA71925ADB2B15D13',
-      coinbase_payment_method_id: ''
+      coinbase_transaction_id: 5eeace0cfe2410af68891bcb,
+      crypto_transaction_hash: 217AF4782DFB632121F1EAEF33DBAEC0539A77E5CBFCBA4AA71925ADB2B15D13,
+      coinbase_payment_method_id: 
     }
   },
   {
     id: Guid_5,
-    type: 'withdraw',
+    type: withdraw,
     created_at: DateTimeOffset_1,
     completed_at: DateTimeOffset_2,
     processed_at: DateTimeOffset_3,
     account_id: Guid_6,
-    user_id: '5eeace07a181d17866db83e5',
-    user_nonce: '1592624441714',
+    user_id: 5eeace07a181d17866db83e5,
+    user_nonce: 1592624441714,
     amount: 23.00000000,
     details: {
-      destination_tag: '567148403',
-      sent_to_address: 'rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg',
+      destination_tag: 567148403,
+      sent_to_address: rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg,
       coinbase_account_id: Guid_3,
-      destination_tag_name: 'GRP Tag',
+      destination_tag_name: GRP Tag,
       coinbase_withdrawal_id: Guid_7,
-      coinbase_transaction_id: '5eeace0cfe2410af68891bcb',
-      crypto_transaction_hash: '217AF4782DFB632121F1EAEF33DBAEC0539A77E5CBFCBA4AA71925ADB2B15D13',
-      coinbase_payment_method_id: ''
+      coinbase_transaction_id: 5eeace0cfe2410af68891bcb,
+      crypto_transaction_hash: 217AF4782DFB632121F1EAEF33DBAEC0539A77E5CBFCBA4AA71925ADB2B15D13,
+      coinbase_payment_method_id: 
     }
   }
 ]

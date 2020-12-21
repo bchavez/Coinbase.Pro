@@ -1,17 +1,17 @@
 {
   id: Guid_1,
-  type: 'withdraw',
+  type: withdraw,
   created_at: DateTimeOffset_1,
   account_id: Guid_2,
-  user_id: '888bbb888bbb88888sss88fff',
-  user_nonce: '777777777772',
+  user_id: 888bbb888bbb88888sss88fff,
+  user_nonce: 777777777772,
   amount: 1.00000000,
   details: {
     coinbase_account_id: Guid_3,
     coinbase_withdrawal_id: Guid_4,
-    coinbase_transaction_id: '',
+    coinbase_transaction_id: ,
     coinbase_payment_method_id: Guid_5,
     coinbase_payout_at: DateTime_1,
-    coinbase_payment_method_type: 'ach_bank_account'
+    coinbase_payment_method_type: ach_bank_account
   }
 }

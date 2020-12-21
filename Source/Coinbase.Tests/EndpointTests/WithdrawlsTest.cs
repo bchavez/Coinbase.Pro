@@ -76,9 +76,9 @@ namespace Coinbase.Tests.EndpointTests
 
          var r = await client.Withdrawals.GetFeeEstimate("BTC", "fff");
 
-         server.ShouldHaveCalled("/withdrawals/fee-estimate")
-            .WithQueryParamValue("currency", "BTC")
-            .WithQueryParamValue("crypto_address", "fff")
+         server.ShouldHaveCalledSomePath("/withdrawals/fee-estimate")
+            .WithQueryParam("currency", "BTC")
+            .WithQueryParam("crypto_address", "fff")
             .WithVerb(HttpMethod.Get);
 
          await Verify(r);
@@ -90,8 +90,8 @@ namespace Coinbase.Tests.EndpointTests
          server.RespondWithJsonTestFile();
          var r = await client.Withdrawals.ListWithdrawals();
 
-         server.ShouldHaveCalled("/transfers")
-            .WithQueryParamValue("type", "withdraw")
+         server.ShouldHaveCalledSomePath("/transfers")
+            .WithQueryParam("type", "withdraw")
             .WithVerb(HttpMethod.Get);
 
          r.Should().HaveCount(2);
@@ -105,7 +105,7 @@ namespace Coinbase.Tests.EndpointTests
          server.RespondWithJsonTestFile();
          var r = await client.Withdrawals.GetWithdrawal("fff");
 
-         server.ShouldHaveCalled("/transfers/fff")
+         server.ShouldHaveCalledSomePath("/transfers/fff")
             .WithVerb(HttpMethod.Get);
 
          await Verify(r);

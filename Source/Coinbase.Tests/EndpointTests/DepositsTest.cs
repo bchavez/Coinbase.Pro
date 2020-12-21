@@ -62,7 +62,7 @@ namespace Coinbase.Tests.EndpointTests
 
          var r = await client.Deposits.GetDeposit("fefe");
 
-         server.ShouldHaveCalled("/transfers/fefe")
+         server.ShouldHaveCalledSomePathAndQuery("/transfers/fefe")
             .WithVerb(HttpMethod.Get);
 
          await Verify(r);
@@ -76,8 +76,8 @@ namespace Coinbase.Tests.EndpointTests
 
          var r = await client.Deposits.ListDeposits();
 
-         server.ShouldHaveCalled("/transfers")
-            .WithQueryParamValue("type", "deposit")
+         server.ShouldHaveCalledSomePath("/transfers")
+            .WithQueryParam("type", "deposit")
             .WithVerb(HttpMethod.Get);
 
          await Verify(r);
@@ -91,7 +91,7 @@ namespace Coinbase.Tests.EndpointTests
 
          var r = await client.Deposits.GenerateCryptoDepositAddress("ffff");
 
-         server.ShouldHaveCalled("/coinbase-accounts/ffff/addresses")
+         server.ShouldHaveCalledSomePath("/coinbase-accounts/ffff/addresses")
             .WithVerb(HttpMethod.Post);
 
          await Verify(r);

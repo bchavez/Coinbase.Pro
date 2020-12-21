@@ -26,16 +26,25 @@ namespace Coinbase.Tests
 
       public static HttpCallAssertion2 ShouldHaveCalledSomePathAndQuery(this HttpTest test, string pathAndQuery)
       {
-         var paths = test.CallLog.Select(c => c.Request.RequestUri.PathAndQuery);
+         var paths = test.CallLog.Select(c => c.Request.Url.ToUri().PathAndQuery);
 
          paths.Should().Contain(pathAndQuery);
 
          return new HttpCallAssertion2(test.CallLog);
       }
 
+      public static HttpCallAssertion2 ShouldHaveCalledSomePath(this HttpTest test, string path)
+      {
+         var paths = test.CallLog.Select(c => c.Request.Url.Path);
+
+         paths.Should().Contain(path);
+
+         return new HttpCallAssertion2(test.CallLog);
+      }
+
       public static HttpCallAssertion2 ShouldHaveCalledAnExactUrl(this HttpTest test, string exactUrl)
       {
-         var fullPaths = test.CallLog.Select(c => c.FlurlRequest.Url.ToString());
+         var fullPaths = test.CallLog.Select(c => c.Request.Url.ToString());
 
          fullPaths.Should().Contain(exactUrl);
          return new HttpCallAssertion2(test.CallLog);
@@ -91,7 +100,7 @@ namespace Coinbase.Tests
          return server.RespondWithJsonTestFile(headers: new {cb_before = cbBefore, cb_after = cbAfter}, methodName, filePath);
       }
 
-      public static HttpTest RespondWithPagedResult(this HttpTest test, string json, int before, int after)
+      public static HttpTestSetup RespondWithPagedResult(this HttpTest test, string json, int before, int after)
       {
          return test.RespondWith(json, headers: new { cb_before=before, cb_after = after});
       }
@@ -99,9 +108,9 @@ namespace Coinbase.Tests
 
    public class HttpCallAssertion2 : HttpCallAssertion
    {
-      public IEnumerable<HttpCall> LoggedCalls { get; }
+      public IEnumerable<FlurlCall> LoggedCalls { get; }
 
-      public HttpCallAssertion2(IEnumerable<HttpCall> loggedCalls, bool negate = false) : base(loggedCalls, negate)
+      public HttpCallAssertion2(IEnumerable<FlurlCall> loggedCalls, bool negate = false) : base(loggedCalls, negate)
       {
          this.LoggedCalls = loggedCalls;
       }

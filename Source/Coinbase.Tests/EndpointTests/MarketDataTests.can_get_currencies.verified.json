@@ -1,74 +1,74 @@
 [
   {
-    id: 'BTC',
+    id: BTC,
     min_size: 0.00000001,
-    name: 'Bitcoin',
-    status: 'online'
+    name: Bitcoin,
+    status: online
   },
   {
-    id: 'EUR',
+    id: EUR,
     min_size: 0.01000000,
-    name: 'Euro',
-    status: 'online'
+    name: Euro,
+    status: online
   },
   {
-    id: 'LTC',
+    id: LTC,
     min_size: 0.00000001,
-    name: 'Litecoin',
-    status: 'online'
+    name: Litecoin,
+    status: online
   },
   {
-    id: 'GBP',
+    id: GBP,
     min_size: 0.01000000,
-    name: 'British Pound',
-    status: 'online'
+    name: British Pound,
+    status: online
   },
   {
-    id: 'USD',
+    id: USD,
     min_size: 0.01000000,
-    name: 'United States Dollar',
-    status: 'online',
+    name: United States Dollar,
+    status: online,
     convertible_to: [
-      'USDC'
+      USDC
     ]
   },
   {
-    id: 'ETH',
+    id: ETH,
     min_size: 0.00000001,
-    name: 'Ether',
-    status: 'online'
+    name: Ether,
+    status: online
   },
   {
-    id: 'ZRX',
+    id: ZRX,
     min_size: 0.00001000,
-    name: '0x',
-    status: 'online'
+    name: 0x,
+    status: online
   },
   {
-    id: 'BCH',
+    id: BCH,
     min_size: 0.00000001,
-    name: 'Bitcoin Cash',
-    status: 'online'
+    name: Bitcoin Cash,
+    status: online
   },
   {
-    id: 'ETC',
+    id: ETC,
     min_size: 0.00000001,
-    name: 'Ether Classic',
-    status: 'online'
+    name: Ether Classic,
+    status: online
   },
   {
-    id: 'USDC',
+    id: USDC,
     min_size: 0.00000100,
-    name: 'USD Coin',
-    status: 'online',
+    name: USD Coin,
+    status: online,
     convertible_to: [
-      'USD'
+      USD
     ]
   },
   {
-    id: 'BAT',
+    id: BAT,
     min_size: 1.00000000,
-    name: 'Basic Attention Token',
-    status: 'online'
+    name: Basic Attention Token,
+    status: online
   }
 ]
