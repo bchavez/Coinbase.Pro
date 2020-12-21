@@ -1,6 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net472;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <SignAssembly>false</SignAssembly>
     <CodeAnalysisRuleSet>..\Coinbase.Pro\Coinbase.Pro.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
