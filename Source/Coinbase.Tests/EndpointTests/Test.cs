@@ -1,9 +1,7 @@
-﻿using System.IO;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Coinbase.Pro;
 using Flurl.Http.Testing;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using VerifyNUnit;
 using VerifyTests;

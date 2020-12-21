@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Coinbase.Pro.Models;
+﻿using Coinbase.Pro.Models;
 using Coinbase.Pro.WebSockets;
 using FluentAssertions;
 using NUnit.Framework;

@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
-using Flurl;
 using Flurl.Http;
 
 namespace Coinbase.Pro

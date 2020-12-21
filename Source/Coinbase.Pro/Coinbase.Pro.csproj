@@ -6,9 +6,6 @@
     <PackageReleaseNotes />
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-    <SignAssembly>false</SignAssembly>
     <PackageTags>gdax;bitcoin;ethereum;litecoin;coinbase;api;cryptocurrency;payment;money;trade;bank</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/bchavez/Coinbase.Pro/master/Docs/coinbase_pro.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/bchavez/Coinbase.Pro</PackageProjectUrl>
@@ -29,9 +26,5 @@
     <PackageReference Include="Roslynator.Analyzers" Version="3.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 </Project>

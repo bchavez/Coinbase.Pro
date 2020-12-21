@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Coinbase.Pro;
 using Coinbase.Pro.Models;
