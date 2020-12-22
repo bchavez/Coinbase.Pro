@@ -1,13 +1,13 @@
 {
-  Data: [
+  "Data": [
     {
-      id: Guid_1,
-      account_id: Guid_2,
-      created_at: DateTimeOffset_1,
-      updated_at: DateTimeOffset_2,
-      amount: 4.23,
-      type: order,
-      ref: Guid_3
+      "id": "Guid_1",
+      "account_id": "Guid_2",
+      "created_at": "DateTimeOffset_1",
+      "updated_at": "DateTimeOffset_2",
+      "amount": "4.23",
+      "type": "order",
+      "ref": "Guid_3"
     }
   ]
 }

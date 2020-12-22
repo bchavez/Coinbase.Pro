@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -21,7 +22,7 @@ namespace Coinbase.Tests.EndpointTests
 
          server.ShouldHaveCalledSomePathAndQuery("/accounts");
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -38,7 +39,7 @@ namespace Coinbase.Tests.EndpointTests
 
          server.ShouldHaveCalledSomePathAndQuery("/accounts/fff");
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -54,7 +55,7 @@ namespace Coinbase.Tests.EndpointTests
 
          server.ShouldHaveCalledSomePathAndQuery("/accounts/fff/ledger");
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -71,7 +72,7 @@ namespace Coinbase.Tests.EndpointTests
 
          server.ShouldHaveCalledSomePathAndQuery("/accounts/fff/holds");
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
    }
 }

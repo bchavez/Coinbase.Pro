@@ -1,107 +1,107 @@
 {
-  asks: [
+  "asks": [
     {
-      Price: 0.00118,
-      Size: 40.0,
-      OrderId: Guid_1
+      "Price": 0.00118,
+      "Size": 40.0,
+      "OrderId": "Guid_1"
     },
     {
-      Price: 0.00118,
-      Size: 40.0,
-      OrderId: Guid_2
+      "Price": 0.00118,
+      "Size": 40.0,
+      "OrderId": "Guid_2"
     },
     {
-      Price: 0.00118,
-      Size: 60.0,
-      OrderId: Guid_3
+      "Price": 0.00118,
+      "Size": 60.0,
+      "OrderId": "Guid_3"
     },
     {
-      Price: 0.00118,
-      Size: 40.0,
-      OrderId: Guid_4
+      "Price": 0.00118,
+      "Size": 40.0,
+      "OrderId": "Guid_4"
     },
     {
-      Price: 10.19513,
-      Size: 2.03878915,
-      OrderId: Guid_5
+      "Price": 10.19513,
+      "Size": 2.03878915,
+      "OrderId": "Guid_5"
     },
     {
-      Price: 15.99999,
-      Size: 0.91320063,
-      OrderId: Guid_6
+      "Price": 15.99999,
+      "Size": 0.91320063,
+      "OrderId": "Guid_6"
     },
     {
-      Price: 16.0,
-      Size: 30.90605266,
-      OrderId: Guid_7
+      "Price": 16.0,
+      "Size": 30.90605266,
+      "OrderId": "Guid_7"
     },
     {
-      Price: 200.0,
-      Size: 1.0,
-      OrderId: Guid_8
+      "Price": 200.0,
+      "Size": 1.0,
+      "OrderId": "Guid_8"
     },
     {
-      Price: 897.0,
-      Size: 0.5,
-      OrderId: Guid_9
+      "Price": 897.0,
+      "Size": 0.5,
+      "OrderId": "Guid_9"
     },
     {
-      Price: 897.0,
-      Size: 2.5,
-      OrderId: Guid_10
+      "Price": 897.0,
+      "Size": 2.5,
+      "OrderId": "Guid_10"
     },
     {
-      Price: 133713.0,
-      Size: 0.4,
-      OrderId: Guid_11
+      "Price": 133713.0,
+      "Size": 0.4,
+      "OrderId": "Guid_11"
     }
   ],
-  bids: [
+  "bids": [
     {
-      Price: 0.00117,
-      Size: 5.5,
-      OrderId: Guid_12
+      "Price": 0.00117,
+      "Size": 5.5,
+      "OrderId": "Guid_12"
     },
     {
-      Price: 0.00117,
-      Size: 0.1,
-      OrderId: Guid_13
+      "Price": 0.00117,
+      "Size": 0.1,
+      "OrderId": "Guid_13"
     },
     {
-      Price: 0.00117,
-      Size: 226.16712202,
-      OrderId: Guid_14
+      "Price": 0.00117,
+      "Size": 226.16712202,
+      "OrderId": "Guid_14"
     },
     {
-      Price: 0.00117,
-      Size: 144.0,
-      OrderId: Guid_15
+      "Price": 0.00117,
+      "Size": 144.0,
+      "OrderId": "Guid_15"
     },
     {
-      Price: 0.00001,
-      Size: 786.0,
-      OrderId: Guid_16
+      "Price": 0.00001,
+      "Size": 786.0,
+      "OrderId": "Guid_16"
     },
     {
-      Price: 0.00001,
-      Size: 345.0,
-      OrderId: Guid_17
+      "Price": 0.00001,
+      "Size": 345.0,
+      "OrderId": "Guid_17"
     },
     {
-      Price: 0.00001,
-      Size: 0.1,
-      OrderId: Guid_18
+      "Price": 0.00001,
+      "Size": 0.1,
+      "OrderId": "Guid_18"
     },
     {
-      Price: 0.00001,
-      Size: 500.0,
-      OrderId: Guid_19
+      "Price": 0.00001,
+      "Size": 500.0,
+      "OrderId": "Guid_19"
     },
     {
-      Price: 0.00001,
-      Size: 1000.0,
-      OrderId: Guid_20
+      "Price": 0.00001,
+      "Size": 1000.0,
+      "OrderId": "Guid_20"
     }
   ],
-  sequence: 21704733
+  "sequence": 21704733
 }

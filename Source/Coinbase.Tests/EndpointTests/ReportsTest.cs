@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -33,7 +34,7 @@ $@"{{
             .WithSomeRequestBody(expectedBody)
             .WithVerb(HttpMethod.Post);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -49,7 +50,7 @@ $@"{{
          server.ShouldHaveCalledSomePathAndQuery("/reports/fff")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
    }
 }

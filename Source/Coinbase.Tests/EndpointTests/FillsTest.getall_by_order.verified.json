@@ -1,20 +1,20 @@
 {
-  Data: [
+  "Data": [
     {
-      created_at: DateTimeOffset_1,
-      trade_id: 59,
-      product_id: ETC-USD,
-      order_id: Guid_1,
-      user_id: fffffffffffffffff,
-      profile_id: Guid_2,
-      liquidity: T,
-      price: 50.00000000,
-      size: 1.99401794,
-      fee: 0.2991026910000000,
-      settled: true,
-      usd_volume: 99.7008970000000000
+      "created_at": "DateTimeOffset_1",
+      "trade_id": 59,
+      "product_id": "ETC-USD",
+      "order_id": "Guid_1",
+      "user_id": "fffffffffffffffff",
+      "profile_id": "Guid_2",
+      "liquidity": "T",
+      "price": 50.00000000,
+      "size": "1.99401794",
+      "fee": 0.2991026910000000,
+      "settled": true,
+      "usd_volume": 99.7008970000000000
     }
   ],
-  Before: 11,
-  After: 22
+  "Before": 11,
+  "After": 22
 }

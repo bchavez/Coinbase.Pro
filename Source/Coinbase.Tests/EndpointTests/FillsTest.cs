@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -26,7 +27,7 @@ namespace Coinbase.Tests.EndpointTests
          f.TradeId.Should().Be(59);
          f.Price.Should().Be(50m);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -47,7 +48,7 @@ namespace Coinbase.Tests.EndpointTests
          f.TradeId.Should().Be(59);
          f.Price.Should().Be(50m);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
    }
 }
