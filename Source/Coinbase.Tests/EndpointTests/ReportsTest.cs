@@ -15,7 +15,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWithJsonTestFile();
 
-         var date = DateTimeOffset.Parse("11/28/2018");
+         var date = DateTimeOffset.Parse("2018/11/28");
 
          var r = await client.Reports.CreateFillReportAsync(date, date.AddDays(1),
             "BTC-USD", email: "satoshi@bitcoin.com");
