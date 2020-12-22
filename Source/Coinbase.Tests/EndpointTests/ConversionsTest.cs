@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -28,7 +29,7 @@ namespace Coinbase.Tests.EndpointTests
          r.From.Should().Be("USD");
          r.To.Should().Be("USDC");
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
    }
 }

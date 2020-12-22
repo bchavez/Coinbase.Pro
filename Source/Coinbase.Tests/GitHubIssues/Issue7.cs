@@ -3,6 +3,7 @@ using Coinbase.Pro;
 using Coinbase.Tests.EndpointTests;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.GitHubIssues
 {
@@ -18,7 +19,7 @@ namespace Coinbase.Tests.GitHubIssues
 
          p.Count.Should().NotBe(0);
 
-         await Verify(p);
+         await Verifier.Verify(p);
       }
    }
 }

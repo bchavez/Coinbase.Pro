@@ -1,54 +1,54 @@
 [
   {
-    id: Guid_1,
-    name: ETH Wallet,
-    currency: ETH,
-    type: wallet,
-    active: true
+    "id": "Guid_1",
+    "name": "ETH Wallet",
+    "currency": "ETH",
+    "type": "wallet",
+    "active": true
   },
   {
-    id: Guid_2,
-    name: USD Wallet,
-    currency: USD,
-    type: fiat,
-    active: true,
-    wire_deposit_information: {
-      account_number: 0199003122,
-      routing_number: 026013356,
-      bank_name: Metropolitan Commercial Bank,
-      bank_address: 99 Park Ave 4th Fl New York, NY 10016,
-      bank_country: {
-        code: US,
-        name: United States
+    "id": "Guid_2",
+    "name": "USD Wallet",
+    "currency": "USD",
+    "type": "fiat",
+    "active": true,
+    "wire_deposit_information": {
+      "account_number": "0199003122",
+      "routing_number": "026013356",
+      "bank_name": "Metropolitan Commercial Bank",
+      "bank_address": "99 Park Ave 4th Fl New York, NY 10016",
+      "bank_country": {
+        "code": "US",
+        "name": "United States"
       },
-      account_name: Coinbase, Inc,
-      account_address: 548 Market Street, #23008, San Francisco, CA 94104,
-      reference: BAOCAEUX
+      "account_name": "Coinbase, Inc",
+      "account_address": "548 Market Street, #23008, San Francisco, CA 94104",
+      "reference": "BAOCAEUX"
     }
   },
   {
-    id: Guid_3,
-    name: BTC Wallet,
-    currency: BTC,
-    type: wallet,
-    primary: true,
-    active: true
+    "id": "Guid_3",
+    "name": "BTC Wallet",
+    "currency": "BTC",
+    "type": "wallet",
+    "primary": true,
+    "active": true
   },
   {
-    id: Guid_4,
-    name: EUR Wallet,
-    currency: EUR,
-    type: fiat,
-    active: true,
-    sepa_deposit_information: {
-      iban: EE957700771001355096,
-      swift: LHVBEE22,
-      bank_name: AS LHV Pank,
-      bank_address: Tartu mnt 2, 10145 Tallinn, Estonia,
-      bank_country_name: Estonia,
-      account_name: Coinbase UK, Ltd.,
-      account_address: 9th Floor, 107 Cheapside, London, EC2V 6DN, United Kingdom,
-      reference: CBAEUXOVFXOXYX
+    "id": "Guid_4",
+    "name": "EUR Wallet",
+    "currency": "EUR",
+    "type": "fiat",
+    "active": true,
+    "sepa_deposit_information": {
+      "iban": "EE957700771001355096",
+      "swift": "LHVBEE22",
+      "bank_name": "AS LHV Pank",
+      "bank_address": "Tartu mnt 2, 10145 Tallinn, Estonia",
+      "bank_country_name": "Estonia",
+      "account_name": "Coinbase UK, Ltd.",
+      "account_address": "9th Floor, 107 Cheapside, London, EC2V 6DN, United Kingdom",
+      "reference": "CBAEUXOVFXOXYX"
     }
   }
 ]

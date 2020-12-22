@@ -18,7 +18,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="NunitXml.TestLogger" Version="2.1.80" />
-    <PackageReference Include="Verify.NUnit" Version="8.12.5" />
+    <PackageReference Include="Verify.NUnit" Version="8.13.0" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
   </ItemGroup>
   <ItemGroup>

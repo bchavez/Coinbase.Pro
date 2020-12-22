@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -38,7 +39,7 @@ namespace Coinbase.Tests.EndpointTests
 
          //p.Limits.InstantBuy[0].PeriodInDays.Should().Be(7);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
    }
 }

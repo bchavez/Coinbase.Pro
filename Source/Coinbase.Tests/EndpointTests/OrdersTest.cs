@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Coinbase.Pro.Models;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -20,11 +21,11 @@ namespace Coinbase.Tests.EndpointTests
          o.Side.Should().Be(OrderSide.Buy);
          o.Type.Should().Be(OrderType.Market);
          o.TimeInForce.Should().Be(TimeInForce.GoodTillCanceled);
-         
+
          server.ShouldHaveCalledSomePathAndQuery("/orders?status=all")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -55,7 +56,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/orders/fff")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -70,7 +71,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/orders")
             .WithVerb(HttpMethod.Delete);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -85,7 +86,7 @@ namespace Coinbase.Tests.EndpointTests
                                     "product_id=BTC-USD")
             .WithVerb(HttpMethod.Delete);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -100,7 +101,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/orders/ooo")
             .WithVerb(HttpMethod.Delete);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
    }
 }
