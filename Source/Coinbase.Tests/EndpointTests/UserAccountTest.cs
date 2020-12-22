@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -24,7 +25,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/users/self/trailing-volume")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
    }
 }

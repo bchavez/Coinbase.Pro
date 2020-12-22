@@ -1,15 +1,15 @@
 {
-  id: Guid_1,
-  address: cx3iotaZqweMa7bABi4bRWq6rpponnOIFa,
-  destination_tag: 3299925630,
-  address_info: {
-    address: cx3iotaZqweMa7bABi4bRWq6rpponnOIFa,
-    destination_tag: 4938102
+  "id": "Guid_1",
+  "address": "cx3iotaZqweMa7bABi4bRWq6rpponnOIFa",
+  "destination_tag": "3299925630",
+  "address_info": {
+    "address": "cx3iotaZqweMa7bABi4bRWq6rpponnOIFa",
+    "destination_tag": "4938102"
   },
-  created_at: DateTimeOffset_1,
-  updated_at: DateTimeOffset_1,
-  network: ripple,
-  resource: address,
-  deposit_uri: xrp:cx3iotaZqweMa7bABi4bRWq6rpponnOIFa?dt=4938102,
-  exchange_deposit_address: true
+  "created_at": "DateTimeOffset_1",
+  "updated_at": "DateTimeOffset_1",
+  "network": "ripple",
+  "resource": "address",
+  "deposit_uri": "xrp:cx3iotaZqweMa7bABi4bRWq6rpponnOIFa?dt=4938102",
+  "exchange_deposit_address": true
 }

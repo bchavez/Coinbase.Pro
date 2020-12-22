@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -24,7 +25,7 @@ namespace Coinbase.Tests.EndpointTests
             .WithSomeRequestBody(expectedBody)
             .WithVerb(HttpMethod.Post);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -45,7 +46,7 @@ namespace Coinbase.Tests.EndpointTests
             .WithSomeRequestBody(expectedBody)
             .WithVerb(HttpMethod.Post);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -66,7 +67,7 @@ namespace Coinbase.Tests.EndpointTests
             .WithSomeRequestBody(expectedBody)
             .WithVerb(HttpMethod.Post);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -81,7 +82,7 @@ namespace Coinbase.Tests.EndpointTests
             .WithQueryParam("crypto_address", "fff")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -96,7 +97,7 @@ namespace Coinbase.Tests.EndpointTests
 
          r.Should().HaveCount(2);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -108,7 +109,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePath("/transfers/fff")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
    }

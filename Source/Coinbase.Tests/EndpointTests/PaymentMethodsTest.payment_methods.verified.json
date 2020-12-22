@@ -1,63 +1,63 @@
 [
   {
-    id: Guid_1,
-    type: ach_bank_account,
-    name: Bank of America - eBan... ********7134,
-    currency: USD,
-    primary_buy: true,
-    primary_sell: true,
-    allow_buy: true,
-    allow_sell: true,
-    allow_deposit: true,
-    allow_withdraw: true,
-    limits: {
-      buy: [
+    "id": "Guid_1",
+    "type": "ach_bank_account",
+    "name": "Bank of America - eBan... ********7134",
+    "currency": "USD",
+    "primary_buy": true,
+    "primary_sell": true,
+    "allow_buy": true,
+    "allow_sell": true,
+    "allow_deposit": true,
+    "allow_withdraw": true,
+    "limits": {
+      "buy": [
         {
-          period_in_days: 1,
-          total: {
-            amount: 10000.00,
-            currency: USD
+          "period_in_days": 1,
+          "total": {
+            "amount": 10000.00,
+            "currency": "USD"
           },
-          remaining: {
-            amount: 10000.00,
-            currency: USD
+          "remaining": {
+            "amount": 10000.00,
+            "currency": "USD"
           }
         }
       ],
-      instant_buy: [
+      "instant_buy": [
         {
-          period_in_days: 7,
-          total: {
-            currency: USD
+          "period_in_days": 7,
+          "total": {
+            "currency": "USD"
           },
-          remaining: {
-            currency: USD
+          "remaining": {
+            "currency": "USD"
           }
         }
       ],
-      sell: [
+      "sell": [
         {
-          period_in_days: 1,
-          total: {
-            amount: 10000.00,
-            currency: USD
+          "period_in_days": 1,
+          "total": {
+            "amount": 10000.00,
+            "currency": "USD"
           },
-          remaining: {
-            amount: 10000.00,
-            currency: USD
+          "remaining": {
+            "amount": 10000.00,
+            "currency": "USD"
           }
         }
       ],
-      deposit: [
+      "deposit": [
         {
-          period_in_days: 1,
-          total: {
-            amount: 10000.00,
-            currency: USD
+          "period_in_days": 1,
+          "total": {
+            "amount": 10000.00,
+            "currency": "USD"
           },
-          remaining: {
-            amount: 10000.00,
-            currency: USD
+          "remaining": {
+            "amount": 10000.00,
+            "currency": "USD"
           }
         }
       ]

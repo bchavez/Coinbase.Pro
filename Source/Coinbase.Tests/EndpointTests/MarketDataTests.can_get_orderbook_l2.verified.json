@@ -1,507 +1,507 @@
 {
-  asks: [
+  "asks": [
     {
-      Price: 3931.11,
-      Size: 0.96328664,
-      OrderCount: 1
+      "Price": 3931.11,
+      "Size": 0.96328664,
+      "OrderCount": 1
     },
     {
-      Price: 3932.24,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3932.24,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3933.1,
-      Size: 2.0,
-      OrderCount: 1
+      "Price": 3933.1,
+      "Size": 2.0,
+      "OrderCount": 1
     },
     {
-      Price: 3934.73,
-      Size: 0.72905567,
-      OrderCount: 1
+      "Price": 3934.73,
+      "Size": 0.72905567,
+      "OrderCount": 1
     },
     {
-      Price: 3934.74,
-      Size: 1.49999999,
-      OrderCount: 1
+      "Price": 3934.74,
+      "Size": 1.49999999,
+      "OrderCount": 1
     },
     {
-      Price: 3934.76,
-      Size: 0.49696123,
-      OrderCount: 1
+      "Price": 3934.76,
+      "Size": 0.49696123,
+      "OrderCount": 1
     },
     {
-      Price: 3934.98,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3934.98,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3935.0,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3935.0,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3935.07,
-      Size: 5.84,
-      OrderCount: 1
+      "Price": 3935.07,
+      "Size": 5.84,
+      "OrderCount": 1
     },
     {
-      Price: 3936.02,
-      Size: 0.01,
-      OrderCount: 1
+      "Price": 3936.02,
+      "Size": 0.01,
+      "OrderCount": 1
     },
     {
-      Price: 3936.92,
-      Size: 4.0,
-      OrderCount: 1
+      "Price": 3936.92,
+      "Size": 4.0,
+      "OrderCount": 1
     },
     {
-      Price: 3937.09,
-      Size: 0.96992505,
-      OrderCount: 1
+      "Price": 3937.09,
+      "Size": 0.96992505,
+      "OrderCount": 1
     },
     {
-      Price: 3937.21,
-      Size: 3.31795982,
-      OrderCount: 3
+      "Price": 3937.21,
+      "Size": 3.31795982,
+      "OrderCount": 3
     },
     {
-      Price: 3937.34,
-      Size: 3.48,
-      OrderCount: 1
+      "Price": 3937.34,
+      "Size": 3.48,
+      "OrderCount": 1
     },
     {
-      Price: 3937.62,
-      Size: 2.833,
-      OrderCount: 1
+      "Price": 3937.62,
+      "Size": 2.833,
+      "OrderCount": 1
     },
     {
-      Price: 3938.0,
-      Size: 0.1,
-      OrderCount: 1
+      "Price": 3938.0,
+      "Size": 0.1,
+      "OrderCount": 1
     },
     {
-      Price: 3938.24,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3938.24,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3938.41,
-      Size: 2.551,
-      OrderCount: 1
+      "Price": 3938.41,
+      "Size": 2.551,
+      "OrderCount": 1
     },
     {
-      Price: 3938.52,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3938.52,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3938.72,
-      Size: 3.5,
-      OrderCount: 2
+      "Price": 3938.72,
+      "Size": 3.5,
+      "OrderCount": 2
     },
     {
-      Price: 3939.23,
-      Size: 1.5,
-      OrderCount: 1
+      "Price": 3939.23,
+      "Size": 1.5,
+      "OrderCount": 1
     },
     {
-      Price: 3939.84,
-      Size: 2.5,
-      OrderCount: 1
+      "Price": 3939.84,
+      "Size": 2.5,
+      "OrderCount": 1
     },
     {
-      Price: 3939.91,
-      Size: 4.05,
-      OrderCount: 1
+      "Price": 3939.91,
+      "Size": 4.05,
+      "OrderCount": 1
     },
     {
-      Price: 3940.0,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3940.0,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3940.11,
-      Size: 0.19270794,
-      OrderCount: 1
+      "Price": 3940.11,
+      "Size": 0.19270794,
+      "OrderCount": 1
     },
     {
-      Price: 3940.21,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3940.21,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3942.01,
-      Size: 3.538,
-      OrderCount: 1
+      "Price": 3942.01,
+      "Size": 3.538,
+      "OrderCount": 1
     },
     {
-      Price: 3942.27,
-      Size: 4.8,
-      OrderCount: 1
+      "Price": 3942.27,
+      "Size": 4.8,
+      "OrderCount": 1
     },
     {
-      Price: 3942.56,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3942.56,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3943.0,
-      Size: 1.1,
-      OrderCount: 2
+      "Price": 3943.0,
+      "Size": 1.1,
+      "OrderCount": 2
     },
     {
-      Price: 3943.76,
-      Size: 16.73,
-      OrderCount: 1
+      "Price": 3943.76,
+      "Size": 16.73,
+      "OrderCount": 1
     },
     {
-      Price: 3944.0,
-      Size: 5.0,
-      OrderCount: 1
+      "Price": 3944.0,
+      "Size": 5.0,
+      "OrderCount": 1
     },
     {
-      Price: 3945.0,
-      Size: 2.27913331,
-      OrderCount: 1
+      "Price": 3945.0,
+      "Size": 2.27913331,
+      "OrderCount": 1
     },
     {
-      Price: 3945.02,
-      Size: 6.771,
-      OrderCount: 2
+      "Price": 3945.02,
+      "Size": 6.771,
+      "OrderCount": 2
     },
     {
-      Price: 3946.36,
-      Size: 0.29,
-      OrderCount: 1
+      "Price": 3946.36,
+      "Size": 0.29,
+      "OrderCount": 1
     },
     {
-      Price: 3947.56,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3947.56,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3947.57,
-      Size: 3.39,
-      OrderCount: 1
+      "Price": 3947.57,
+      "Size": 3.39,
+      "OrderCount": 1
     },
     {
-      Price: 3947.61,
-      Size: 2.0,
-      OrderCount: 1
+      "Price": 3947.61,
+      "Size": 2.0,
+      "OrderCount": 1
     },
     {
-      Price: 3948.65,
-      Size: 0.2,
-      OrderCount: 1
+      "Price": 3948.65,
+      "Size": 0.2,
+      "OrderCount": 1
     },
     {
-      Price: 3949.0,
-      Size: 0.00191605,
-      OrderCount: 1
+      "Price": 3949.0,
+      "Size": 0.00191605,
+      "OrderCount": 1
     },
     {
-      Price: 3949.83,
-      Size: 3.9,
-      OrderCount: 1
+      "Price": 3949.83,
+      "Size": 3.9,
+      "OrderCount": 1
     },
     {
-      Price: 3950.0,
-      Size: 0.15799286,
-      OrderCount: 2
+      "Price": 3950.0,
+      "Size": 0.15799286,
+      "OrderCount": 2
     },
     {
-      Price: 3950.03,
-      Size: 0.0021,
-      OrderCount: 1
+      "Price": 3950.03,
+      "Size": 0.0021,
+      "OrderCount": 1
     },
     {
-      Price: 3950.3,
-      Size: 0.23,
-      OrderCount: 1
+      "Price": 3950.3,
+      "Size": 0.23,
+      "OrderCount": 1
     },
     {
-      Price: 3951.1,
-      Size: 0.945,
-      OrderCount: 2
+      "Price": 3951.1,
+      "Size": 0.945,
+      "OrderCount": 2
     },
     {
-      Price: 3951.81,
-      Size: 17.4,
-      OrderCount: 1
+      "Price": 3951.81,
+      "Size": 17.4,
+      "OrderCount": 1
     },
     {
-      Price: 3951.85,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3951.85,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3952.56,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3952.56,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3953.3,
-      Size: 3.73,
-      OrderCount: 1
+      "Price": 3953.3,
+      "Size": 3.73,
+      "OrderCount": 1
     },
     {
-      Price: 3954.0,
-      Size: 0.016,
-      OrderCount: 2
+      "Price": 3954.0,
+      "Size": 0.016,
+      "OrderCount": 2
     }
   ],
-  bids: [
+  "bids": [
     {
-      Price: 3931.1,
-      Size: 11.70034142,
-      OrderCount: 6
+      "Price": 3931.1,
+      "Size": 11.70034142,
+      "OrderCount": 6
     },
     {
-      Price: 3931.09,
-      Size: 0.01,
-      OrderCount: 1
+      "Price": 3931.09,
+      "Size": 0.01,
+      "OrderCount": 1
     },
     {
-      Price: 3931.08,
-      Size: 2.51,
-      OrderCount: 2
+      "Price": 3931.08,
+      "Size": 2.51,
+      "OrderCount": 2
     },
     {
-      Price: 3931.05,
-      Size: 2.5,
-      OrderCount: 1
+      "Price": 3931.05,
+      "Size": 2.5,
+      "OrderCount": 1
     },
     {
-      Price: 3930.7,
-      Size: 0.05,
-      OrderCount: 1
+      "Price": 3930.7,
+      "Size": 0.05,
+      "OrderCount": 1
     },
     {
-      Price: 3930.0,
-      Size: 0.02013131,
-      OrderCount: 1
+      "Price": 3930.0,
+      "Size": 0.02013131,
+      "OrderCount": 1
     },
     {
-      Price: 3929.22,
-      Size: 0.27,
-      OrderCount: 1
+      "Price": 3929.22,
+      "Size": 0.27,
+      "OrderCount": 1
     },
     {
-      Price: 3927.61,
-      Size: 0.99577024,
-      OrderCount: 1
+      "Price": 3927.61,
+      "Size": 0.99577024,
+      "OrderCount": 1
     },
     {
-      Price: 3927.56,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3927.56,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3927.01,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3927.01,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3926.15,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3926.15,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3925.03,
-      Size: 2.0,
-      OrderCount: 1
+      "Price": 3925.03,
+      "Size": 2.0,
+      "OrderCount": 1
     },
     {
-      Price: 3925.0,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3925.0,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3922.82,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3922.82,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3922.64,
-      Size: 0.5,
-      OrderCount: 1
+      "Price": 3922.64,
+      "Size": 0.5,
+      "OrderCount": 1
     },
     {
-      Price: 3922.56,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3922.56,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3922.15,
-      Size: 5.9,
-      OrderCount: 1
+      "Price": 3922.15,
+      "Size": 5.9,
+      "OrderCount": 1
     },
     {
-      Price: 3921.93,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3921.93,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3921.64,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3921.64,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3921.63,
-      Size: 0.33,
-      OrderCount: 1
+      "Price": 3921.63,
+      "Size": 0.33,
+      "OrderCount": 1
     },
     {
-      Price: 3921.46,
-      Size: 0.8,
-      OrderCount: 1
+      "Price": 3921.46,
+      "Size": 0.8,
+      "OrderCount": 1
     },
     {
-      Price: 3921.29,
-      Size: 4.0,
-      OrderCount: 1
+      "Price": 3921.29,
+      "Size": 4.0,
+      "OrderCount": 1
     },
     {
-      Price: 3921.0,
-      Size: 0.25216781,
-      OrderCount: 1
+      "Price": 3921.0,
+      "Size": 0.25216781,
+      "OrderCount": 1
     },
     {
-      Price: 3920.54,
-      Size: 1.5,
-      OrderCount: 1
+      "Price": 3920.54,
+      "Size": 1.5,
+      "OrderCount": 1
     },
     {
-      Price: 3920.38,
-      Size: 0.0031,
-      OrderCount: 2
+      "Price": 3920.38,
+      "Size": 0.0031,
+      "OrderCount": 2
     },
     {
-      Price: 3920.0,
-      Size: 2.05,
-      OrderCount: 3
+      "Price": 3920.0,
+      "Size": 2.05,
+      "OrderCount": 3
     },
     {
-      Price: 3919.86,
-      Size: 3.13,
-      OrderCount: 1
+      "Price": 3919.86,
+      "Size": 3.13,
+      "OrderCount": 1
     },
     {
-      Price: 3919.73,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3919.73,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3919.01,
-      Size: 0.93675376,
-      OrderCount: 2
+      "Price": 3919.01,
+      "Size": 0.93675376,
+      "OrderCount": 2
     },
     {
-      Price: 3919.0,
-      Size: 39.87000196,
-      OrderCount: 2
+      "Price": 3919.0,
+      "Size": 39.87000196,
+      "OrderCount": 2
     },
     {
-      Price: 3918.88,
-      Size: 0.0010011,
-      OrderCount: 1
+      "Price": 3918.88,
+      "Size": 0.0010011,
+      "OrderCount": 1
     },
     {
-      Price: 3918.54,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3918.54,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3918.41,
-      Size: 0.865,
-      OrderCount: 1
+      "Price": 3918.41,
+      "Size": 0.865,
+      "OrderCount": 1
     },
     {
-      Price: 3918.09,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3918.09,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3917.57,
-      Size: 0.002,
-      OrderCount: 1
+      "Price": 3917.57,
+      "Size": 0.002,
+      "OrderCount": 1
     },
     {
-      Price: 3917.56,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3917.56,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3917.42,
-      Size: 3.5,
-      OrderCount: 1
+      "Price": 3917.42,
+      "Size": 3.5,
+      "OrderCount": 1
     },
     {
-      Price: 3917.38,
-      Size: 7.66386242,
-      OrderCount: 1
+      "Price": 3917.38,
+      "Size": 7.66386242,
+      "OrderCount": 1
     },
     {
-      Price: 3916.85,
-      Size: 0.001,
-      OrderCount: 1
+      "Price": 3916.85,
+      "Size": 0.001,
+      "OrderCount": 1
     },
     {
-      Price: 3916.66,
-      Size: 1.0,
-      OrderCount: 1
+      "Price": 3916.66,
+      "Size": 1.0,
+      "OrderCount": 1
     },
     {
-      Price: 3916.14,
-      Size: 2.0,
-      OrderCount: 1
+      "Price": 3916.14,
+      "Size": 2.0,
+      "OrderCount": 1
     },
     {
-      Price: 3915.73,
-      Size: 0.0021,
-      OrderCount: 1
+      "Price": 3915.73,
+      "Size": 0.0021,
+      "OrderCount": 1
     },
     {
-      Price: 3915.38,
-      Size: 2.699,
-      OrderCount: 1
+      "Price": 3915.38,
+      "Size": 2.699,
+      "OrderCount": 1
     },
     {
-      Price: 3915.0,
-      Size: 0.00510855,
-      OrderCount: 1
+      "Price": 3915.0,
+      "Size": 0.00510855,
+      "OrderCount": 1
     },
     {
-      Price: 3914.76,
-      Size: 6.11,
-      OrderCount: 1
+      "Price": 3914.76,
+      "Size": 6.11,
+      "OrderCount": 1
     },
     {
-      Price: 3914.7,
-      Size: 0.34,
-      OrderCount: 1
+      "Price": 3914.7,
+      "Size": 0.34,
+      "OrderCount": 1
     },
     {
-      Price: 3914.03,
-      Size: 1.26,
-      OrderCount: 1
+      "Price": 3914.03,
+      "Size": 1.26,
+      "OrderCount": 1
     },
     {
-      Price: 3913.13,
-      Size: 0.002,
-      OrderCount: 1
+      "Price": 3913.13,
+      "Size": 0.002,
+      "OrderCount": 1
     },
     {
-      Price: 3912.36,
-      Size: 3.65,
-      OrderCount: 1
+      "Price": 3912.36,
+      "Size": 3.65,
+      "OrderCount": 1
     },
     {
-      Price: 3911.9,
-      Size: 2.26,
-      OrderCount: 1
+      "Price": 3911.9,
+      "Size": 2.26,
+      "OrderCount": 1
     }
   ],
-  sequence: 7417375918
+  "sequence": 7417375918
 }

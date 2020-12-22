@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -16,7 +17,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/fees")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
    }
 }

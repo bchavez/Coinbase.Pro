@@ -11,16 +11,16 @@ namespace Coinbase.Tests.EndpointTests
    public class Test
    {
       protected HttpTest server;
-      protected VerifySettings settings;
+
+      static Test()
+      {
+         VerifierSettings.UseStrictJson();
+      }
 
       [SetUp]
       public virtual void BeforeEachTest()
       {
          this.server = new HttpTest();
-         this.settings = new VerifySettings();
-         this.settings.UseExtension("json");
-         //this.settings.AutoVerify();
-
 
 #if NET45
          Directory.SetCurrentDirectory(Path.GetDirectoryName(this.GetType().Assembly.Location));
@@ -33,11 +33,6 @@ namespace Coinbase.Tests.EndpointTests
          EnsureEveryRequestHasCorrectHeaders();
 
          this.server.Dispose();
-      }
-
-      protected Task Verify<T>(T t, [CallerFilePath] string sourceFile = "")
-      {
-         return Verifier.Verify(t, this.settings, sourceFile);
       }
 
       protected virtual void EnsureEveryRequestHasCorrectHeaders()

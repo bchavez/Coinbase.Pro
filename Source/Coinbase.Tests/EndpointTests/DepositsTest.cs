@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
+using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
 {
@@ -27,7 +28,7 @@ namespace Coinbase.Tests.EndpointTests
          r.Amount.Should().Be(10.00m);
          r.Currency.Should().Be("USD");
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -51,7 +52,7 @@ namespace Coinbase.Tests.EndpointTests
          r.Amount.Should().Be(10.00m);
          r.Currency.Should().Be("BTC");
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -64,9 +65,8 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/transfers/fefe")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
-
 
       [Test]
       public async Task can_list_deposits()
@@ -79,7 +79,7 @@ namespace Coinbase.Tests.EndpointTests
             .WithQueryParam("type", "deposit")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
 
@@ -93,8 +93,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePath("/coinbase-accounts/ffff/addresses")
             .WithVerb(HttpMethod.Post);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
-      
    }
 }

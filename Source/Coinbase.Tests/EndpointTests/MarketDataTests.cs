@@ -7,6 +7,7 @@ using Coinbase.Pro.Models;
 using FluentAssertions;
 using Flurl;
 using NUnit.Framework;
+using VerifyNUnit;
 
 //using Refit;
 //using RichardSzalay.MockHttp;
@@ -34,7 +35,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/currencies")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -47,7 +48,7 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/stats")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -69,7 +70,7 @@ namespace Coinbase.Tests.EndpointTests
                                                  "granularity=60")
             .WithVerb(HttpMethod.Get);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -96,7 +97,7 @@ namespace Coinbase.Tests.EndpointTests
          r.Before.Should().Be(54870014);
          r.After.Should().Be(54870113);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -115,7 +116,7 @@ namespace Coinbase.Tests.EndpointTests
          r.Before.Should().NotBeNull();
          r.After.Should().NotBeNull();
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -136,7 +137,7 @@ namespace Coinbase.Tests.EndpointTests
          r.TradeId.Should().Be(54705877);
          r.Volume.Should().Be(32218.97638837m);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -153,7 +154,7 @@ namespace Coinbase.Tests.EndpointTests
          r.Bids[0].Size.Should().Be(5.5m);
          r.Bids[0].OrderId.Should().Be("88588a7f-5d24-4131-b270-394dd05a1353");
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -170,7 +171,7 @@ namespace Coinbase.Tests.EndpointTests
          r.Asks[0].Size.Should().Be(0.96328664m);
          r.Asks[0].OrderCount.Should().Be(1);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
@@ -194,14 +195,14 @@ namespace Coinbase.Tests.EndpointTests
          r.Asks[0].OrderCount.Should().Be(1);
          r.Asks.Length.Should().Be(1);
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
 
       [Test]
       public async Task can_get_products()
       {
          server.RespondWithJsonTestFile();
-        
+
          var r = await client.MarketData.GetProductsAsync();
 
          server.ShouldHaveCalledSomePathAndQuery("/products")
@@ -225,7 +226,7 @@ namespace Coinbase.Tests.EndpointTests
          p.Status.Should().Be("online");
          p.StatusMessage.Should().BeNull();
 
-         await Verify(r);
+         await Verifier.Verify(r);
       }
    }
 
