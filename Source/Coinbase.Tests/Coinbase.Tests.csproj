@@ -20,6 +20,7 @@
     <PackageReference Include="NunitXml.TestLogger" Version="2.1.80" />
     <PackageReference Include="Verify.NUnit" Version="8.12.5" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
+    <PackageReference Include="MarkdownSnippets.MsBuild" Version="21.7.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Coinbase.Pro\Coinbase.Pro.csproj" />
