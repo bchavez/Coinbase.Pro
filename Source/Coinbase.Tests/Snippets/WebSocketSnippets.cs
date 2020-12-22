@@ -19,6 +19,7 @@ class WebSocketSnippets
             //Override the SocketUri property to use Sandbox.
             //SocketUri = "wss://ws-feed-public.sandbox.pro.coinbase.com"
          });
+
       #endregion
    }
 
@@ -34,6 +35,7 @@ class WebSocketSnippets
    async Task SubscribingToEvents(CoinbaseProWebSocket socket)
    {
       #region SubscribingToEvents
+
       //Using authenticated or unauthenticated instance `socket`
       //Connect the websocket,
       //when this connect method completes, the socket is ready or failure occured.
@@ -61,10 +63,13 @@ class WebSocketSnippets
 
       //now wait for data.
       await Task.Delay(TimeSpan.FromMinutes(1));
+
       #endregion
    }
+
    #region RawSocket_MessageReceived
-   private void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
+
+   void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
    {
       //Try parsing the e.Message JSON.
       if( WebSocketHelper.TryParse(e.Message, out var msg) )
@@ -75,5 +80,6 @@ class WebSocketSnippets
          }
       }
    }
+
    #endregion
 }
