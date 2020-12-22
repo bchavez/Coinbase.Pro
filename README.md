@@ -206,7 +206,7 @@ To create an unauthenticated feed, simply do the following:
 ```cs
 var socket = new CoinbaseProWebSocket();
 ```
-<sup><a href='/Source/Coinbase.Tests/Snippets/WebSocketSnippets.cs#L27-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-unauthenticatedcoinbaseprowebsocket' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/Source/Coinbase.Tests/Snippets/WebSocketSnippets.cs#L28-L32' title='Snippet source file'>snippet source</a> | <a href='#snippet-unauthenticatedcoinbaseprowebsocket' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 ### Authenticated WebSocket
@@ -225,7 +225,7 @@ var socket = new CoinbaseProWebSocket(new WebSocketConfig
       //SocketUri = "wss://ws-feed-public.sandbox.pro.coinbase.com"
    });
 ```
-<sup><a href='/Source/Coinbase.Tests/Snippets/WebSocketSnippets.cs#L11-L22' title='Snippet source file'>snippet source</a> | <a href='#snippet-coinbaseprowebsocket' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/Source/Coinbase.Tests/Snippets/WebSocketSnippets.cs#L11-L23' title='Snippet source file'>snippet source</a> | <a href='#snippet-coinbaseprowebsocket' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 By default, the `SocketUri` property is set to use **production**. If you want to use the **sandbox**, set the `SocketUri` property to `wss://ws-feed-public.sandbox.pro.coinbase.com` as described in the [documentation here](https://docs.pro.coinbase.com/#sandbox). Setting the `SocketUri` property will override the **production** Websocket feed URL that is set by default.
@@ -264,7 +264,7 @@ await socket.SubscribeAsync(sub);
 //now wait for data.
 await Task.Delay(TimeSpan.FromMinutes(1));
 ```
-<sup><a href='/Source/Coinbase.Tests/Snippets/WebSocketSnippets.cs#L36-L64' title='Snippet source file'>snippet source</a> | <a href='#snippet-subscribingtoevents' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/Source/Coinbase.Tests/Snippets/WebSocketSnippets.cs#L37-L67' title='Snippet source file'>snippet source</a> | <a href='#snippet-subscribingtoevents' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Once your subscription is sent upstream, you should start receiving events over the WebSocket. The following example shows how to process incoming messages as they arrive:
@@ -272,7 +272,7 @@ Once your subscription is sent upstream, you should start receiving events over 
 <!-- snippet: RawSocket_MessageReceived -->
 <a id='snippet-rawsocket_messagereceived'></a>
 ```cs
-private void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
+void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
 {
    //Try parsing the e.Message JSON.
    if( WebSocketHelper.TryParse(e.Message, out var msg) )
@@ -284,7 +284,7 @@ private void RawSocket_MessageReceived(object sender, MessageReceivedEventArgs e
    }
 }
 ```
-<sup><a href='/Source/Coinbase.Tests/Snippets/WebSocketSnippets.cs#L66-L78' title='Snippet source file'>snippet source</a> | <a href='#snippet-rawsocket_messagereceived' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/Source/Coinbase.Tests/Snippets/WebSocketSnippets.cs#L70-L84' title='Snippet source file'>snippet source</a> | <a href='#snippet-rawsocket_messagereceived' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 A complete working example can be [found here](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Examples/Program.cs) and [here](https://github.com/bchavez/Coinbase.Pro/blob/master/Source/Coinbase.Tests/IntegrationTests/WebSocketTests.cs).
