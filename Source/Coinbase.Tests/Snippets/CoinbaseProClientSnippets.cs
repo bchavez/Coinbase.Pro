@@ -60,7 +60,7 @@ class CoinbaseProClientSnippets
       var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5);
 
       //Get the next batch of older trades after the current page.
-      while( trades.After != null )
+      while( trades.After is not null )
       {
          trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, after: trades.After);
       }
@@ -76,7 +76,7 @@ class CoinbaseProClientSnippets
       //Some time advances, trades execute.
 
       //Now, get the next batch of newer trades before the current page.
-      while( trades.Before != null )
+      while( trades.Before is not null )
       {
          trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, before: trades.Before);
       }
