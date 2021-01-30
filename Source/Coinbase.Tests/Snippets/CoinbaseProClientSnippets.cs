@@ -1,13 +1,12 @@
-﻿using Coinbase.Pro;
+﻿using System;
+using System.Threading.Tasks;
+using Coinbase.Pro;
 using Coinbase.Pro.Models;
 using Coinbase.Tests;
 
-using System;
-using System.Threading.Tasks;
-
-internal class CoinbaseProClientSnippets
+class CoinbaseProClientSnippets
 {
-   private void CoinbaseProClient()
+   void CoinbaseProClient()
    {
       #region CoinbaseProClient
 
@@ -23,7 +22,7 @@ internal class CoinbaseProClientSnippets
       #endregion
    }
 
-   private async Task CreateOrder(CoinbaseProClient client)
+   async Task CreateOrder(CoinbaseProClient client)
    {
       #region createOrder
 
@@ -35,7 +34,7 @@ internal class CoinbaseProClientSnippets
       #endregion
    }
 
-   private async Task ErrorHandling(CoinbaseProClient client)
+   async Task ErrorHandling(CoinbaseProClient client)
    {
       #region ErrorHandling
 
@@ -54,7 +53,7 @@ internal class CoinbaseProClientSnippets
       #endregion
    }
 
-   private async Task EnumerateOlder(CoinbaseProClient client)
+   async Task EnumerateOlder(CoinbaseProClient client)
    {
       #region EnumerateOlder
       //Get the initial page, items 16 through 20
@@ -68,7 +67,7 @@ internal class CoinbaseProClientSnippets
       #endregion
    }
 
-   private async Task EnumerateNewer(CoinbaseProClient client)
+   async Task EnumerateNewer(CoinbaseProClient client)
    {
       #region EnumerateNewer
       //Get the initial page, items 16 through 20
