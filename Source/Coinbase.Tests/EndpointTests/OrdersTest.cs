@@ -1,13 +1,9 @@
-﻿using Coinbase.Pro.Models;
-
-using FluentAssertions;
-
-using NUnit.Framework;
-
-using System.Linq;
+﻿using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-
+using Coinbase.Pro.Models;
+using FluentAssertions;
+using NUnit.Framework;
 using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests

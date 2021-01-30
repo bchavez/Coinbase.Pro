@@ -1,17 +1,12 @@
-﻿using Coinbase.Pro;
-using Coinbase.Pro.Models;
-
-using FluentAssertions;
-
-using Flurl;
-
-using NUnit.Framework;
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-
+using Coinbase.Pro;
+using Coinbase.Pro.Models;
+using FluentAssertions;
+using Flurl;
+using NUnit.Framework;
 using VerifyNUnit;
 
 //using Refit;

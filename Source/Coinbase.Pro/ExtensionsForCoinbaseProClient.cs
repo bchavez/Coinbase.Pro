@@ -1,10 +1,8 @@
-﻿using Coinbase.Pro.Models;
-
-using Flurl.Http;
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Coinbase.Pro.Models;
+using Flurl.Http;
 
 namespace Coinbase.Pro
 {

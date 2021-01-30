@@ -1,10 +1,8 @@
-﻿using Coinbase.Pro;
-using Coinbase.Pro.Models;
-
-using NUnit.Framework;
-
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Coinbase.Pro;
+using Coinbase.Pro.Models;
+using NUnit.Framework;
 
 namespace Coinbase.Tests.IntegrationTests
 {
