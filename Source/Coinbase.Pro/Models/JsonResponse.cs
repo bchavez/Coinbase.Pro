@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+
+using System.Collections.Generic;
 //using Refit;
 
 namespace Coinbase.Pro.Models
@@ -21,8 +22,8 @@ namespace Coinbase.Pro.Models
 
    public interface IPagedResource
    {
-      long? Before { get; }
-      long? After { get; }
+      string Before { get; }
+      string After { get; }
    }
 
    public class PagedResponse<T> : JsonResponse, IPagedResource
@@ -45,7 +46,7 @@ namespace Coinbase.Pro.Models
       /// current one. The page before is a newer page and not one that
       /// happened before in chronological time.
       /// </summary>
-      public long? Before { get; internal set; }
+      public string Before { get; internal set; }
 
       /// <summary>
       /// To request a page of records before the current one,
@@ -63,6 +64,6 @@ namespace Coinbase.Pro.Models
       /// the page after this one. The page after is an older page
       /// and not one that happened after this one in chronological time.
       /// </summary>
-      public long? After { get; internal set; }
+      public string After { get; internal set; }
    }
 }

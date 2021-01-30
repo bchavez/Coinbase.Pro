@@ -1,12 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using Coinbase.Pro;
+﻿using Coinbase.Pro;
 using Coinbase.Pro.Models;
 using Coinbase.Tests;
 
-class CoinbaseProClientSnippets
+using System;
+using System.Threading.Tasks;
+
+internal class CoinbaseProClientSnippets
 {
-   void CoinbaseProClient()
+   private void CoinbaseProClient()
    {
       #region CoinbaseProClient
 
@@ -22,7 +23,7 @@ class CoinbaseProClientSnippets
       #endregion
    }
 
-   async Task CreateOrder(CoinbaseProClient client)
+   private async Task CreateOrder(CoinbaseProClient client)
    {
       #region createOrder
 
@@ -34,7 +35,7 @@ class CoinbaseProClientSnippets
       #endregion
    }
 
-   async Task ErrorHandling(CoinbaseProClient client)
+   private async Task ErrorHandling(CoinbaseProClient client)
    {
       #region ErrorHandling
 
@@ -53,21 +54,21 @@ class CoinbaseProClientSnippets
       #endregion
    }
 
-   async Task EnumerateOlder(CoinbaseProClient client)
+   private async Task EnumerateOlder(CoinbaseProClient client)
    {
       #region EnumerateOlder
       //Get the initial page, items 16 through 20
       var trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5);
 
       //Get the next batch of older trades after the current page.
-      while( trades.After.HasValue )
+      while( trades.After != null )
       {
          trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, after: trades.After);
       }
       #endregion
    }
 
-   async Task EnumerateNewer(CoinbaseProClient client)
+   private async Task EnumerateNewer(CoinbaseProClient client)
    {
       #region EnumerateNewer
       //Get the initial page, items 16 through 20
@@ -76,7 +77,7 @@ class CoinbaseProClientSnippets
       //Some time advances, trades execute.
 
       //Now, get the next batch of newer trades before the current page.
-      while( trades.Before.HasValue )
+      while( trades.Before != null )
       {
          trades = await client.MarketData.GetTradesAsync("ETC-USD", limit: 5, before: trades.Before);
       }

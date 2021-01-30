@@ -43,7 +43,7 @@ namespace Coinbase.Pro
       /// <param name="after">Request page after (older) this pagination id.</param>
       Task<PagedResponse<Trade>> GetTradesAsync(
          string productId,
-         int? limit = null, long? before = null, long? after = null,
+         int? limit = null, string before = null, string after = null,
          CancellationToken cancellationToken = default);
 
       /// <summary>
@@ -105,7 +105,7 @@ namespace Coinbase.Pro
 
       Task<PagedResponse<Trade>> IMarketDataEndpoint.GetTradesAsync(
          string productId,
-         int? limit, long? before, long? after,
+         int? limit, string before, string after,
          CancellationToken cancellationToken)
       {
          return this.ProductsEndpoint

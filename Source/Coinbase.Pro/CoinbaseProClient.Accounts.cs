@@ -24,7 +24,7 @@ namespace Coinbase.Pro
       /// </summary>
       Task<PagedResponse<AccountHistory>> GetAccountHistoryAsync(
          string accountId,
-         int? limit = null, long? before = null, long? after = null,
+         int? limit = null, string before = null, string after = null,
          CancellationToken cancellationToken = default);
 
       /// <summary>
@@ -32,7 +32,7 @@ namespace Coinbase.Pro
       /// </summary>
       Task<PagedResponse<AccountHold>> GetAccountHoldAsync(
          string accountId,
-         int? limit = null, long? before = null, long? after = null,
+         int? limit = null, string before = null, string after = null,
          CancellationToken cancellationToken = default);
    }
 
@@ -59,7 +59,7 @@ namespace Coinbase.Pro
 
       Task<PagedResponse<AccountHistory>> IAccountsEndpoint.GetAccountHistoryAsync(
          string accountId,
-         int? limit, long? before, long? after,
+         int? limit, string before, string after,
          CancellationToken cancellationToken)
       {
          return this.AccountsEndpoint
@@ -71,7 +71,7 @@ namespace Coinbase.Pro
 
       Task<PagedResponse<AccountHold>> IAccountsEndpoint.GetAccountHoldAsync(
          string accountId,
-         int? limit, long? before, long? after,
+         int? limit, string before, string after,
          CancellationToken cancellationToken)
       {
          return this.AccountsEndpoint

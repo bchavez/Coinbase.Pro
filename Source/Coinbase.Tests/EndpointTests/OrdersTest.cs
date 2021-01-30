@@ -1,9 +1,13 @@
-﻿using System.Linq;
+﻿using Coinbase.Pro.Models;
+
+using FluentAssertions;
+
+using NUnit.Framework;
+
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Coinbase.Pro.Models;
-using FluentAssertions;
-using NUnit.Framework;
+
 using VerifyNUnit;
 
 namespace Coinbase.Tests.EndpointTests
@@ -31,7 +35,7 @@ namespace Coinbase.Tests.EndpointTests
       [Test]
       public async Task get_paged_order_list()
       {
-         var r = await client.Orders.GetAllOrdersAsync("open, pending", "ETH-USD", 20, 30, 40);
+         var r = await client.Orders.GetAllOrdersAsync("open, pending", "ETH-USD", 20, "30", "40");
 
          server.ShouldHaveCalledSomePathAndQuery("/orders?" +
                                     "status=open&" +
