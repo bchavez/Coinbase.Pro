@@ -1,5 +1,5 @@
 ## v4.0.1
-* PR 33: Changes Before and After pagination types from `long` to `string` because some endpoints use date/time strings. 
+* PR 33: Changes Before and After pagination types from `long` to `string` because some endpoints use date/time strings. Thanks devax!
 
 ## v3.3.0
 * PR 23: Added `Withdrawals.GetFeeEstimate`. Thanks la4atld!
