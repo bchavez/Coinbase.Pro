@@ -149,7 +149,7 @@ namespace Coinbase.Tests.IntegrationTests
       [Test]
       public async Task can_page_through_some_data2()
       {
-         var trades = await client.MarketData.GetTradesAsync("BTC-USD", limit: 5, before: 1);
+         var trades = await client.MarketData.GetTradesAsync("BTC-USD", limit: 5, before: "1");
 
          //for (int i = 0; i < 3; i++)
          //{

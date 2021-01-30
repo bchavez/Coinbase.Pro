@@ -15,6 +15,6 @@
       "usd_volume": 99.7008970000000000
     }
   ],
-  "Before": 11,
-  "After": 22
+  "Before": "11",
+  "After": "22"
 }

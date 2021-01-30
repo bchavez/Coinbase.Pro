@@ -19,8 +19,8 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/fills?product_id=ETC-USD")
             .WithVerb(HttpMethod.Get);
 
-         r.Before.Should().Be(11);
-         r.After.Should().Be(22);
+         r.Before.Should().Be("11");
+         r.After.Should().Be("22");
 
          var f = r.Data.First();
          f.UserId.Should().StartWith("fff");
@@ -40,8 +40,8 @@ namespace Coinbase.Tests.EndpointTests
          server.ShouldHaveCalledSomePathAndQuery("/fills?order_id=333")
             .WithVerb(HttpMethod.Get);
 
-         r.Before.Should().Be(11);
-         r.After.Should().Be(22);
+         r.Before.Should().Be("11");
+         r.After.Should().Be("22");
 
          var f = r.Data.First();
          f.UserId.Should().StartWith("fff");

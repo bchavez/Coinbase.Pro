@@ -94,8 +94,8 @@ namespace Coinbase.Tests.EndpointTests
          t.TradeId.Should().Be(54706228);
 
          r.Data.Count.Should().BeGreaterOrEqualTo(3);
-         r.Before.Should().Be(54870014);
-         r.After.Should().Be(54870113);
+         r.Before.Should().Be("54870014");
+         r.After.Should().Be("54870113");
 
          await Verifier.Verify(r);
       }
@@ -105,7 +105,7 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWithJsonTestFilePagedResult();
 
-         var r = await client.MarketData.GetTradesAsync("BTC-USD", limit: 50, before: 27, after: 28);
+         var r = await client.MarketData.GetTradesAsync("BTC-USD", limit: 50, before: "27", after: "28");
 
          server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD/trades?" +
                                     "limit=50&" +

@@ -8,7 +8,7 @@ namespace Coinbase.Pro
 {
    public static class ExtensionsForCoinbaseProClient
    {
-      public static IFlurlRequest AsPagedRequest(this IFlurlRequest r, int? limit = 100, long? before = null, long? after = null)
+      public static IFlurlRequest AsPagedRequest(this IFlurlRequest r, int? limit = 100, string before = null, string after = null)
       {
          return r.SetQueryParam("limit", limit)
             .SetQueryParam("before", before)
@@ -27,16 +27,14 @@ namespace Coinbase.Pro
                Data = data
             };
 
-         if( r.Headers.TryGetFirst(HeaderNames.Before, out var beforeString) &&
-             long.TryParse(beforeString, out var before) )
+         if( r.Headers.TryGetFirst(HeaderNames.Before, out var beforeString) )
          {
-            p.Before = before;
+            p.Before = beforeString;
          }
 
-         if(r.Headers.TryGetFirst(HeaderNames.After, out var afterString) &&
-            long.TryParse(afterString, out var after) )
+         if(r.Headers.TryGetFirst(HeaderNames.After, out var afterString) )
          {
-            p.After = after;
+            p.After = afterString;
          }
 
          return p;

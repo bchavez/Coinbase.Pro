@@ -25,7 +25,7 @@ namespace Coinbase.Pro
       Task<PagedResponse<Order>> GetAllOrdersAsync(
          string status = "all",
          string productId = null,
-         int? limit = null, long? before = null, long? after = null,
+         int? limit = null, string before = null, string after = null,
          CancellationToken cancellationToken = default);
 
       /// <summary>
@@ -212,7 +212,7 @@ namespace Coinbase.Pro
 
       Task<PagedResponse<Order>> IOrdersEndpoint.GetAllOrdersAsync(
          string status, string productId,
-         int? limit, long? before, long? after,
+         int? limit, string before, string after,
          CancellationToken cancellationToken)
       {
          var statuses = status.Split(new[] {' ', ','}, StringSplitOptions.RemoveEmptyEntries);
