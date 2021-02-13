@@ -13,13 +13,19 @@ namespace Coinbase.Pro
       /// <summary>
       /// Get a list of available currency pairs for trading.
       /// </summary>
-      /// <param name="cancellationToken"></param>
       /// <remarks>
       /// The base_min_size and base_max_size fields define the min and max order size. The quote_increment field specifies the min order price as well as the price increment.
       /// The order price must be a multiple of this increment(i.e. if the increment is 0.01, order prices of 0.001 or 0.021 would be rejected).
       /// Product ID will not change once assigned to a product but the min/max/quote sizes can be updated in the future.
       /// </remarks>
       Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default);
+
+      /// <summary>
+      /// Get market data for a specific currency pair.
+      /// </summary>
+      /// <param name="productId">Required; the product id. eg: 'BTC-USD'</param>
+      /// <returns></returns>
+      Task<Product> GetSingleProductAsync(string productId, CancellationToken cancellationToken = default);
 
       /// <summary>
       /// Get a list of open orders for a product. The amount of detail shown can be customized with the level parameter.
@@ -84,6 +90,14 @@ namespace Coinbase.Pro
          return this.ProductsEndpoint
             .WithClient(this)
             .GetJsonAsync<List<Product>>(cancellationToken);
+      }
+
+      Task<Product> IMarketDataEndpoint.GetSingleProductAsync(string productId, CancellationToken cancellationToken)
+      {
+         return this.ProductsEndpoint
+            .AppendPathSegment(productId)
+            .WithClient(this)
+            .GetJsonAsync<Product>(cancellationToken);
       }
 
       Task<OrderBook> IMarketDataEndpoint.GetOrderBookAsync(string productId, int level, CancellationToken cancellationToken)

@@ -12,12 +12,22 @@ namespace Coinbase.Pro.Models
       [JsonProperty("base_currency")]
       public string BaseCurrency { get; set; }
 
+      /// <summary>
+      /// The base_min_size and base_max_size fields define the min and max order size.
+      /// </summary>
       [JsonProperty("base_max_size")]
       public decimal BaseMaxSize { get; set; }
 
+      /// <summary>
+      /// The base_min_size and base_max_size fields define the min and max order size.
+      /// </summary>
       [JsonProperty("base_min_size")]
       public decimal BaseMinSize { get; set; }
 
+      /// <summary>
+      /// cancel_only indicates whether this product only accepts cancel requests for orders.
+      /// Only a maximum of one of trading_disabled, cancel_only, post_only, limit_only can be true at once. If none are true, the product is trading normally.
+      /// </summary>
       [JsonProperty("cancel_only")]
       public bool CancelOnly { get; set; }
 
@@ -27,30 +37,64 @@ namespace Coinbase.Pro.Models
       [JsonProperty("id")]
       public string Id { get; set; }
 
+      /// <summary>
+      /// limit_only indicates whether this product only accepts limit orders.
+      /// Only a maximum of one of trading_disabled, cancel_only, post_only, limit_only can be true at once. If none are true, the product is trading normally.
+      /// </summary>
       [JsonProperty("limit_only")]
       public bool LimitOnly { get; set; }
 
       [JsonProperty("margin_enabled")]
       public bool MarginEnabled { get; set; }
 
+      /// <summary>
+      /// The min_market_funds and max_market_funds fields define the min and max funds allowed in a market order.
+      /// </summary>
       [JsonProperty("max_market_funds")]
       public decimal? MaxMarketFunds { get; set; }
 
+      /// <summary>
+      /// The min_market_funds and max_market_funds fields define the min and max funds allowed in a market order.
+      /// </summary>
       [JsonProperty("min_market_funds")]
       public decimal? MinMarketFunds { get; set; }
 
+      /// <summary>
+      /// post_only indicates whether only maker orders can be placed. No orders will be matched when post_only mode is active.
+      /// Only a maximum of one of trading_disabled, cancel_only, post_only, limit_only can be true at once. If none are true, the product is trading normally.
+      /// </summary>
       [JsonProperty("post_only")]
       public bool PostOnly { get; set; }
+
+      /// <summary>
+      /// trading_disabled indicates whether trading is currently restricted on this product, this includes whether both new orders and order cancelations are restricted.
+      /// Only a maximum of one of trading_disabled, cancel_only, post_only, limit_only can be true at once. If none are true, the product is trading normally.
+      /// </summary>
+      [JsonProperty("trading_disabled")]
+      public bool TradingDisabled { get; set; }
 
       [JsonProperty("quote_currency")]
       public string QuoteCurrency { get; set; }
 
+      /// <summary>
+      /// The quote_increment field specifies the min order price as well as the price increment.
+      /// The order price must be a multiple of this increment (i.e. if the increment is 0.01, order prices of 0.001 or 0.021 would be rejected).
+      /// </summary>
       [JsonProperty("quote_increment")]
       public decimal QuoteIncrement { get; set; }
+
+      /// <summary>
+      /// The base_increment field specifies the minimum increment for the base_currency.
+      /// </summary>
+      [JsonProperty("base_increment")]
+      public decimal BaseIncrement { get; set; }
 
       [JsonProperty("status")]
       public string Status { get; set; }
 
+      /// <summary>
+      /// status_message provides any extra information regarding the status if available.
+      /// </summary>
       [JsonProperty("status_message")]
       public object StatusMessage { get; set; }
    }

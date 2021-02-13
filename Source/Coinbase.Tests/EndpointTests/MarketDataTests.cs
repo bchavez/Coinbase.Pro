@@ -209,22 +209,19 @@ namespace Coinbase.Tests.EndpointTests
             .WithVerb(HttpMethod.Get);
 
          r.Count.Should().BeGreaterOrEqualTo(3);
+         
+         await Verifier.Verify(r);
+      }
 
-         var p = r.First();
-         p.Id.Should().Be("BCH-USD");
-         p.BaseCurrency.Should().Be("BCH");
-         p.QuoteCurrency.Should().Be("USD");
-         p.BaseMinSize.Should().Be(0.01m);
-         p.BaseMaxSize.Should().Be(350.0m);
-         p.QuoteIncrement.Should().Be(0.01m);
-         p.CancelOnly.Should().Be(false);
-         p.DisplayName.Should().Be("BCH/USD");
-         p.LimitOnly.Should().Be(true);
-         p.MaxMarketFunds.Should().Be(1000000);
-         p.MinMarketFunds.Should().Be(10);
-         p.PostOnly.Should().Be(false);
-         p.Status.Should().Be("online");
-         p.StatusMessage.Should().BeNull();
+      [Test]
+      public async Task can_get_single_product()
+      {
+         server.RespondWithJsonTestFile();
+
+         var r = await client.MarketData.GetSingleProductAsync("BTC-USD");
+
+         server.ShouldHaveCalledSomePathAndQuery("/products/BTC-USD")
+            .WithVerb(HttpMethod.Get);
 
          await Verifier.Verify(r);
       }

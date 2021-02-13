@@ -180,6 +180,14 @@ namespace Coinbase.Tests.IntegrationTests
       }
 
       [Test]
+      public async Task can_get_sandbox_single_product()
+      {
+         var p = await this.client.MarketData.GetSingleProductAsync("BTC-USD");
+
+         p.Dump();
+      }
+
+      [Test]
       public async Task can_get_withdrawals()
       {
          var w = await this.client.Withdrawals.ListWithdrawals(after: DateTimeOffset.Parse("2020-08-08T18:58:26.124045+00:00"));

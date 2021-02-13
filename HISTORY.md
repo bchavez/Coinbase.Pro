@@ -1,3 +1,9 @@
+## v4.1.1
+* Issue 34: Add support for Product.BaseIncrement.
+* Add support for Product.TradingDisabled.
+* Add support for MarketData.GetSingleProductAsync.
+* More XML docs to Coinbase.Pro.Models.Product.
+
 ## v4.0.1
 * PR 33: Changes Before and After pagination types from `long` to `string` because some endpoints use date/time strings. Thanks devax!
 

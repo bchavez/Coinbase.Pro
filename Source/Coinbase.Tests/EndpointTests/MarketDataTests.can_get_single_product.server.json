@@ -1,0 +1,19 @@
+{
+  "base_currency": "BTC",
+  "base_max_size": 10000.0,
+  "base_min_size": 0.001,
+  "cancel_only": false,
+  "display_name": "BTC/USD",
+  "id": "BTC-USD",
+  "limit_only": false,
+  "margin_enabled": true,
+  "max_market_funds": 1000000.0,
+  "min_market_funds": 10.0,
+  "post_only": false,
+  "trading_disabled": false,
+  "quote_currency": "USD",
+  "quote_increment": 0.01,
+  "base_increment": 0.00000001,
+  "status": "online",
+  "status_message": ""
+}
