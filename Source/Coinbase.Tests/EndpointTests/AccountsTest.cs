@@ -49,10 +49,6 @@ namespace Coinbase.Tests.EndpointTests
 
          var r = await client.Accounts.GetAccountHistoryAsync("fff");
 
-         var a = r.Data.First();
-         a.Id.Should().Be("44512583");
-         a.Amount.Should().Be(1000.0000000000000000m);
-
          server.ShouldHaveCalledSomePathAndQuery("/accounts/fff/ledger");
 
          await Verifier.Verify(r);

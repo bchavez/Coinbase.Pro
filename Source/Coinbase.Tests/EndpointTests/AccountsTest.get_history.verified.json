@@ -1,14 +1,15 @@
 {
   "Data": [
     {
-      "id": "44512583",
+      "id": "100",
       "created_at": "DateTimeOffset_1",
-      "amount": 1000.0000000000000000,
-      "balance": 1000.0000000000000000,
-      "type": "transfer",
+      "amount": 0.001,
+      "balance": 239.669,
+      "type": "fee",
       "details": {
-        "transfer_id": "Guid_1",
-        "transfer_type": "deposit"
+        "order_id": "Guid_1",
+        "trade_id": "74",
+        "product_id": "BTC-USD"
       }
     }
   ]
