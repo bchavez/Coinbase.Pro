@@ -411,6 +411,7 @@ namespace Coinbase.Pro.Models
       [JsonProperty("trade_id")]
       public string TradeId { get; set; }
 
+      [JsonProperty("product_id")]
       public string ProductId { get; set; }
    }
 
