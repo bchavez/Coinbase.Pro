@@ -1,3 +1,6 @@
+## v4.1.2
+* PR 36: Add `[JsonProperty("product_id")]` to `Models.AccountDetails.ProductId`.
+
 ## v4.1.1
 * Issue 34: Add support for Product.BaseIncrement.
 * Add support for Product.TradingDisabled.
