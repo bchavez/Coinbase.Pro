@@ -88,6 +88,10 @@ namespace Coinbase.Pro.WebSockets
                parsed = obj.ToObject<ActivateEvent>();
                break;
 
+            case "error":
+               parsed = obj.ToObject<ErrorEvent>();
+               break;
+
             default:
                parsed = null;
                return false;
