@@ -244,15 +244,19 @@ namespace Coinbase.Pro
             .ReceiveJson<List<Guid>>();
       }
 
-      Task<List<Guid>> IOrdersEndpoint.CancelOrderById(
+      async Task<List<Guid>> IOrdersEndpoint.CancelOrderById(
          string orderId,
          CancellationToken cancellationToken)
       {
-         return this.OrdersEndpoint
+         return await await this.OrdersEndpoint
             .WithClient(this)
             .AppendPathSegment(orderId)
             .DeleteAsync(cancellationToken)
-            .ReceiveJson<List<Guid>>();
+            .ReceiveString()
+            .ContinueWith(async s =>
+                Newtonsoft.Json.JsonConvert.DeserializeObject<List<Guid>>(
+                   await s.ConfigureAwait(false), new SingleOrArrayConverter<Guid>()))
+            .ConfigureAwait(false);
       }
 
       Task<Order> IOrdersEndpoint.PlaceMarketOrderAsync(

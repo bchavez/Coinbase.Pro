@@ -103,5 +103,21 @@ namespace Coinbase.Tests.EndpointTests
 
          await Verifier.Verify(r);
       }
+
+      /// <summary> test variant where a single GUID is returned, instead of an array with one guid </summary>
+      [Test]
+      public async Task cancel_order_by_id_single_item()
+      {
+         server.RespondWithJsonTestFile();
+
+         var r = await client.Orders.CancelOrderById("ooo");
+
+         r.Count.Should().Be(1);
+
+         server.ShouldHaveCalledSomePathAndQuery("/orders/ooo")
+            .WithVerb(HttpMethod.Delete);
+
+         await Verifier.Verify(r);
+      }
    }
 }
