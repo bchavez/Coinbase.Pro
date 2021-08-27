@@ -14,7 +14,7 @@ namespace Coinbase.Pro.Models
       [EnumMember(Value = "subscribe")]
       Subscribe,
 
-      [EnumMember(Value = "unsubscribe ")]
+      [EnumMember(Value = "unsubscribe")]
       Unsubscribe
    }
 
