@@ -1,5 +1,5 @@
 ## v4.1.3
-* PR 56: Fixed extra space in WebSocket `MessageType.Unsubscribe` type that caused unsubscription to fail.   
+* PR 56: Fixed extra space in WebSocket `MessageType.Unsubscribe` type that caused unsubscription to fail.
 
 ## v4.1.2
 * PR 36: Add `[JsonProperty("product_id")]` to `Models.AccountDetails.ProductId`.
