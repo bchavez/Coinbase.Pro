@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30309.148
-MinimumVisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 17.0.31903.59
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coinbase.Pro", "Coinbase.Pro\Coinbase.Pro.csproj", "{3A942D5B-4E76-4696-B228-4A42D524D6E1}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Builder", "Builder\Builder.fsproj", "{2E878DDF-5585-48F2-85E0-748579278C9A}"
