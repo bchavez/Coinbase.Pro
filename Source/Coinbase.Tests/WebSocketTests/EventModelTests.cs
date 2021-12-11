@@ -286,5 +286,22 @@ namespace Coinbase.Tests.WebSocketTests
          var r = o as ActivateEvent;
          r.Size.Should().Be(2);
       }
+
+      [Test]
+      public async Task error()
+      {
+         var json = @"{
+  ""type"":""error"",
+  ""message"":""Failed to subscribe"",
+  ""reason"":""ZZZ-YYY is not a valid product""
+}";
+         WebSocketHelper.TryParse(json, out var o);
+
+         o.Should().BeOfType<ErrorEvent>();
+         o.Dump();
+         var r = o as ErrorEvent;
+         r.Message.Should().Be("Failed to subscribe");
+      }
+
    }
 }

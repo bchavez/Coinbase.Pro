@@ -61,6 +61,14 @@ namespace Coinbase.Pro.Models
       public string Type { get; set; }
    }
 
+   public class ErrorEvent : Event
+   {
+      [JsonProperty("message")]
+      public string Message { get; set; }
+      [JsonProperty("reason")]
+      public string Reason { get; set; }
+   }
+
    public partial class SubscriptionsEvent : Event
    {
       [JsonProperty("channels")]
@@ -393,6 +401,4 @@ namespace Coinbase.Pro.Models
       [JsonProperty("private")]
       public bool Private { get; set; }
    }
-
-
 }

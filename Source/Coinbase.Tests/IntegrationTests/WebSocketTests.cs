@@ -109,5 +109,33 @@ namespace Coinbase.Tests.IntegrationTests
          await Task.Delay(TimeSpan.FromMinutes(1));
 
       }
+
+      [Test]
+      public async Task subscribe_with_error()
+      {
+         var result = await socket.ConnectAsync();
+         if (!result.Success)
+         {
+            throw new Exception("Connect error.");
+         }
+
+         socket.RawSocket.MessageReceived += RawSocket_MessageReceived;
+
+         var sub = new Subscription
+            {
+               ProductIds =
+                  {
+                     "ZZZ-YYY",
+                  },
+               Channels =
+                  {
+                     "heartbeat",
+                  }
+            };
+
+         await socket.SubscribeAsync(sub);
+
+         await Task.Delay(TimeSpan.FromMinutes(1));
+      }
    }
 }
