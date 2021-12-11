@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Coinbase.Pro.Models;
@@ -94,9 +95,10 @@ namespace Coinbase.Tests.EndpointTests
       {
          server.RespondWithJsonTestFile();
 
-         var r = await client.Orders.CancelOrderById("ooo");
+         var r = await client.Orders.CancelOrderByIdAsync("ooo");
 
-         r.Count.Should().Be(1);
+         var expected = Guid.Parse("2eb2992c-d795-442c-847a-88b60ebc64cb");
+         r.Should().Be(expected);
 
          server.ShouldHaveCalledSomePathAndQuery("/orders/ooo")
             .WithVerb(HttpMethod.Delete);

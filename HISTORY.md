@@ -1,3 +1,6 @@
+## v4.2.1
+* Issue 54: `CancelOrderById` is now `CancelOrderByIdAsync` and fixed from throwing array deserialization error.
+
 ## v4.1.3
 * PR 56: Fixed extra space in WebSocket `MessageType.Unsubscribe` type that caused unsubscription to fail.
 

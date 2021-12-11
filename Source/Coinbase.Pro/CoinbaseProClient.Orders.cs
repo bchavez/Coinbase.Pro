@@ -44,7 +44,7 @@ namespace Coinbase.Pro
       /// Cancel a previously placed order.
       /// If the order had no matches during its lifetime its record may be purged.
       /// </summary>
-      Task<List<Guid>> CancelOrderById(string orderId, CancellationToken cancellationToken = default);
+      Task<Guid> CancelOrderByIdAsync(string orderId, CancellationToken cancellationToken = default);
 
       /// <summary>
       /// Market orders differ from limit orders in that they provide no pricing
@@ -244,7 +244,7 @@ namespace Coinbase.Pro
             .ReceiveJson<List<Guid>>();
       }
 
-      Task<List<Guid>> IOrdersEndpoint.CancelOrderById(
+      Task<Guid> IOrdersEndpoint.CancelOrderByIdAsync(
          string orderId,
          CancellationToken cancellationToken)
       {
@@ -252,7 +252,7 @@ namespace Coinbase.Pro
             .WithClient(this)
             .AppendPathSegment(orderId)
             .DeleteAsync(cancellationToken)
-            .ReceiveJson<List<Guid>>();
+            .ReceiveJson<Guid>();
       }
 
       Task<Order> IOrdersEndpoint.PlaceMarketOrderAsync(

@@ -162,11 +162,11 @@ namespace Coinbase.Tests.IntegrationTests
       public async Task can_create_and_delete_order()
       {
          var o = await this.client.Orders.PlaceLimitOrderAsync(
-            OrderSide.Buy, "ETC-USD", size: 1, limitPrice: 0.05m, timeInForce: TimeInForce.GoodTillCanceled);
+            OrderSide.Buy, "BTC-USD", size: .0001m, limitPrice: 0.05m, timeInForce: TimeInForce.GoodTillCanceled);
 
          o.Dump();
 
-         var d = await  this.client.Orders.CancelOrderById(o.Id.ToString());
+         var d = await  this.client.Orders.CancelOrderByIdAsync(o.Id.ToString());
 
          d.Dump();
       }
