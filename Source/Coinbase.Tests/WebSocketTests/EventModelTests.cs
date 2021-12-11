@@ -290,13 +290,17 @@ namespace Coinbase.Tests.WebSocketTests
       [Test]
       public async Task error()
       {
-         var json = "{\"type\":\"error\",\"message\":\"Authentication Failed\",\"reason\":\"{\\\"message\\\":\\\"Invalid API Key\\\"}\"}";
+         var json = @"{
+  ""type"":""error"",
+  ""message"":""Failed to subscribe"",
+  ""reason"":""ZZZ-YYY is not a valid product""
+}";
          WebSocketHelper.TryParse(json, out var o);
 
          o.Should().BeOfType<ErrorEvent>();
          o.Dump();
          var r = o as ErrorEvent;
-         r.Message.Should().Be("Authentication Failed");
+         r.Message.Should().Be("Failed to subscribe");
       }
 
    }
