@@ -1,3 +1,6 @@
+## v4.2.2
+* PR 46: Handle `error` type message with WebSocketHelper. Thanks @vslee!
+
 ## v4.2.1
 * Issue 54: `CancelOrderById` is now `CancelOrderByIdAsync` and fixed from throwing array deserialization error.
 
