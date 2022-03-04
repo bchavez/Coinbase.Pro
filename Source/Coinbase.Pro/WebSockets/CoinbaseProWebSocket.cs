@@ -132,7 +132,7 @@ namespace Coinbase.Pro.WebSockets
 
       public void Unsubscribe(Subscription subscription)
       {
-         subscription.ExtraJson.Add("type", JToken.FromObject(MessageType.Unsubscribe));
+         subscription.ExtraJson["type"] = JToken.FromObject(MessageType.Unsubscribe);
 
          var json = JsonConvert.SerializeObject(subscription);
 
